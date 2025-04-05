@@ -233,32 +233,7 @@
     </footer>
   </div>
 
-<script>
-  const slider = document.getElementById('slider');
-  const content = document.getElementById('mainContent');
-  let lastScrollTop = 0;
 
-  function toggleSlider() {
-    slider.classList.toggle('show');
-    document.body.classList.toggle('slider-visible');
-  }
-
-  window.addEventListener('scroll', function () {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScroll < lastScrollTop) {
-      // Scrolling up
-      slider.classList.add('show');
-      document.body.classList.add('slider-visible');
-    } else {
-      // Scrolling down
-      slider.classList.remove('show');
-      document.body.classList.remove('slider-visible');
-    }
-
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-  });
-</script>
 
 </body>
 </html>
