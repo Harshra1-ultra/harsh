@@ -3,222 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Harsh Raj | Portfolio</title>
+  <title>More | Harsh Raj</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
     body {
-      background: #fdfdfd;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #fdfdfd;
       color: #222;
-      display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .auto-slider {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 220px;
-      background-color: #002147;
-      color: white;
-      transition: transform 0.3s ease;
-      transform: translateX(-100%);
-      z-index: 999;
-      padding-top: 80px;
-    }
-
-    .auto-slider.show {
-      transform: translateX(0);
-    }
-
-    .auto-slider a {
-      display: block;
-      padding: 15px 25px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .auto-slider a:hover {
-      background-color: #005f99;
-    }
-
-    .toggle-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: #002147;
-      color: white;
-      padding: 10px 14px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    .content-container {
-      flex-grow: 1;
-      transition: margin-left 0.3s ease, padding 0.3s ease;
-      margin-left: 0;
-      width: 100%;
-      padding: 2rem;
-    }
-
-    .slider-visible .content-container {
-      margin-left: 220px;
-      width: calc(100% - 220px);
-    }
-
-    header {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      color: #002147;
-    }
-
-    .hero {
-      background-color: #eaf1f8;
-      padding: 2rem;
-      border-radius: 12px;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .hero img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-card h3 {
-      margin-bottom: 0.5rem;
-      color: #002147;
-    }
-
     section {
       margin-bottom: 3rem;
     }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #f1f1f1;
-      margin-top: 2rem;
-      color: #555;
+    h2 {
+      color: #002147;
+    }
+    a {
+      color: #005f99;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleSlider()">☰</button>
-  <div class="auto-slider" id="slider">
-    <a href="#home">Home</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
-    <a href="second-page.html">More</a>
-  </div>
+  <section class="contact-container">
+    <h2>📚 Education</h2>
+    <ul>
+      <li>2020–2022: M.Tech from IIT Ropar in Communication and Signal Processing</li>
+      <li>2015–2019: B.E from University Institute of Technology Burdwan in Electronics and Communication Engineering</li>
+    </ul>
+  </section>
 
-  <div class="content-container" id="mainContent">
-    <header id="home">
-      <h1>Harsh Raj</h1>
-      <div class="hero">
-        <img src="Harsh.jpeg" alt="Harsh Raj">
-        <h2>Welcome to My Website</h2>
-        <p>Research Scholar | Dept. of EEE, IIT Guwahati</p>
-      </div>
-    </header>
+  <section class="contact-container">
+    <h2>📖 Publications</h2>
+    <h3>📃 Conferences</h3>
+    <ul>
+      <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," NCC, IIT Delhi, 2025. <a href="https://github.com/Harshra1-ultra">(Codes updating soon...)</a></li>
+      <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="https://ieeexplore.ieee.org/document/10683164">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>," IEEE VTC-Spring, Singapore, 2024. <a href="https://github.com/Harshra1-ultra">(Codes updating soon...)</a></li>
+    </ul>
+    <h3>📝 Journals</h3>
+    <ul>
+      <!-- Add journal publications here -->
+    </ul>
+  </section>
 
-    <section id="portfolio">
-      <h2 style="text-align:center; color:#002147; margin-bottom:1rem;">My Portfolio</h2>
-      <div class="portfolio-grid">
-        <div class="project-card">
-          <h3>About Me</h3>
-          <p>I am currently pursuing a Ph.D. in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati. My advisor is <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank">Dr. Manoj B. R.</a></p>
-        </div>
-        <div class="project-card">
-          <h3>📡 Research Interests</h3>
-          <ul>
-            <li>Next-generation wireless communication</li>
-            <li>Joint sensing and communication (JSAC)</li>
-            <li>Intelligent reflecting surface</li>
-            <li>Deep learning and machine learning</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><a href="mailto:h.raj@iitg.ac.in">📧 h.raj@iitg.ac.in</a></p>
-      <p><a href="https://github.com/Harshra1-ultra" target="_blank">💻 GitHub</a></p>
-      <p><a href="https://www.iitg.ac.in/manojbr/research-group.html" target="_blank">🔬 Research Group</a></p>
-      <p><a href="https://sites.google.com/view/harshrajresearch/home" target="_blank">🌐 Google Site</a></p>
-    </section>
-
-    <footer>
-      &copy; 2025 Harsh Raj. All rights reserved.
-    </footer>
-  </div>
-
-  <script>
-    const slider = document.getElementById('slider');
-    const content = document.getElementById('mainContent');
-    let lastScrollTop = 0;
-
-    function toggleSlider() {
-      slider.classList.toggle('show');
-      document.body.classList.toggle('slider-visible');
-    }
-
-    window.addEventListener('scroll', function () {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll > lastScrollTop) {
-        slider.classList.add('show');
-        document.body.classList.add('slider-visible');
-      } else {
-        slider.classList.remove('show');
-        document.body.classList.remove('slider-visible');
-      }
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-  </script>
+  <footer>
+    &copy; 2025 Harsh Raj. All rights reserved.
+  </footer>
 </body>
 </html>
