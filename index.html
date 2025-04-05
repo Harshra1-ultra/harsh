@@ -75,7 +75,7 @@
   margin-left: 0;
   width: 100%;
   padding: 2rem;
-  background-color: rgba(0, 33, 71, 0.5); /* light sky blue with transparency */
+  background-color: rgba(0, 33, 71, 0.4); /* light sky blue with transparency */
   background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
   background-repeat: repeat;
   background-size: auto;
@@ -233,27 +233,32 @@
     </footer>
   </div>
 
-  <script>
-    const slider = document.getElementById('slider');
-    const content = document.getElementById('mainContent');
-    let lastScrollTop = 0;
+<script>
+  const slider = document.getElementById('slider');
+  const content = document.getElementById('mainContent');
+  let lastScrollTop = 0;
 
-    function toggleSlider() {
-      slider.classList.toggle('show');
-      document.body.classList.toggle('slider-visible');
+  function toggleSlider() {
+    slider.classList.toggle('show');
+    document.body.classList.toggle('slider-visible');
+  }
+
+  window.addEventListener('scroll', function () {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll < lastScrollTop) {
+      // Scrolling up
+      slider.classList.add('show');
+      document.body.classList.add('slider-visible');
+    } else {
+      // Scrolling down
+      slider.classList.remove('show');
+      document.body.classList.remove('slider-visible');
     }
 
-    window.addEventListener('scroll', function () {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll > lastScrollTop) {
-        slider.classList.add('show');
-        document.body.classList.add('slider-visible');
-      } else {
-        slider.classList.remove('show');
-        document.body.classList.remove('slider-visible');
-      }
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-  </script>
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
+</script>
+
 </body>
 </html>
