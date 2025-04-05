@@ -80,21 +80,6 @@
   background-repeat: repeat;
   background-size: auto;
    }
-  window.addEventListener('scroll', function () {
-  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScroll < lastScrollTop) {
-    // Scrolling up
-    slider.classList.add('show');
-    document.body.classList.add('slider-visible');
-  } else {
-    // Scrolling down
-    slider.classList.remove('show');
-    document.body.classList.remove('slider-visible');
-  }
-
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-   });
 
     .slider-visible .content-container {
       margin-left: 220px;
@@ -194,8 +179,8 @@
 
   <div class="content-container" id="mainContent">
     <header id="home">
-      <h1>Harsh Raj</h1>
       <div class="hero">
+         <h1>Harsh Raj</h1>
         <img src="Harsh.jpeg" alt="Harsh Raj">
         <p>Research Scholar | Dept. of EEE, IIT Guwahati</p>
       </div>
