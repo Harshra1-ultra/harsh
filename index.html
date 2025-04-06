@@ -14,15 +14,14 @@
     }
 
     body {
-  background-color: #f0faff; /* fallback */
-  background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
-  background-repeat: repeat;
-  color: #222;
-  display: flex;
-  min-height: 100vh;
-  overflow-x: hidden;
-   }
-
+      background-color: #f0faff;
+      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
+      background-repeat: repeat;
+      color: #222;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -69,17 +68,17 @@
       cursor: pointer;
       z-index: 1000;
     }
-  .content-container {
-  flex-grow: 1;
-  transition: margin-left 0.3s ease;
-  margin-left: 0;
-  width: 100%;
-  padding: 2rem;
-  background-color: rgba(0, 33, 71, 0.3); /* light sky blue with transparency */
-  background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
-  background-repeat: repeat;
-  background-size: auto;
-   }
+
+    .content-container {
+      flex-grow: 1;
+      transition: margin-left 0.3s ease;
+      margin-left: 0;
+      width: 100%;
+      padding: 2rem;
+      background-color: rgba(0, 33, 71, 0.3);
+      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
+      background-repeat: repeat;
+    }
 
     .slider-visible .content-container {
       margin-left: 220px;
@@ -96,20 +95,19 @@
       color: #002147;
     }
 
-.hero {
-  flex-grow: 1;
-  transition: margin-left 0.3s ease;
-  margin-left: 0;
-  width: 100%;
-  padding: 2rem;
-  background-color: rgba(100, 149, 237, 0.75); /* light sky blue with transparency */
-  background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
-  background-repeat: repeat;
-  background-size: auto;
-  border-radius: 12px;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+    .hero {
+      flex-grow: 1;
+      transition: margin-left 0.3s ease;
+      margin-left: 0;
+      width: 100%;
+      padding: 2rem;
+      background-color: rgba(100, 149, 237, 0.75);
+      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
+      background-repeat: repeat;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
     .hero img {
       width: 150px;
@@ -124,22 +122,22 @@
       margin-bottom: 1rem;
     }
 
-    .portfolio-grid {
+    .two-column-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
- .project-card {
-  background-color: rgba(100, 149, 237, 0.85); /* light sky blue with transparency */
-  background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
-  background-repeat: repeat;
-  background-size: auto;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-  }
+    .project-card {
+      background-color: rgba(100, 149, 237, 0.85);
+      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
+      background-repeat: repeat;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
 
     .project-card:hover {
       transform: translateY(-5px);
@@ -155,18 +153,20 @@
     }
 
     footer {
-  background-color: rgba(100, 149, 237, 0.85); /* light sky blue with transparency */
-  background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
-  background-repeat: repeat;
-  background-size: auto;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+      background-color: rgba(100, 149, 237, 0.85);
+      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .contact a {
+      display: block;
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
-
 <body>
   <button class="toggle-btn" onclick="toggleSlider()">☰</button>
   <div class="auto-slider" id="slider">
@@ -179,7 +179,7 @@
 
   <div class="content-container" id="mainContent">
     <header id="home">
-       <h1>Harsh Raj</h1>
+      <h1>Harsh Raj</h1>
       <div class="hero">
         <img src="Harsh.jpeg" alt="Harsh Raj">
         <p>Research Scholar | Dept. of EEE, IIT Guwahati</p>
@@ -188,11 +188,13 @@
 
     <section id="portfolio">
       <h2 style="text-align:center; color:#002147; margin-bottom:1rem;">My Portfolio</h2>
-      <div class="portfolio-grid">
+      
+      <div class="two-column-grid">
         <div class="project-card">
           <h3>About Me</h3>
           <p>I am currently pursuing a Ph.D. in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati, where I have been enrolled since July 2022. My Ph. D. advisor is <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank" style="text-decoration: underline;">Dr. Manoj B. R.</a> Prior to this, I earned my M.Tech. in Communication and Signal Processing from the Indian Institute of Technology Ropar in 2022. I completed my B.E. in Electronics and Communication Engineering from the University Institute of Technology Burdwan in 2019.</p>
         </div>
+
         <div class="project-card">
           <h3>📡 Research Interests</h3>
           <ul>
@@ -202,18 +204,19 @@
             <li>Deep learning and machine learning</li>
           </ul>
         </div>
-        <div class="project-card">
-          <h2> 📖 Publications</h2>
-          <h3> 📃 Conferences</h3>
-          <ul>
-            <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6-9, 2025.</li>
-            <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>," in Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 24-27, 2024.</li>
-          </ul>
-          <h3> 📝 Journals</h3>
-          <ul>
-            <!-- Journal entries -->
-          </ul>
-        </div>
+      </div>
+
+      <div class="project-card">
+        <h2>📖 Publications</h2>
+        <h3>📃 Conferences</h3>
+        <ul>
+          <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6-9, 2025.</li>
+          <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>," in Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 24-27, 2024.</li>
+        </ul>
+        <h3>📝 Journals</h3>
+        <ul>
+          <!-- Journal entries -->
+        </ul>
       </div>
     </section>
 
@@ -227,23 +230,19 @@
       </div>
     </section>
 
-    
-
     <footer>
       &copy; 2025 Harsh Raj. All rights reserved.
     </footer>
   </div>
-<script>
-  const slider = document.getElementById('slider');
-  const content = document.getElementById('mainContent');
 
-  function toggleSlider() {
-    slider.classList.toggle('show');
-    document.body.classList.toggle('slider-visible');
-  }
-</script>
+  <script>
+    const slider = document.getElementById('slider');
+    const content = document.getElementById('mainContent');
 
-
-
+    function toggleSlider() {
+      slider.classList.toggle('show');
+      document.body.classList.toggle('slider-visible');
+    }
+  </script>
 </body>
 </html>
