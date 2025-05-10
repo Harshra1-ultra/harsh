@@ -1,3 +1,4 @@
+You said:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,6 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Default Light Mode */
     body {
       background-color: #f0faff;
       background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
@@ -24,13 +24,6 @@
       display: flex;
       min-height: 100vh;
       overflow-x: hidden;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    /* Dark Mode */
-    body.dark-mode {
-      background-color: #1c1c1c;
-      color: white;
     }
 
     html {
@@ -95,7 +88,6 @@
     header {
       text-align: center;
       padding: 4rem 1rem 2rem;
-      position: relative;
     }
 
     header h1 {
@@ -120,15 +112,11 @@
     }
 
     .hero img {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border-radius: 50%;
       margin-bottom: 1rem;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      transition: all 0.3s ease;
     }
 
     .hero h2 {
@@ -157,7 +145,7 @@
       background-color: rgba(30, 144, 255, 0.9);
       color: white;
     }
-
+        
     .project-card h3,
     .project-card h2 {
       color: #002147;
@@ -167,6 +155,15 @@
     .project-card:hover h3,
     .project-card:hover h2 {
       color: white;
+    }
+    
+  .project-card ul {
+  padding-left: 1.2rem; /* Adjust this value for desired indent */
+  margin-top: -0.5rem;  /* Optional: reduces the gap after heading */
+   }
+
+    section {
+      margin-bottom: 3rem;
     }
 
     .contact-container {
@@ -203,11 +200,11 @@
       text-align: center;
     }
   </style>
+
 </head>
+
 <body>
   <button class="toggle-btn" onclick="toggleSlider()">☰</button>
-  <button class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
-  
   <div class="auto-slider" id="slider">
     <a href="index.html">Home</a>
     <a href="#portfolio">Portfolio</a>
@@ -244,37 +241,55 @@
       </div>
 
       <div class="project-card">
-        <h2>📖 Publications</h2>
+      <h2>📖 Publications</h2>
         <h3>📃 Conferences</h3>
         <ul>
           <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6–9, 2025.</li>
-          <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="#">An efficient joint beamforming and IRS phase shift design for IRS-assisted ISAC systems</a>," accepted for publication in International Conference on Computing, Communication and Networking Technologies (ICCCNT), 2025.</li>
+          <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>," in Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 24–27, 2024.</li>
+        </ul>
+        <h3>📝 Journals</h3>
+        <ul>
+          <!-- Journal entries -->
         </ul>
       </div>
     </section>
 
-    <div class="contact-container" id="contact">
-      <h3>Contact</h3>
+    <section class="contact-container" id="contact">
+      <h2>Contact</h2>
       <div class="contact">
-        <a href="mailto:harshraj@iitg.ac.in">harshraj@iitg.ac.in</a>
-        <a href="https://www.linkedin.com/in/harshraj" target="_blank">LinkedIn</a>
+        <a href="mailto:h.raj@iitg.ac.in">📧 h.raj@iitg.ac.in</a>
+        <a href="https://github.com/Harshra1-ultra" target="_blank">💻 GitHub</a>
+        <a href="https://www.iitg.ac.in/manojbr/research-group.html" target="_blank">🔬 Research Group</a>
+        <a href="https://sites.google.com/view/harsh-portfolio-iitropar-spcom/home" target="_blank">🌐 Google Site</a>
       </div>
-    </div>
+    </section>
 
     <footer>
-      <p>&copy; 2025 Harsh Raj. All rights reserved.</p>
+      &copy; 2025 Harsh Raj. All rights reserved.
     </footer>
   </div>
 
   <script>
-    function toggleSlider() {
-      document.getElementById('slider').classList.toggle('show');
-      document.getElementById('mainContent').classList.toggle('slider-visible');
-    }
+    const slider = document.getElementById('slider');
+    const content = document.getElementById('mainContent');
 
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
+    function toggleSlider() {
+      slider.classList.toggle('show');
+      document.body.classList.toggle('slider-visible');
     }
   </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
+     crossorigin="anonymous"></script>
+<!-- Harsh -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7632782218371378"
+     data-ad-slot="2658505239"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 </body>
 </html>
