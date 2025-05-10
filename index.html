@@ -23,6 +23,28 @@
       display: flex;
       min-height: 100vh;
       overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    body.dark-mode .project-card,
+    body.dark-mode .contact-container,
+    body.dark-mode footer {
+      background-color: rgba(40, 40, 40, 0.9);
+    }
+
+    body.dark-mode .auto-slider {
+      background-color: #111;
+    }
+
+    body.dark-mode .auto-slider a,
+    body.dark-mode .toggle-btn,
+    body.dark-mode .theme-btn {
+      color: #fff;
     }
 
     html {
@@ -58,10 +80,9 @@
       background-color: #005f99;
     }
 
-    .toggle-btn {
+    .toggle-btn, .theme-btn {
       position: fixed;
       top: 20px;
-      left: 20px;
       background-color: #002147;
       color: white;
       padding: 10px 14px;
@@ -69,6 +90,14 @@
       border-radius: 4px;
       cursor: pointer;
       z-index: 1000;
+    }
+
+    .toggle-btn {
+      left: 20px;
+    }
+
+    .theme-btn {
+      right: 20px;
     }
 
     .content-container {
@@ -144,7 +173,7 @@
       background-color: rgba(30, 144, 255, 0.9);
       color: white;
     }
-        
+
     .project-card h3,
     .project-card h2 {
       color: #002147;
@@ -155,11 +184,11 @@
     .project-card:hover h2 {
       color: white;
     }
-    
-  .project-card ul {
-  padding-left: 1.2rem; /* Adjust this value for desired indent */
-  margin-top: -0.5rem;  /* Optional: reduces the gap after heading */
-   }
+
+    .project-card ul {
+      padding-left: 1.2rem;
+      margin-top: -0.5rem;
+    }
 
     section {
       margin-bottom: 3rem;
@@ -199,11 +228,11 @@
       text-align: center;
     }
   </style>
-
 </head>
-
 <body>
   <button class="toggle-btn" onclick="toggleSlider()">☰</button>
+  <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
   <div class="auto-slider" id="slider">
     <a href="index.html">Home</a>
     <a href="#portfolio">Portfolio</a>
@@ -226,7 +255,7 @@
       <div class="portfolio-section">
         <div class="project-card">
           <h3>About Me</h3>
-          <p>I am currently pursuing a Ph.D. in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati, where I have been enrolled since July 2022. My Ph. D. advisor is <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank">Dr. Manoj B. R.</a> Prior to this, I earned my M.Tech. in Communication and Signal Processing from the Indian Institute of Technology Ropar in 2022. I completed my B.E. in Electronics and Communication Engineering from the University Institute of Technology Burdwan in 2019.</p>
+          <p>I am currently pursuing a Ph.D. in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati, where I have been enrolled since July 2022. My Ph.D. advisor is <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank">Dr. Manoj B. R.</a> Prior to this, I earned my M.Tech. in Communication and Signal Processing from the Indian Institute of Technology Ropar in 2022. I completed my B.E. in Electronics and Communication Engineering from the University Institute of Technology Burdwan in 2019.</p>
         </div>
         <div class="project-card">
           <h3>📡 Research Interests</h3>
@@ -240,7 +269,7 @@
       </div>
 
       <div class="project-card">
-      <h2>📖 Publications</h2>
+        <h2>📖 Publications</h2>
         <h3>📃 Conferences</h3>
         <ul>
           <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6–9, 2025.</li>
@@ -270,25 +299,29 @@
 
   <script>
     const slider = document.getElementById('slider');
-    const content = document.getElementById('mainContent');
 
     function toggleSlider() {
       slider.classList.toggle('show');
       document.body.classList.toggle('slider-visible');
     }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.querySelector('.theme-btn');
+      btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    }
   </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
      crossorigin="anonymous"></script>
-<!-- Harsh -->
-<ins class="adsbygoogle"
+  <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7632782218371378"
      data-ad-slot="2658505239"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-<script>
+  <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
+  </script>
 </body>
 </html>
