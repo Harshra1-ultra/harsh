@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
-     crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Harsh Raj | Research Scholar </title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* General reset and base styles */
     * {
       margin: 0;
       padding: 0;
@@ -17,8 +16,6 @@
 
     body {
       background-color: #f0faff;
-      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
-      background-repeat: repeat;
       color: #222;
       display: flex;
       min-height: 100vh;
@@ -26,45 +23,16 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* Dark Mode */
     body.dark-mode {
-      background-color: #121212;
-      color: #f0faff;
+      background-color: #222;
+      color: #fff;
     }
 
     html {
       scroll-behavior: smooth;
     }
 
-    .auto-slider {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 220px;
-      background-color: #002147;
-      color: white;
-      transition: transform 0.3s ease;
-      transform: translateX(-100%);
-      z-index: 999;
-      padding-top: 80px;
-    }
-
-    .auto-slider.show {
-      transform: translateX(0);
-    }
-
-    .auto-slider a {
-      display: block;
-      padding: 15px 25px;
-      color: white;
-      text-decoration: none;
-    }
-
-    .auto-slider a:hover {
-      background-color: #005f99;
-    }
-
+    /* Mode toggle button styles */
     .toggle-btn {
       position: fixed;
       top: 20px;
@@ -78,16 +46,52 @@
       z-index: 1000;
     }
 
+    body.dark-mode .toggle-btn {
+      background-color: #444;
+    }
+
+    /* Sidebar (auto-slider) styles */
+    .auto-slider {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 220px;
+      background-color: #002147;
+      color: white;
+      transition: transform 0.3s ease;
+      transform: translateX(100%);
+      z-index: 999;
+      padding-top: 80px;
+    }
+
+    .auto-slider.show {
+      transform: translateX(0);
+    }
+
+    /* Sidebar links styles */
+    .auto-slider a {
+      display: block;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .auto-slider a:hover {
+      background-color: #005f99;
+    }
+
+    /* Content container styles */
     .content-container {
       flex-grow: 1;
-      transition: margin-left 0.3s ease;
-      margin-left: 0;
+      transition: margin-right 0.3s ease;
       width: 100%;
       padding: 2rem;
     }
 
+    /* Sidebar visible, adjust content width */
     .slider-visible .content-container {
-      margin-left: 220px;
+      margin-right: 220px;
       width: calc(100% - 220px);
     }
 
@@ -101,6 +105,7 @@
       color: #002147;
     }
 
+    /* Hero section styles */
     .hero {
       background-color: rgba(100, 149, 237, 0.5);
       padding: 2rem;
@@ -130,6 +135,7 @@
       margin-bottom: 1rem;
     }
 
+    /* Portfolio section styles */
     .portfolio-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -142,7 +148,6 @@
       padding: 1.5rem;
       border-radius: 10px;
       transition: all 0.4s ease;
-      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
     }
 
     .project-card:hover {
@@ -151,7 +156,7 @@
       background-color: rgba(30, 144, 255, 0.9);
       color: white;
     }
-        
+
     .project-card h3,
     .project-card h2 {
       color: #002147;
@@ -162,39 +167,18 @@
     .project-card:hover h2 {
       color: white;
     }
-    
-    .project-card ul {
-      padding-left: 1.2rem;
-      margin-top: -0.5rem;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
 
     .contact-container {
       background-color: rgba(100, 149, 237, 0.85);
       padding: 2rem;
       border-radius: 12px;
       transition: all 0.4s ease;
-      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
     }
 
     .contact-container:hover {
       transform: scale(1.02);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       background-color: rgba(30, 144, 255, 0.9);
-      color: white;
-    }
-
-    .contact a {
-      display: block;
-      margin: 0.5rem 0;
-      text-decoration: underline;
-      color: #002147;
-    }
-
-    .contact-container:hover a {
       color: white;
     }
 
@@ -206,11 +190,13 @@
       text-align: center;
     }
   </style>
-
 </head>
 
 <body>
+  <!-- Mode toggle button -->
   <button class="toggle-btn" onclick="toggleMode()">🌙 / 🌞</button>
+
+  <!-- Sidebar menu -->
   <div class="auto-slider" id="slider">
     <a href="index.html">Home</a>
     <a href="#portfolio">Portfolio</a>
@@ -219,6 +205,7 @@
     <a href="second-page.html">More</a>
   </div>
 
+  <!-- Content container -->
   <div class="content-container" id="mainContent">
     <header id="home">
       <h1>Harsh Raj</h1>
@@ -253,10 +240,6 @@
           <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6–9, 2025.</li>
           <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>," in Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 24–27, 2024.</li>
         </ul>
-        <h3>📝 Journals</h3>
-        <ul>
-          <!-- Journal entries -->
-        </ul>
       </div>
     </section>
 
@@ -276,6 +259,25 @@
   </div>
 
   <script>
+    // Toggle between light and dark mode
+    const toggleMode = () => {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+
+      // Save mode to localStorage
+      const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('mode', mode);
+    };
+
+    // Check saved mode on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedMode = localStorage.getItem('mode');
+      if (savedMode === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+
+    // Toggle sidebar visibility
     const slider = document.getElementById('slider');
     const content = document.getElementById('mainContent');
 
@@ -283,39 +285,6 @@
       slider.classList.toggle('show');
       document.body.classList.toggle('slider-visible');
     }
-
-    // Dark/Light Mode Toggle
-    const toggleMode = () => {
-      const body = document.body;
-      body.classList.toggle('dark-mode');
-      // Save the mode in localStorage
-      if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-      } else {
-        localStorage.setItem('theme', 'light');
-      }
-    };
-
-    // On page load, check for the saved mode in localStorage
-    window.onload = () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
-    };
   </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
-     crossorigin="anonymous"></script>
-<!-- Harsh -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7632782218371378"
-     data-ad-slot="2658505239"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 </body>
 </html>
