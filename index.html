@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Harsh Raj | Research Scholar </title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* CSS Variables for Dark and Light Theme */
+    :root {
+      --bg-color-light: #f0faff;
+      --bg-color-dark: #222;
+      --primary-color-light: #002147;
+      --primary-color-dark: #fff;
+      --text-color-light: #222;
+      --text-color-dark: #fff;
+      --link-hover-light: #005f99;
+      --link-hover-dark: #00bfff;
+    }
+
+    /* Global Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
     }
 
     body {
-      background-color: #f0faff;
-      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
-      background-repeat: repeat;
-      color: #222;
+      background-color: var(--bg-color-light);
+      color: var(--text-color-light);
       display: flex;
       min-height: 100vh;
-      overflow-x: hidden;
+      flex-direction: column;
     }
 
     html {
@@ -35,8 +46,8 @@
       left: 0;
       height: 100%;
       width: 220px;
-      background-color: #002147;
-      color: white;
+      background-color: var(--primary-color-light);
+      color: var(--primary-color-dark);
       transition: transform 0.3s ease;
       transform: translateX(-100%);
       z-index: 999;
@@ -50,20 +61,40 @@
     .auto-slider a {
       display: block;
       padding: 15px 25px;
-      color: white;
+      color: var(--primary-color-dark);
       text-decoration: none;
     }
 
     .auto-slider a:hover {
-      background-color: #005f99;
+      background-color: var(--link-hover-light);
     }
 
+    /* Dark Mode - Adjust styles for dark theme */
+    body[data-theme='dark'] {
+      background-color: var(--bg-color-dark);
+      color: var(--text-color-dark);
+    }
+
+    body[data-theme='dark'] .auto-slider {
+      background-color: var(--primary-color-dark);
+      color: var(--primary-color-light);
+    }
+
+    body[data-theme='dark'] .auto-slider a {
+      color: var(--primary-color-light);
+    }
+
+    body[data-theme='dark'] .auto-slider a:hover {
+      background-color: var(--link-hover-dark);
+    }
+
+    /* Toggle Button */
     .toggle-btn {
       position: fixed;
       top: 20px;
       left: 20px;
-      background-color: #002147;
-      color: white;
+      background-color: var(--primary-color-light);
+      color: var(--primary-color-dark);
       padding: 10px 14px;
       border: none;
       border-radius: 4px;
@@ -71,6 +102,7 @@
       z-index: 1000;
     }
 
+    /* Content Container */
     .content-container {
       flex-grow: 1;
       transition: margin-left 0.3s ease;
@@ -79,21 +111,27 @@
       padding: 2rem;
     }
 
-    .slider-visible .content-container {
-      margin-left: 220px;
-      width: calc(100% - 220px);
-    }
-
+    /* Sticky Header */
     header {
+      position: relative;
       text-align: center;
       padding: 4rem 1rem 2rem;
+      transition: transform 0.3s ease, padding 0.3s ease;
+    }
+
+    header.sticky {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      transform: translateY(0);
     }
 
     header h1 {
       font-size: 2.5rem;
-      color: #002147;
+      color: var(--primary-color-light);
     }
 
+    /* Hero Section */
     .hero {
       background-color: rgba(100, 149, 237, 0.5);
       padding: 2rem;
@@ -123,6 +161,7 @@
       margin-bottom: 1rem;
     }
 
+    /* Portfolio Section */
     .portfolio-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -144,27 +183,13 @@
       background-color: rgba(30, 144, 255, 0.9);
       color: white;
     }
-        
-    .project-card h3,
-    .project-card h2 {
-      color: #002147;
+
+    .project-card h3, .project-card h2 {
+      color: var(--primary-color-light);
       margin-bottom: 1rem;
     }
 
-    .project-card:hover h3,
-    .project-card:hover h2 {
-      color: white;
-    }
-    
-  .project-card ul {
-  padding-left: 1.2rem; /* Adjust this value for desired indent */
-  margin-top: -0.5rem;  /* Optional: reduces the gap after heading */
-   }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
+    /* Contact Section */
     .contact-container {
       background-color: rgba(100, 149, 237, 0.85);
       padding: 2rem;
@@ -184,13 +209,10 @@
       display: block;
       margin: 0.5rem 0;
       text-decoration: underline;
-      color: #002147;
+      color: var(--primary-color-light);
     }
 
-    .contact-container:hover a {
-      color: white;
-    }
-
+    /* Footer */
     footer {
       background-color: rgba(100, 149, 237, 0.85);
       padding: 1.5rem;
@@ -199,11 +221,12 @@
       text-align: center;
     }
   </style>
-
 </head>
 
 <body>
-  <button class="toggle-btn" onclick="toggleSlider()">☰</button>
+  <button class="toggle-btn" onclick="toggleTheme()">🌙</button>
+
+  <!-- Sidebar Navigation -->
   <div class="auto-slider" id="slider">
     <a href="index.html">Home</a>
     <a href="#portfolio">Portfolio</a>
@@ -212,6 +235,7 @@
     <a href="second-page.html">More</a>
   </div>
 
+  <!-- Main Content -->
   <div class="content-container" id="mainContent">
     <header id="home">
       <h1>Harsh Raj</h1>
@@ -240,15 +264,11 @@
       </div>
 
       <div class="project-card">
-      <h2>📖 Publications</h2>
+        <h2>📖 Publications</h2>
         <h3>📃 Conferences</h3>
         <ul>
           <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6–9, 2025.</li>
           <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>," in Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 24–27, 2024.</li>
-        </ul>
-        <h3>📝 Journals</h3>
-        <ul>
-          <!-- Journal entries -->
         </ul>
       </div>
     </section>
@@ -269,26 +289,31 @@
   </div>
 
   <script>
-    const slider = document.getElementById('slider');
-    const content = document.getElementById('mainContent');
-
-    function toggleSlider() {
-      slider.classList.toggle('show');
-      document.body.classList.toggle('slider-visible');
+    // Dark/Light Mode Toggle Logic
+    function toggleTheme() {
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      document.querySelector('.toggle-btn').textContent = newTheme === 'light' ? '🌙' : '🌞';
     }
-  </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
-     crossorigin="anonymous"></script>
-<!-- Harsh -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7632782218371378"
-     data-ad-slot="2658505239"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
+    // Apply stored theme on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.body.setAttribute('data-theme', savedTheme);
+      document.querySelector('.toggle-btn').textContent = savedTheme === 'light' ? '🌙' : '🌞';
+    });
+
+    // Sticky Header Logic
+    window.onscroll = function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    };
+  </script>
 </body>
 </html>
