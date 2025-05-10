@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378" crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Harsh Raj | Research Scholar </title>
+  <title>Harsh Raj | Research Scholar</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -71,6 +70,10 @@
       z-index: 1000;
     }
 
+    .toggle-btn + .toggle-btn {
+      left: 60px;
+    }
+
     .content-container {
       flex-grow: 1;
       transition: margin-left 0.3s ease;
@@ -92,6 +95,19 @@
     header h1 {
       font-size: 2.5rem;
       color: #002147;
+      margin-top: 100px;
+    }
+
+    .fixed-photo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      z-index: 1001;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .hero {
@@ -108,14 +124,6 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       background-color: rgba(30, 144, 255, 0.9);
       color: white;
-    }
-
-    .hero img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
     }
 
     .hero h2 {
@@ -144,7 +152,7 @@
       background-color: rgba(30, 144, 255, 0.9);
       color: white;
     }
-        
+
     .project-card h3,
     .project-card h2 {
       color: #002147;
@@ -155,11 +163,11 @@
     .project-card:hover h2 {
       color: white;
     }
-    
-  .project-card ul {
-  padding-left: 1.2rem; /* Adjust this value for desired indent */
-  margin-top: -0.5rem;  /* Optional: reduces the gap after heading */
-   }
+
+    .project-card ul {
+      padding-left: 1.2rem;
+      margin-top: -0.5rem;
+    }
 
     section {
       margin-bottom: 3rem;
@@ -198,12 +206,50 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
-  </style>
 
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .auto-slider {
+      background-color: #1a1a2e;
+    }
+
+    body.dark-mode .auto-slider a:hover {
+      background-color: #333;
+    }
+
+    body.dark-mode .toggle-btn,
+    body.dark-mode .hero,
+    body.dark-mode .project-card,
+    body.dark-mode .contact-container,
+    body.dark-mode footer {
+      background-color: #1a1a2e !important;
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-mode .project-card:hover,
+    body.dark-mode .contact-container:hover {
+      background-color: #333 !important;
+      color: #fff !important;
+    }
+
+    body.dark-mode .contact a,
+    body.dark-mode .project-card h3,
+    body.dark-mode .project-card h2 {
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
   <button class="toggle-btn" onclick="toggleSlider()">☰</button>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌓</button>
+
+  <img src="Harsh.jpeg" alt="Harsh Raj" class="fixed-photo" />
+
   <div class="auto-slider" id="slider">
     <a href="index.html">Home</a>
     <a href="#portfolio">Portfolio</a>
@@ -216,7 +262,6 @@
     <header id="home">
       <h1>Harsh Raj</h1>
       <div class="hero">
-        <img src="Harsh.jpeg" alt="Harsh Raj">
         <p>Research Scholar | Dept. of EEE, IIT Guwahati</p>
       </div>
     </header>
@@ -240,7 +285,7 @@
       </div>
 
       <div class="project-card">
-      <h2>📖 Publications</h2>
+        <h2>📖 Publications</h2>
         <h3>📃 Conferences</h3>
         <ul>
           <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6–9, 2025.</li>
@@ -270,25 +315,26 @@
 
   <script>
     const slider = document.getElementById('slider');
-    const content = document.getElementById('mainContent');
 
     function toggleSlider() {
       slider.classList.toggle('show');
       document.body.classList.toggle('slider-visible');
     }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
   </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
-     crossorigin="anonymous"></script>
-<!-- Harsh -->
-<ins class="adsbygoogle"
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7632782218371378"
      data-ad-slot="2658505239"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </body>
 </html>
