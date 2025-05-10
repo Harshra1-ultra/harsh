@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
+     crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Harsh Raj | Research Scholar </title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* CSS Variables for Dark and Light Theme */
-    :root {
-      --bg-color-light: #f0faff;
-      --bg-color-dark: #222;
-      --primary-color-light: #002147;
-      --primary-color-dark: #fff;
-      --text-color-light: #222;
-      --text-color-dark: #fff;
-      --link-hover-light: #005f99;
-      --link-hover-dark: #00bfff;
-    }
-
-    /* Global Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
-      transition: all 0.3s ease;
     }
 
     body {
-      background-color: var(--bg-color-light);
-      color: var(--text-color-light);
+      background-color: #f0faff;
+      background-image: url('https://www.transparenttextures.com/patterns/skulls.png');
+      background-repeat: repeat;
+      color: #222;
       display: flex;
       min-height: 100vh;
-      flex-direction: column;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0faff;
     }
 
     html {
@@ -46,8 +42,8 @@
       left: 0;
       height: 100%;
       width: 220px;
-      background-color: var(--primary-color-light);
-      color: var(--primary-color-dark);
+      background-color: #002147;
+      color: white;
       transition: transform 0.3s ease;
       transform: translateX(-100%);
       z-index: 999;
@@ -61,40 +57,20 @@
     .auto-slider a {
       display: block;
       padding: 15px 25px;
-      color: var(--primary-color-dark);
+      color: white;
       text-decoration: none;
     }
 
     .auto-slider a:hover {
-      background-color: var(--link-hover-light);
+      background-color: #005f99;
     }
 
-    /* Dark Mode - Adjust styles for dark theme */
-    body[data-theme='dark'] {
-      background-color: var(--bg-color-dark);
-      color: var(--text-color-dark);
-    }
-
-    body[data-theme='dark'] .auto-slider {
-      background-color: var(--primary-color-dark);
-      color: var(--primary-color-light);
-    }
-
-    body[data-theme='dark'] .auto-slider a {
-      color: var(--primary-color-light);
-    }
-
-    body[data-theme='dark'] .auto-slider a:hover {
-      background-color: var(--link-hover-dark);
-    }
-
-    /* Toggle Button */
     .toggle-btn {
       position: fixed;
       top: 20px;
       left: 20px;
-      background-color: var(--primary-color-light);
-      color: var(--primary-color-dark);
+      background-color: #002147;
+      color: white;
       padding: 10px 14px;
       border: none;
       border-radius: 4px;
@@ -102,7 +78,6 @@
       z-index: 1000;
     }
 
-    /* Content Container */
     .content-container {
       flex-grow: 1;
       transition: margin-left 0.3s ease;
@@ -111,27 +86,21 @@
       padding: 2rem;
     }
 
-    /* Sticky Header */
-    header {
-      position: relative;
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-      transition: transform 0.3s ease, padding 0.3s ease;
+    .slider-visible .content-container {
+      margin-left: 220px;
+      width: calc(100% - 220px);
     }
 
-    header.sticky {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      transform: translateY(0);
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
     }
 
     header h1 {
       font-size: 2.5rem;
-      color: var(--primary-color-light);
+      color: #002147;
     }
 
-    /* Hero Section */
     .hero {
       background-color: rgba(100, 149, 237, 0.5);
       padding: 2rem;
@@ -161,7 +130,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Portfolio Section */
     .portfolio-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -183,13 +151,27 @@
       background-color: rgba(30, 144, 255, 0.9);
       color: white;
     }
-
-    .project-card h3, .project-card h2 {
-      color: var(--primary-color-light);
+        
+    .project-card h3,
+    .project-card h2 {
+      color: #002147;
       margin-bottom: 1rem;
     }
 
-    /* Contact Section */
+    .project-card:hover h3,
+    .project-card:hover h2 {
+      color: white;
+    }
+    
+    .project-card ul {
+      padding-left: 1.2rem;
+      margin-top: -0.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
     .contact-container {
       background-color: rgba(100, 149, 237, 0.85);
       padding: 2rem;
@@ -209,10 +191,13 @@
       display: block;
       margin: 0.5rem 0;
       text-decoration: underline;
-      color: var(--primary-color-light);
+      color: #002147;
     }
 
-    /* Footer */
+    .contact-container:hover a {
+      color: white;
+    }
+
     footer {
       background-color: rgba(100, 149, 237, 0.85);
       padding: 1.5rem;
@@ -221,12 +206,11 @@
       text-align: center;
     }
   </style>
+
 </head>
 
 <body>
-  <button class="toggle-btn" onclick="toggleTheme()">🌙</button>
-
-  <!-- Sidebar Navigation -->
+  <button class="toggle-btn" onclick="toggleMode()">🌙 / 🌞</button>
   <div class="auto-slider" id="slider">
     <a href="index.html">Home</a>
     <a href="#portfolio">Portfolio</a>
@@ -235,7 +219,6 @@
     <a href="second-page.html">More</a>
   </div>
 
-  <!-- Main Content -->
   <div class="content-container" id="mainContent">
     <header id="home">
       <h1>Harsh Raj</h1>
@@ -270,6 +253,10 @@
           <li><strong>H. Raj</strong> and B. R. Manoj, "<a href="#">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>," accepted for publication in National Conference on Communications (NCC), IIT Delhi, India, Mar. 6–9, 2025.</li>
           <li><strong>H. Raj</strong>, U. Singh, and B. R. Manoj, "<a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>," in Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 24–27, 2024.</li>
         </ul>
+        <h3>📝 Journals</h3>
+        <ul>
+          <!-- Journal entries -->
+        </ul>
       </div>
     </section>
 
@@ -289,31 +276,46 @@
   </div>
 
   <script>
-    // Dark/Light Mode Toggle Logic
-    function toggleTheme() {
-      const currentTheme = localStorage.getItem('theme') || 'light';
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      document.body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      document.querySelector('.toggle-btn').textContent = newTheme === 'light' ? '🌙' : '🌞';
+    const slider = document.getElementById('slider');
+    const content = document.getElementById('mainContent');
+
+    function toggleSlider() {
+      slider.classList.toggle('show');
+      document.body.classList.toggle('slider-visible');
     }
 
-    // Apply stored theme on load
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.body.setAttribute('data-theme', savedTheme);
-      document.querySelector('.toggle-btn').textContent = savedTheme === 'light' ? '🌙' : '🌞';
-    });
-
-    // Sticky Header Logic
-    window.onscroll = function() {
-      const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.classList.add('sticky');
+    // Dark/Light Mode Toggle
+    const toggleMode = () => {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      // Save the mode in localStorage
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
       } else {
-        header.classList.remove('sticky');
+        localStorage.setItem('theme', 'light');
+      }
+    };
+
+    // On page load, check for the saved mode in localStorage
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
       }
     };
   </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
+     crossorigin="anonymous"></script>
+<!-- Harsh -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7632782218371378"
+     data-ad-slot="2658505239"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 </body>
 </html>
