@@ -168,14 +168,20 @@
             animation-delay: 3s;
         }
 
-        /* Panda Image Styling */
+       /* Panda Image Styling for standalone pandas (Panda 2.png) */
         .panda-image {
-            position: absolute;
+            position: absolute; /* Kept for initial placement, but now user can drag */
             z-index: 5; /* Slightly above doodles, below content */
-            pointer-events: none; /* Allows clicks to pass through */
             border-radius: 8px; /* Slightly rounded corners for the images */
-            box-shadow: 0 4px 8px rgba(0,0,0,0);
+            box-shadow: none; /* No shadow by default */
             object-fit: contain; /* Ensure the entire image is visible */
+            cursor: grab; /* Indicate it's draggable */
+        }
+
+        .panda-image.is-dragging {
+            cursor: grabbing;
+            z-index: 1000; /* Bring to front while dragging */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a noticeable shadow when dragging */
         }
 
         .panda-climb {
@@ -575,8 +581,9 @@
     </div>
 
     <!-- Panda Images -->
-    <img src="Panda 1.png" alt="Panda climbing blocks" class="panda-image panda-climb"> -->
-    <img src="panda-hi.gif" alt="Panda pointing to content" class="panda-image panda-point">
+    <img src="panda-hi.gif" alt="Panda pointing to content" class="panda-image" id="draggablePanda" style="top: 620px; left: 10%; transform: translateX(-50%);">
+    <img src="Panda 1.png" alt="Panda climbing blocks" class="panda-image" id="draggablePanda" style="top: 100px; left: 40%; transform: translateX(-50%);"> -->
+    <img src="Panda 2.png" alt="Panda pointing to content" class="panda-image panda-point">
 
 
     <!-- Auto Slider / Sidebar Navigation -->
