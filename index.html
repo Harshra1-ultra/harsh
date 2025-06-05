@@ -25,7 +25,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             transition: background-color 0.3s, color 0.3s;
-            position: relative; /* Needed for absolute positioning of doodles and gifs */
+            position: relative; /* Needed for absolute positioning of doodles and images */
         }
 
         /* Dark mode styles */
@@ -168,14 +168,14 @@
             animation-delay: 3s;
         }
 
-        /* GIF Styling */
-        .panda-gif {
+        /* Panda Image Styling */
+        .panda-image {
             position: absolute;
             z-index: 5; /* Slightly above doodles, below content */
             pointer-events: none; /* Allows clicks to pass through */
-            border-radius: 8px; /* Slightly rounded corners for the gifs */
+            border-radius: 8px; /* Slightly rounded corners for the images */
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            object-fit: contain; /* Ensure the entire GIF is visible */
+            object-fit: contain; /* Ensure the entire image is visible */
         }
 
         .panda-climb {
@@ -184,7 +184,6 @@
             top: 100px; /* Position below header */
             left: 50%;
             transform: translateX(-50%); /* Center horizontally */
-            animation: float 8s infinite ease-in-out;
         }
 
         .panda-point {
@@ -193,7 +192,6 @@
             top: 620px; /* Position near research interests */
             left: 10%;
             transform: translateX(-50%);
-            animation: pulse 3s infinite ease-in-out;
         }
 
 
@@ -559,9 +557,9 @@
         </svg>
     </div>
 
-    <!-- Panda GIFs -->
-    <img src="https://tenor.com/en-IN/view/panda-gifts-panda-gif-18731940" alt="Panda climbing" class="panda-gif panda-climb">
-    <img src='Panda 1' alt="Panda pointing" class="panda-gif panda-point">
+    <!-- Panda Images -->
+    <img src="Panda 1.png" alt="Panda climbing blocks" class="panda-image panda-climb">
+    <img src="Panda 2.png" alt="Panda pointing to content" class="panda-image panda-point">
 
 
     <!-- Auto Slider / Sidebar Navigation -->
@@ -587,8 +585,9 @@
                 </div>
                 <!-- Image and primary text (right side) -->
                 <div class="hero-image-right">
-                    <img src="https://hold.co/150x150/002147/FFFFFF?text=Harsh+Raj" alt="Harsh Raj">
-                    <p>Research Scholar | Dept. of EEE, IIT Guwahati</p> <!-- Moved here -->
+                    <!-- Your Harsh.jpeg photo -->
+                    <img src="Harsh.jpeg" alt="Harsh Raj">
+                    <p>Research Scholar | Dept. of EEE, IIT Guwahati</p>
                 </div>
             </div>
         </header>
@@ -607,7 +606,7 @@
                 </div>
             </div>
 
-            <!-- Publications section (moved inside portfolio for styling consistency) -->
+            <!-- Publications section -->
             <div class="project-card" id="publications">
                 <h2>📖 Publications</h2>
                 <h3>📃 Conferences</h3>
@@ -625,7 +624,7 @@
         <section class="contact-container" id="contact">
             <h2>Contact</h2>
             <div class="contact">
-                <a href="mailto:h.raj@iitg.ac.in">📧 h.raj@iitg.ac.in</a>
+                <a href="mailto:h.raj@iitg.ac.in">� h.raj@iitg.ac.in</a>
                 <a href="https://github.com/Harshra1-ultra" target="_blank">💻 GitHub</a>
                 <a href="https://www.iitg.ac.in/manojbr/research-group.html" target="_blank">🔬 Research Group</a>
                 <a href="https://sites.google.com/view/harsh-portfolio-iitropar-spcom/home" target="_blank">🌐 Google Site</a>
@@ -687,24 +686,10 @@
             }
         });
 
-        // Adjust hero image source. Replace 'Harsh.jpeg' with a placeholder if the original isn't found.
-        // This is a fallback and can be removed if 'Harsh.jpeg' is correctly placed.
-        document.addEventListener('DOMContentLoaded', () => {
-            const heroImage = document.querySelector('.hero img');
-            if (heroImage && heroImage.src.includes('Harsh.jpeg')) {
-                // You would typically ensure Harsh.jpeg is in the same directory as the HTML file.
-                // For a live preview, a placeholder is used for demonstration.
-                heroImage.onerror = () => {
-                    heroImage.src = 'Harsh.jpeg';
-                    heroImage.alt = 'Harsh Raj';
-                };
-            }
-        });
+        // Removed the onerror for Harsh.jpeg as the user explicitly provided the path
     </script>
 
-    <!-- Google AdSense script (duplicate, keep only one in head or body) -->
-    <!-- The second script tag for AdSense is redundant and should be removed.
-         It's best to have only one in the <head> or right before </body> -->
+    <!-- Google AdSense script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7632782218371378"
         crossorigin="anonymous"></script>
     <ins class="adsbygoogle"
@@ -718,3 +703,4 @@
     </script>
 </body>
 </html>
+�
