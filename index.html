@@ -253,20 +253,20 @@
             right: 20px;
         }
 
-        /* Main content container */
+        /* Main content container - Responsive width and transition */
         .content-container {
             flex-grow: 1;
-            transition: margin-left 0.3s ease;
+            transition: margin-left 0.3s ease, width 0.3s ease; /* Added width to transition */
             margin-left: 0;
-            width: 100%;
+            width: 100%; /* Default full width */
             padding: 2rem;
             max-width: 1200px; /* Limit content width for better readability */
             margin-inline: auto; /* Center content */
         }
 
         .slider-visible .content-container {
-            margin-left: 220px;
-            width: calc(100% - 220px);
+            margin-left: 220px; /* Shift content when slider is visible */
+            width: calc(100% - 220px); /* Reduce width to accommodate slider */
         }
 
         /* Header and Hero section */
@@ -371,7 +371,7 @@
             transition: color 0.3s ease;
         }
 
-        /* Portfolio section */
+        /* Portfolio section - uses grid with auto-fit and minmax for variable width */
         .portfolio-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -470,7 +470,7 @@
             transition: all 0.4s ease;
         }
 
-        /* Responsive adjustments */
+        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .auto-slider {
                 width: 100%;
@@ -478,8 +478,8 @@
             }
 
             .slider-visible .content-container {
-                margin-left: 0; /* No margin shift on smaller screens */
-                width: 100%;
+                margin-left: 0; /* No margin shift on smaller screens when slider is open */
+                width: 100%; /* Keep full width when stacked */
             }
 
             .toggle-btn {
@@ -580,7 +580,7 @@
                 <div class="hero-content-left">
                     <div class="about-me-content">
                         <h3>About Me</h3>
-                        <p>I am currently pursuing a Ph.D. in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati, where I have been enrolled since July 2022. My Ph.D. advisor is <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank">Dr. Manoj B. R.</a> Prior to this, I earned my M.Tech. in Communication and Signal Processing from the Indian Institute of Technology Ropar in 2022. I completed my B.E. in Electronics and Communication Engineering from the University Institute of Technology Burdwan in 2019.</p>
+                        <p>I am currently pursuing a Ph.D. in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati, where I have been enrolled since July 2022. My Ph.D. advisor is <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank"><strong>Dr. Manoj B. R.</strong></a> Prior to this, I earned my M.Tech. in Communication and Signal Processing from the Indian Institute of Technology Ropar in 2022. I completed my B.E. in Electronics and Communication Engineering from the University Institute of Technology Burdwan in 2019.</p>
                     </div>
                 </div>
                 <!-- Image and primary text (right side) -->
@@ -624,7 +624,7 @@
         <section class="contact-container" id="contact">
             <h2>Contact</h2>
             <div class="contact">
-                <a href="mailto:h.raj@iitg.ac.in">� h.raj@iitg.ac.in</a>
+                <a href="mailto:h.raj@iitg.ac.in">📧 h.raj@iitg.ac.in</a>
                 <a href="https://github.com/Harshra1-ultra" target="_blank">💻 GitHub</a>
                 <a href="https://www.iitg.ac.in/manojbr/research-group.html" target="_blank">🔬 Research Group</a>
                 <a href="https://sites.google.com/view/harsh-portfolio-iitropar-spcom/home" target="_blank">🌐 Google Site</a>
@@ -652,7 +652,7 @@
             document.body.classList.toggle('dark-mode');
             const btn = document.querySelector('.theme-btn');
             // Change button text based on current theme
-            btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '�';
         }
 
         // Intersection Observer to add fade-in class to sections when they become visible
