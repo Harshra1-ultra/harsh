@@ -372,22 +372,21 @@
         }
 
          /* Styling for Panda 1.png as a logo next to heading */
-        .about-me-logo-panda {
-            display: inline-block; /* Allows text to flow next to it */
-            vertical-align: middle; /* Aligns with text */
-            width: 150px; /* Smaller size for a logo */
-            height: 50px;
-            margin-right: 10px; /* Space between logo and text */
-            object-fit: contain;
-            pointer-events: none; /* Not interactive */
-            /* Explicitly remove unwanted styles inherited from .hero img or other general rules */
-            border: none !important; /* Force no border */
-            box-shadow: none !important; /* Force no shadow */
-            border-radius: 0 !important; /* Force no border-radius */
-            animation: none !important; /* Force no animation */
-            transition: none !important; /* Force no transition */
-        }
-
+      .about-me-logo-panda {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 150px;      /* Limits width but doesn't crop */
+    max-height: 50px;      /* Limits height */
+    width: auto;           /* Maintain natural aspect ratio */
+    height: auto;          /* Maintain natural aspect ratio */
+    margin-right: 10px;
+    pointer-events: none;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+    transition: none !important;
+}
 
         /* Portfolio section - uses grid with auto-fit and minmax for variable width */
         .portfolio-section {
@@ -597,7 +596,7 @@
                 <!-- About Me content (left side) -->
                 <div class="hero-content-left">
                     <div class="about-me-content">
-                        <h3><img src="panda-gifts-panda.gif" alt="About Me Logo" class="about-me-logo-panda">About Me</h3>
+                        <h3><img src="panda-gifts-panda.gif" alt="Logo" class="about-me-logo-panda">About Me</h3>
                         <p>I am currently pursuing a Ph.D. in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati, where I have been enrolled since July 2022. My Ph.D. advisor is <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank"><strong>Dr. Manoj B. R.</strong></a> Prior to this, I earned my M.Tech. in Communication and Signal Processing from the Indian Institute of Technology Ropar in 2022. I completed my B.E. in Electronics and Communication Engineering from the University Institute of Technology Burdwan in 2019.</p>
                     </div>
                 </div>
