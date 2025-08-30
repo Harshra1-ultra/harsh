@@ -146,7 +146,7 @@
 
         /* Hero Section (Introduction) */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh; /* Reduced from 100vh */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -184,7 +184,7 @@
         }
         
         .hero-plane-gif {
-            width: 180px;
+            width: 200px; /* Resized from 180px */
             height: auto;
             animation: floatPlane 4s ease-in-out infinite;
         }
@@ -348,6 +348,13 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 5px 15px var(--shadow-color);
             border-left: 5px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added hover transition */
+        }
+        
+        /* Added hover effect for publication cards */
+        .publication-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow-color);
         }
         
         .publication-item h3 {
@@ -504,7 +511,7 @@
         /* Responsive Design for smaller screens */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: none; /* This ensures the menu is hidden by default */
                 flex-direction: column;
                 width: 100%;
                 position: absolute;
@@ -516,7 +523,7 @@
             }
 
             .nav-links.active {
-                display: flex;
+                display: flex; /* This shows the menu when active */
             }
 
             .nav-links li {
@@ -547,7 +554,7 @@
             }
 
             .hero-plane-gif {
-                width: 180px;
+                width: 200px;
             }
             
             .hero-text h1 {
@@ -667,7 +674,7 @@
                 <li class="publication-item">
                      <h3><i class="fas fa-book-open"></i> Book Chapters</h3>
                      <ul>
-                         <li>B. R. Manoj*, N. M. Baishya*, and <strong>H. Raj</strong>*, "<a href="https://link.springer.com/chapter/10.1007/981-96-3185-8_11" target="_blank"> Machine Learning for Wireless Communications: Applications and Security</a>," A book chapter in "Next-Generation Wireless Systems: Fundamentals and Applications," Transactions on Computer Systems and Networks, Springer, Singapore, pp. 309-368, 2025. (* denotes equal contribution)</li>
+                         <li>B. R. Manoj*, N. M. Baishya*, and <strong>H. Raj</strong>*, "<a href="https://link.springer.com/chapter/10.007/981-96-3185-8_11" target="_blank"> Machine Learning for Wireless Communications: Applications and Security</a>," A book chapter in "Next-Generation Wireless Systems: Fundamentals and Applications," Transactions on Computer Systems and Networks, Springer, Singapore, pp. 309-368, 2025. (* denotes equal contribution)</li>
                      </ul>
                 </li>
             </ul>
