@@ -511,7 +511,7 @@
         /* Responsive Design for smaller screens */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* This ensures the menu is hidden by default */
+                /* display: none; /* This ensures the menu is hidden by default */
                 flex-direction: column;
                 width: 100%;
                 position: absolute;
@@ -520,10 +520,15 @@
                 background-color: var(--nav-bg-color);
                 text-align: center;
                 box-shadow: 0 10px 10px var(--shadow-color);
+                /* New hiding mechanism */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease-out;
             }
 
             .nav-links.active {
-                display: flex; /* This shows the menu when active */
+                /* display: flex; /* This shows the menu when active */
+                max-height: 20rem; /* An appropriate height to reveal the links */
             }
 
             .nav-links li {
@@ -554,7 +559,7 @@
             }
 
             .hero-plane-gif {
-                width: 200px;
+                width: 250px;
             }
             
             .hero-text h1 {
