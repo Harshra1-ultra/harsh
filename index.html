@@ -229,7 +229,8 @@
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain; /* Changed to prevent cropping */
+            background-color: var(--card-bg-color); /* Added for clean background */
             border: 5px solid var(--card-bg-color);
             box-shadow: 0 10px 30px var(--shadow-color);
             transition: transform 0.3s;
@@ -681,7 +682,7 @@
                 </div>
                 <div class="research-item">
                     <i class="fas fa-brain"></i>
-                    <h3>Machine Learning and Deep Learning</h3>
+                    <h3>Deep & Machine Learning</h3>
                 </div>
             </div>
         </section>
