@@ -486,6 +486,60 @@
             }
         }
 
+        /* Publications List in CV */
+        .cv-publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .cv-pub-item {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .pub-type-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-1);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            width: 100px;
+            text-align: center;
+            flex-shrink: 0;
+            letter-spacing: 0.03em;
+        }
+
+        .cv-pub-content {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        .pub-number {
+            font-weight: 700;
+            color: var(--accent-1);
+            margin-right: 0.25rem;
+        }
+
+        .cv-pub-content strong {
+            color: var(--text-primary);
+        }
+
+        .cv-pub-content .pub-authors {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0.2rem 0;
+        }
+
+        .cv-pub-content .pub-venue {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
         /* ============================
            PRINT MEDIA STYLES (ATS & Print Friendly)
         ============================ */
@@ -580,13 +634,9 @@
                 color: #000000 !important;
             }
 
-            .skill-tag {
-                border: 0.5pt solid #cccccc !important;
-                background: none !important;
-                color: #000000 !important;
-            }
-
-            .interest-tag {
+            .skill-tag,
+            .interest-tag,
+            .pub-type-badge {
                 border: 0.5pt solid #cccccc !important;
                 background: none !important;
                 color: #000000 !important;
@@ -818,11 +868,55 @@
                 </div>
             </section>
 
-            <!-- Publications (Placeholder) -->
+            <!-- Publications -->
             <section class="cv-section">
                 <h3 class="cv-section-title">Publications</h3>
-                <div class="placeholder-box">
-                    <i class="fas fa-file-lines"></i> Publications list is synchronized with the online portfolio. Please refer to the <a href="index.html#publications" style="font-weight:600;">Publications</a> section on the main page.
+                <div class="cv-publications-list">
+                    
+                    <!-- J1 -->
+                    <div class="cv-pub-item">
+                        <span class="pub-type-badge">Journal</span>
+                        <div class="cv-pub-content">
+                            <span class="pub-number">[J1]</span>
+                            <strong>NOMA-assisted ISAC system: Downlink and uplink performance in Rician fading channels</strong>
+                            <div class="pub-authors">I. Agrawal*, <strong>H. Raj*</strong>, and B. R. Manoj</div>
+                            <div class="pub-venue"><em>IEEE Transactions on Cognitive Communications and Networking</em>, Accepted for publication, May 2025. (* Equal Contribution)</div>
+                        </div>
+                    </div>
+                    
+                    <!-- C1 -->
+                    <div class="cv-pub-item">
+                        <span class="pub-type-badge">Conference</span>
+                        <div class="cv-pub-content">
+                            <span class="pub-number">[C1]</span>
+                            <strong>Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</strong>
+                            <div class="pub-authors"><strong>H. Raj</strong> and B. R. Manoj</div>
+                            <div class="pub-venue">In <em>Proc. IEEE National Conference on Communications (NCC)</em>, IIT Delhi, India, Mar. 6–9, 2025.</div>
+                        </div>
+                    </div>
+
+                    <!-- B1 -->
+                    <div class="cv-pub-item">
+                        <span class="pub-type-badge">Book Chapter</span>
+                        <div class="cv-pub-content">
+                            <span class="pub-number">[B1]</span>
+                            <strong>Machine Learning for Wireless Communications: Applications and Security</strong>
+                            <div class="pub-authors">B. R. Manoj*, N. M. Baishya*, and <strong>H. Raj*</strong></div>
+                            <div class="pub-venue">Springer Chapter in <em>"Next-Generation Wireless Systems: Fundamentals and Applications,"</em> Transactions on Computer Systems and Networks, Springer, Singapore, pp. 309-368, 2025. (* Equal Contribution)</div>
+                        </div>
+                    </div>
+
+                    <!-- C2 -->
+                    <div class="cv-pub-item">
+                        <span class="pub-type-badge">Conference</span>
+                        <div class="cv-pub-content">
+                            <span class="pub-number">[C2]</span>
+                            <strong>On the performance of IRS-assisted SSK and RPM over Rician fading channels</strong>
+                            <div class="pub-authors"><strong>H. Raj</strong>, U. Singh, and B. R. Manoj</div>
+                            <div class="pub-venue">In <em>Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring)</em>, Singapore, Jun. 24–27, 2024.</div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
