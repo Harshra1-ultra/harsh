@@ -1,0 +1,2881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harsh Raj | Ph.D. Research Scholar — IIT Guwahati</title>
+    <meta name="description" content="Harsh Raj — Ph.D. Research Scholar at IIT Guwahati. Specializing in next-generation wireless communication, ISAC, IRS, and Machine Learning." />
+    <meta name="keywords" content="Harsh Raj, IIT Guwahati, Research Scholar, Wireless Communication, IRS, ISAC, Machine Learning" />
+    <!-- Google Fonts: Outfit + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================
+           CSS DESIGN SYSTEM
+        ============================ */
+        /* DEFAULT: Professional Light Theme */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: rgba(255,255,255,0.85);
+            --bg-card-solid: #ffffff;
+            --bg-nav: rgba(255,255,255,0.85);
+            --text-primary: #0f172a; /* slate-900 */
+            --text-secondary: #475569; /* slate-600 */
+            --text-muted: #64748b; /* slate-500 */
+            --heading-color: #0f172a;
+            --accent-1: #1d4ed8; /* cobalt blue */
+            --accent-2: #2563eb;
+            --accent-3: #0f766e; /* teal */
+            --gradient-accent: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+            --gradient-hero: linear-gradient(135deg, #ffffff 0%, #eff6ff 40%, #ffffff 100%);
+            --border-color: rgba(15, 23, 42, 0.08);
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.03);
+            --shadow-md: 0 4px 20px rgba(15, 23, 42, 0.05);
+            --shadow-lg: 0 8px 40px rgba(15, 23, 42, 0.08);
+            --shadow-glow: 0 0 30px rgba(29, 78, 216, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Dark mode override */
+        body.dark-mode {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #141414;
+            --bg-card: rgba(26,26,26,0.75);
+            --bg-card-solid: #1a1a1a;
+            --bg-nav: rgba(13,13,13,0.85);
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-muted: #606060;
+            --heading-color: #f0f0f0;
+            --accent-1: #3b82f6; /* blue */
+            --accent-2: #60a5fa; /* light blue */
+            --accent-3: #06b6d4; /* cyan */
+            --gradient-accent: linear-gradient(135deg, #2563eb, #3b82f6, #60a5fa);
+            --gradient-hero: linear-gradient(135deg, #0d0d0d 0%, #0d1117 40%, #0d0d0d 100%);
+            --border-color: rgba(255,255,255,0.06);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.35);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.45);
+            --shadow-glow: 0 0 30px rgba(59,130,246,0.15);
+        }
+
+        /* ============================
+           RESET & BASE
+        ============================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background-color 0.4s, color 0.4s;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--heading-color);
+        }
+
+        a {
+            color: var(--accent-1);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        a:hover { color: var(--accent-2); }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ============================
+           SCROLL PROGRESS BAR
+        ============================ */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+
+
+        /* ============================
+           NAVIGATION
+        ============================ */
+        nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--bg-nav);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-1);
+            background: rgba(59,130,246,0.08);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+        }
+        .theme-btn:hover {
+            transform: scale(1.08);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-1);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px; height: 40px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        /* ============================
+           BUTTONS & UTILITIES
+        ============================ */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.6rem;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background: var(--accent-1);
+            color: #ffffff !important;
+            border: 1px solid var(--accent-1);
+        }
+        .btn-primary:hover {
+            background: var(--accent-2);
+            border-color: var(--accent-2);
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        .btn-outline:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+            transform: translateY(-2px);
+        }
+
+        /* RESEARCH TAGS */
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.7s 0.9s forwards;
+        }
+
+        .interest-tag {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            transition: all var(--transition-fast);
+        }
+
+        .interest-tag:hover {
+            color: var(--accent-1);
+            border-color: var(--accent-1);
+            background: var(--bg-primary);
+            transform: translateY(-1.5px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ============================
+           HERO SECTION
+        ============================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--gradient-hero);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        #particle-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.7s 0.3s forwards;
+        }
+
+        .pulse-dot {
+            width: 8px; height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .hero-title-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 0.8rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.7s 0.5s forwards;
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .hero-plane-gif {
+            width: 130px;
+            height: auto;
+            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(59,130,246,0.35));
+            flex-shrink: 0;
+            animation: floatPlane 3s ease-in-out infinite;
+        }
+
+        @keyframes floatPlane {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(-5deg) translateY(-6px); }
+        }
+
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent-1);
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.7s 0.7s forwards;
+            min-height: 1.8rem;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 540px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.7s 0.9s forwards;
+        }
+
+        .hero-social {
+            display: flex;
+            gap: 0.7rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.7s 1.1s forwards;
+        }
+
+        .social-btn {
+            width: 46px; height: 46px;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 1.15rem;
+            transition: all var(--transition-spring);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+        }
+
+        .social-btn .tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            background: var(--bg-card-solid);
+            color: var(--text-primary);
+            padding: 0.3rem 0.7rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.72rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-btn:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            animation: fadeSlideUp 0.8s 0.6s forwards;
+        }
+
+        .hero-avatar {
+            position: relative;
+            width: 280px;
+            height: 280px;
+        }
+
+        .hero-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            z-index: 0;
+            animation: rotateGlow 6s linear infinite;
+        }
+
+        .hero-avatar img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-primary);
+            transition: transform var(--transition-smooth);
+        }
+
+        .hero-avatar:hover img {
+            transform: scale(1.04);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: fadeSlideUp 0.7s 1.5s forwards;
+            opacity: 0;
+        }
+
+        .scroll-indicator .mouse {
+            width: 22px; height: 34px;
+            border: 2px solid var(--text-muted);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-indicator .mouse::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px; height: 8px;
+            background: var(--text-muted);
+            border-radius: 3px;
+            animation: scrollMouse 2s infinite;
+        }
+
+        /* ============================
+           SECTION COMMON
+        ============================ */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-1);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-label i {
+            font-size: 0.7rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ============================
+           ABOUT SECTION
+        ============================ */
+        .about-wrapper {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .about-bio {
+            flex: 1.6;
+        }
+
+        .about-bio p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+        }
+
+        .about-bio a {
+            color: var(--accent-1);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(29,78,216,0.15);
+            transition: all var(--transition-fast);
+        }
+
+        .about-bio a:hover {
+            border-color: var(--accent-1);
+            color: var(--accent-2);
+        }
+
+        .about-quick-facts {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .fact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .fact-card:hover {
+            transform: translateX(4px);
+            border-color: var(--accent-1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .fact-card i {
+            font-size: 1.2rem;
+            color: var(--accent-1);
+            background: var(--bg-secondary);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
+        }
+
+        .fact-card:hover i {
+            background: var(--accent-1);
+            color: #fff;
+        }
+
+        .fact-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.15rem;
+            font-family: var(--font-body);
+        }
+
+        .fact-card p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .fact-card p a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .fact-card p a:hover {
+            color: var(--accent-1);
+        }
+
+        @media (max-width: 768px) {
+            .about-wrapper {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+
+
+
+        /* ============================
+           EDUCATION TIMELINE
+        ============================ */
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            background: var(--accent-1);
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 3px var(--accent-1);
+            z-index: 1;
+        }
+
+        .timeline-item.current .timeline-dot {
+            animation: pulse 2s infinite;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-smooth);
+        }
+
+        .timeline-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+            border-color: var(--accent-1);
+        }
+
+        .timeline-year {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent-1);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-card .institution {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ============================
+           PUBLICATIONS
+        ============================ */
+        .pub-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-tab {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+        }
+
+        .pub-tab:hover {
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+        }
+
+        .pub-tab.active {
+            background: var(--gradient-accent);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .pub-counter {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .pub-count-item {
+            text-align: center;
+        }
+
+        .pub-count-num {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-1);
+        }
+
+        .pub-count-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pub-list {
+            list-style: none;
+            padding: 0;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .pub-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.8rem;
+            display: none;
+            gap: 1.5rem;
+            position: relative;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pub-item.show {
+            display: flex;
+        }
+
+        .pub-item:hover {
+            border-color: var(--accent-1);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .pub-index {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-1);
+            flex-shrink: 0;
+            background: var(--bg-secondary);
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .pub-details {
+            flex: 1;
+        }
+
+        .pub-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-title a {
+            color: var(--heading-color);
+            transition: color var(--transition-fast);
+        }
+        .pub-title a:hover {
+            color: var(--accent-1);
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+
+        .pub-authors strong {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .pub-venue-details {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .pub-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            text-decoration: none;
+            line-height: 1.2;
+        }
+
+        .pub-btn:hover {
+            background: var(--accent-1);
+            color: #ffffff !important;
+            border-color: var(--accent-1);
+        }
+
+        .pub-btn-accent {
+            background: rgba(29, 78, 216, 0.05);
+            color: var(--accent-1);
+            border-color: rgba(29, 78, 216, 0.1);
+        }
+        .pub-btn-accent:hover {
+            background: var(--accent-1);
+            color: #ffffff !important;
+            border-color: var(--accent-1);
+        }
+
+        /* BibTeX Box */
+        .bibtex-box {
+            display: none;
+            margin-top: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.2rem 1rem 1rem;
+            font-family: monospace;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            overflow-x: auto;
+            position: relative;
+            white-space: pre;
+        }
+
+        .bibtex-box.active {
+            display: block;
+            animation: fadeSlideUp 0.3s forwards;
+        }
+
+        .copy-bib-btn {
+            position: absolute;
+            top: 0.4rem;
+            right: 0.4rem;
+            background: var(--bg-card-solid);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.2rem 0.45rem;
+            font-size: 0.68rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            color: var(--text-secondary);
+        }
+        
+        .copy-bib-btn:hover {
+            background: var(--accent-1);
+            color: #fff;
+            border-color: var(--accent-1);
+        }
+
+        /* First author badge */
+        .badge-first-author {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--accent-3);
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 576px) {
+            .pub-item.show {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ============================
+           RESEARCH INTERESTS
+        ============================ */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .research-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+            z-index: 0;
+        }
+
+        .research-card:hover::before {
+            opacity: 0.06;
+        }
+
+        .research-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(59,130,246,0.4);
+        }
+
+        .research-icon {
+            width: 56px; height: 56px;
+            border-radius: var(--radius-md);
+            background: rgba(59,130,246,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.4rem;
+            color: var(--accent-1);
+            transition: all var(--transition-smooth);
+            position: relative;
+            z-index: 1;
+        }
+
+        .research-card:hover .research-icon {
+            background: var(--accent-1);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .research-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .research-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* RESEARCH SUBSECTIONS & LAB-FEEL STYLING */
+        .research-intro {
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .research-subsection-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin: 3rem auto 1.5rem;
+            text-align: left;
+            max-width: 960px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .research-subsection-title i {
+            color: var(--accent-1);
+            font-size: 1.1rem;
+        }
+
+        .research-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.8rem;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-card-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card-badge.ongoing {
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--accent-3);
+        }
+
+        .project-card-badge.featured {
+            background: rgba(29, 78, 216, 0.08);
+            color: var(--accent-1);
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: var(--heading-color);
+            line-height: 1.4;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        .project-card-bullets {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .project-card-bullets li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .project-card-bullets li i {
+            color: var(--accent-1);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .research-highlights-wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .highlights-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .highlights-list li i {
+            color: var(--accent-1);
+            font-size: 1.1rem;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+
+        /* ============================
+           TEACHING ASSISTANT SECTION
+        ============================ */
+        .teaching-intro-card {
+            max-width: 860px;
+            margin: 0 auto 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .teaching-intro-card p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .teaching-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .teaching-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .teaching-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .teaching-course-code {
+            font-size: 0.78rem;
+            font-weight: 750;
+            color: var(--accent-1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.6rem;
+            background: var(--bg-secondary);
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .teaching-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .teaching-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ============================
+           ACHIEVEMENTS & AWARDS SECTION
+        ============================ */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .award-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            display: flex;
+            gap: 1.25rem;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .award-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .award-icon-box {
+            width: 48px; height: 48px;
+            border-radius: var(--radius-md);
+            background: rgba(29, 78, 216, 0.05);
+            color: var(--accent-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
+        }
+
+        .award-card:hover .award-icon-box {
+            background: var(--accent-1);
+            color: #fff;
+        }
+
+        .award-info h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 0.4rem;
+        }
+
+        .award-info p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .award-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.6rem;
+            display: block;
+        }
+
+        /* ============================
+           SKILLS SECTION
+        ============================ */
+        .skills-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-category-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-1);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all var(--transition-spring);
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-1);
+            color: var(--accent-1);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .skill-tag i {
+            margin-right: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        /* ============================
+           CONTACT SECTION
+        ============================ */
+        .contact-grid {
+            display: flex;
+            gap: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .contact-channels {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .contact-channel-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-channel-card:hover {
+            transform: translateX(4px);
+            border-color: var(--accent-1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-channel-card i {
+            font-size: 1.25rem;
+            color: var(--accent-1);
+            background: var(--bg-secondary);
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            flex-shrink: 0;
+        }
+
+        .contact-channel-card:hover i {
+            background: var(--accent-1);
+            color: #fff;
+        }
+
+        .contact-channel-info h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.15rem;
+        }
+
+        .contact-channel-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .contact-form-container {
+            flex: 1.3;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.2rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form-container h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 1.2rem;
+        }
+
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-1);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--gradient-accent);
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-spring);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            align-self: center;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.35);
+        }
+
+        .email-fallback {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .email-fallback a {
+            color: var(--accent-1);
+            font-weight: 500;
+        }
+
+        /* ============================
+           FOOTER
+        ============================ */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul a {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            transition: color var(--transition-fast);
+            text-decoration: none;
+        }
+        .footer-col ul a:hover { color: var(--accent-1); }
+
+        .footer-social {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-social a {
+            width: 36px; height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            color: var(--accent-1);
+            border-color: var(--accent-1);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .footer-time {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-smooth);
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.35);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(59,130,246,0.5);
+        }
+
+        /* ============================
+           KEYFRAMES
+        ============================ */
+        @keyframes fadeSlideUp {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(59,130,246,0); }
+        }
+
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes scrollMouse {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ============================
+           RESPONSIVE
+        ============================ */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-text {
+                align-items: center;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-desc { margin: 0 auto 2rem; }
+            .hero-social { justify-content: center; }
+            .hero-avatar { width: 200px; height: 200px; }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .footer-social { justify-content: center; }
+            .footer-bottom { justify-content: center; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-nav);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero-text h1 { font-size: 2.6rem; }
+            .hero-plane-gif { width: 95px; }
+            .section-title { font-size: 2rem; }
+            .fact-card { padding: 0.9rem 1.1rem; }
+
+            .form-row { flex-direction: column; }
+            .contact-form-container { padding: 1.5rem; }
+            .research-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding-top: 100px; min-height: auto; padding-bottom: 4rem; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-plane-gif { width: 75px; }
+            .hero-avatar { width: 160px; height: 160px; }
+
+            .research-grid { grid-template-columns: 1fr; }
+
+            .scroll-indicator { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#home" class="nav-brand">Harsh Raj</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" data-section="about">About</a></li>
+            <li><a href="#education" data-section="education">Education</a></li>
+            <li><a href="#publications" data-section="publications">Publications</a></li>
+            <li><a href="#research" data-section="research">Research</a></li>
+            <li><a href="#teaching" data-section="teaching">Teaching</a></li>
+            <li><a href="#achievements" data-section="achievements">Achievements</a></li>
+            <li><a href="#skills" data-section="skills">Skills</a></li>
+            <li><a href="second-page.html">Projects</a></li>
+            <li><a href="#contact" data-section="contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="home">
+            <canvas id="particle-canvas"></canvas>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge animate-fade">
+                            <span class="pulse-dot"></span>
+                            Ph.D. Research Scholar
+                        </div>
+                        <div class="hero-title-container">
+                            <h1>Harsh Raj</h1>
+                            <img src="Paper Plane Sticker.gif" alt="Paper Plane" class="hero-plane-gif" onerror="this.style.display='none'">
+                        </div>
+                        
+                        <div class="hero-credentials" style="margin-bottom: 1.5rem; opacity: 0; transform: translateY(20px); animation: fadeSlideUp 0.7s 0.7s forwards;">
+                            <p style="font-size: 1.25rem; font-weight: 700; color: var(--accent-1); margin-bottom: 0.2rem;">Ph.D. Research Scholar</p>
+                            <p style="font-size: 1.05rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.2rem;">Department of Electronics and Electrical Engineering</p>
+                            <p style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary);">Indian Institute of Technology Guwahati</p>
+                        </div>
+                        
+                        <div class="interest-tags">
+                            <span class="interest-tag">Integrated Sensing and Communication (ISAC)</span>
+                            <span class="interest-tag">Wireless Communications</span>
+                            <span class="interest-tag">Machine Learning for Wireless Systems</span>
+                            <span class="interest-tag">Beamforming</span>
+                            <span class="interest-tag">Signal Processing</span>
+                            <span class="interest-tag">Optimization</span>
+                            <span class="interest-tag">Deep Learning</span>
+                            <span class="interest-tag">MIMO Systems</span>
+                            <span class="interest-tag">Beyond 5G / 6G Networks</span>
+                        </div>
+
+                        <div class="btn-group" style="opacity: 0; transform: translateY(20px); animation: fadeSlideUp 0.7s 1.1s forwards;">
+                            <a href="#publications" class="btn btn-primary"><i class="fas fa-file-alt"></i> View Publications</a>
+                            <a href="#research" class="btn btn-outline"><i class="fas fa-search"></i> Research</a>
+                            <a href="second-page.html" class="btn btn-outline"><i class="fas fa-code-branch"></i> Projects</a>
+                            <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact</a>
+                            <a href="cv.pdf" class="btn btn-outline" download><i class="fas fa-download"></i> Download CV</a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <div class="hero-avatar">
+                            <img src="Harsh.jpeg" alt="Harsh Raj" onerror="this.onerror=null; this.src='https://placehold.co/280x280/EBF8FF/6366f1?text=HR';" />
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="mouse"></div>
+                    <span>Scroll</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section id="about" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Biography</div>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="about-wrapper reveal reveal-delay-1">
+                <div class="about-bio">
+                    <p>
+                        I am currently pursuing my Ph.D. in the Department of Electronics and Electrical Engineering at the <strong>Indian Institute of Technology Guwahati</strong>, since July 2022, under the supervision of <a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank">Dr. Manoj B. R.</a> My research centers on next-generation wireless architectures, specializing in Integrated Sensing and Communication (ISAC), Intelligent Reflecting Surfaces (IRS), and Machine Learning applications for communication networks.
+                    </p>
+                    <p style="margin-top: 1.2rem;">
+                        Prior to joining IIT Guwahati, I earned my M.Tech. in Communication and Signal Processing from the Indian Institute of Technology Ropar in 2022, where I worked on deep learning-based image super-resolution under Dr. J.S. Sahambi. I completed my B.E. in Electronics and Communication Engineering from the University Institute of Technology Burdwan in 2019.
+                    </p>
+                </div>
+                <div class="about-quick-facts">
+                    <div class="fact-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h4>Advisor</h4>
+                            <p><a href="https://www.iitg.ac.in/manojbr/index.html" target="_blank">Dr. Manoj B. R.</a></p>
+                        </div>
+                    </div>
+                    <div class="fact-card">
+                        <i class="fas fa-microscope"></i>
+                        <div>
+                            <h4>Primary Focus</h4>
+                            <p>ISAC, IRS, B5G/6G Networks</p>
+                        </div>
+                    </div>
+                    <div class="fact-card">
+                        <i class="fas fa-building"></i>
+                        <div>
+                            <h4>Affiliation</h4>
+                            <p>Dept. of EEE, IIT Guwahati</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EDUCATION ============ -->
+        <section id="education" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Academic Journey</div>
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">Institution-wise details of my academic journey.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item current reveal reveal-delay-1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">July 2022 — Present</div>
+                        <h3>Ph.D. in Electronics & Electrical Engineering</h3>
+                        <p class="institution"><i class="fas fa-university"></i> Indian Institute of Technology Guwahati</p>
+                        <p>Research focus on IRS-assisted ISAC, NOMA, and ML for wireless systems under Dr. Manoj B. R.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal reveal-delay-2">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2020 — 2022</div>
+                        <h3>M.Tech. in Communication & Signal Processing</h3>
+                        <p class="institution"><i class="fas fa-university"></i> Indian Institute of Technology Ropar</p>
+                        <p>Research focus on Super-resolution and Deep Learning applications, and ML for image processing under Dr. J.S. Sahambi</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal reveal-delay-3">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2015 — 2019</div>
+                        <h3>B.E. in Electronics & Communication Engineering</h3>
+                        <p class="institution"><i class="fas fa-university"></i> University Institute of Technology Burdwan</p>
+                        <p>Undergraduate studies with a focus on communication systems, signal processing, and embedded systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PUBLICATIONS ============ -->
+        <section id="publications" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Research Outputs</div>
+                <h2 class="section-title">Publications</h2>
+            </div>
+ 
+            <div class="pub-tabs reveal reveal-delay-1">
+                <button class="pub-tab active" data-filter="all">All</button>
+                <button class="pub-tab" data-filter="conference">Conferences</button>
+                <button class="pub-tab" data-filter="journal">Journals/Transactions</button>
+                <button class="pub-tab" data-filter="book">Book Chapters</button>
+            </div>
+ 
+            <ul class="pub-list">
+                <!-- Journal 1 -->
+                <li class="pub-item show reveal reveal-delay-2" data-type="journal" data-date="2025-05">
+                    <div class="pub-index">J1</div>
+                    <div class="pub-details">
+                        <div class="pub-title">
+                            <a href="https://ieeexplore.ieee.org/abstract/document/11219189/" target="_blank">NOMA-assisted ISAC system: Downlink and uplink performance in Rician fading channels</a>
+                            <span class="badge-first-author"><i class="fas fa-award"></i> Joint-First Author</span>
+                        </div>
+                        <div class="pub-authors">I. Agrawal*, <strong>H. Raj*</strong>, and B. R. Manoj</div>
+                        <div class="pub-venue-details">
+                            IEEE Transactions on Cognitive Communications and Networking, Accepted for publication, May 2025. (* Equal Contribution)
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/abstract/document/11219189/" target="_blank" class="pub-btn pub-btn-accent"><i class="fas fa-external-link-alt"></i> IEEE Xplore</a>
+                            <a href="https://ieeexplore.ieee.org/abstract/document/11219189/" target="_blank" class="pub-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <button onclick="document.getElementById('bib-tccn2025').classList.toggle('active')" class="pub-btn"><i class="fas fa-quote-right"></i> Cite (BibTeX)</button>
+                        </div>
+                        <div class="bibtex-box" id="bib-tccn2025">
+                            <button class="copy-bib-btn" onclick="copyBib('bib-tccn2025')">Copy</button>
+@article{agrawal2025noma,
+  title={NOMA-assisted ISAC system: Downlink and uplink performance in Rician fading channels},
+  author={Agrawal, I. and Raj, Harsh and Manoj, B. R.},
+  journal={IEEE Transactions on Cognitive Communications and Networking},
+  pages={1--15},
+  year={2025},
+  publisher={IEEE}
+}
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Conference 1 -->
+                <li class="pub-item show reveal reveal-delay-2" data-type="conference" data-date="2025-03">
+                    <div class="pub-index">C1</div>
+                    <div class="pub-details">
+                        <div class="pub-title">
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10982964" target="_blank">Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA</a>
+                            <span class="badge-first-author"><i class="fas fa-award"></i> First Author</span>
+                        </div>
+                        <div class="pub-authors"><strong>H. Raj</strong> and B. R. Manoj</div>
+                        <div class="pub-venue-details">
+                            In Proc. IEEE National Conference on Communications (NCC), IIT Delhi, India, Mar. 6–9, 2025.
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10982964" target="_blank" class="pub-btn pub-btn-accent"><i class="fas fa-external-link-alt"></i> IEEE Xplore</a>
+                            <a href="https://ieeexplore.ieee.org/abstract/document/10982964" target="_blank" class="pub-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <button onclick="document.getElementById('bib-ncc2025').classList.toggle('active')" class="pub-btn"><i class="fas fa-quote-right"></i> Cite (BibTeX)</button>
+                        </div>
+                        <div class="bibtex-box" id="bib-ncc2025">
+                            <button class="copy-bib-btn" onclick="copyBib('bib-ncc2025')">Copy</button>
+@inproceedings{raj2025cascaded,
+  title={Cascaded channel statistics and target detection analysis for IRS-assisted ISAC employing NOMA},
+  author={Raj, Harsh and Manoj, B. R.},
+  booktitle={Proceedings of the IEEE National Conference on Communications (NCC)},
+  pages={1--6},
+  year={2025},
+  organization={IEEE}
+}
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Book Chapter 1 -->
+                <li class="pub-item show reveal reveal-delay-2" data-type="book" data-date="2025-01">
+                    <div class="pub-index">B1</div>
+                    <div class="pub-details">
+                        <div class="pub-title">
+                            <a href="https://link.springer.com/chapter/10.1007/978-981-96-3185-8_11" target="_blank">Machine Learning for Wireless Communications: Applications and Security</a>
+                            <span class="badge-first-author"><i class="fas fa-award"></i> Co-First Author</span>
+                        </div>
+                        <div class="pub-authors">B. R. Manoj*, N. M. Baishya*, and <strong>H. Raj</strong>*</div>
+                        <div class="pub-venue-details">
+                            Springer Chapter in "Next-Generation Wireless Systems: Fundamentals and Applications," Transactions on Computer Systems and Networks, Springer, Singapore, pp. 309-368, 2025. (* Equal Contribution)
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://link.springer.com/chapter/10.1007/978-981-96-3185-8_11" target="_blank" class="pub-btn pub-btn-accent"><i class="fas fa-external-link-alt"></i> Springer Link</a>
+                            <button onclick="document.getElementById('bib-springer2025').classList.toggle('active')" class="pub-btn"><i class="fas fa-quote-right"></i> Cite (BibTeX)</button>
+                        </div>
+                        <div class="bibtex-box" id="bib-springer2025">
+                            <button class="copy-bib-btn" onclick="copyBib('bib-springer2025')">Copy</button>
+@incollection{manoj2025machine,
+  title={Machine Learning for Wireless Communications: Applications and Security},
+  author={Manoj, B. R. and Baishya, N. M. and Raj, Harsh},
+  booktitle={Next-Generation Wireless Systems: Fundamentals and Applications},
+  pages={309--368},
+  year={2025},
+  publisher={Springer}
+}
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Conference 2 -->
+                <li class="pub-item show reveal reveal-delay-3" data-type="conference" data-date="2024-06">
+                    <div class="pub-index">C2</div>
+                    <div class="pub-details">
+                        <div class="pub-title">
+                            <a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">On the performance of IRS-assisted SSK and RPM over Rician fading channels</a>
+                            <span class="badge-first-author"><i class="fas fa-award"></i> First Author</span>
+                        </div>
+                        <div class="pub-authors"><strong>H. Raj</strong>, U. Singh, and B. R. Manoj</div>
+                        <div class="pub-venue-details">
+                            In Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 24–27, 2024.
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://ieeexplore.ieee.org/document/10683164" target="_blank" class="pub-btn pub-btn-accent"><i class="fas fa-external-link-alt"></i> IEEE Xplore</a>
+                            <a href="https://ieeexplore.ieee.org/document/10683164" target="_blank" class="pub-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <button onclick="document.getElementById('bib-vtc2024').classList.toggle('active')" class="pub-btn"><i class="fas fa-quote-right"></i> Cite (BibTeX)</button>
+                        </div>
+                        <div class="bibtex-box" id="bib-vtc2024">
+                            <button class="copy-bib-btn" onclick="copyBib('bib-vtc2024')">Copy</button>
+@inproceedings{raj2024performance,
+  title={On the performance of IRS-assisted SSK and RPM over Rician fading channels},
+  author={Raj, Harsh and Singh, U. and Manoj, B. R.},
+  booktitle={Proceedings of the IEEE 99th Vehicular Technology Conference (VTC-Spring)},
+  pages={1--6},
+  year={2024},
+  organization={IEEE}
+}
+                        </div>
+                    </div>
+            </ul>
+        </section>
+
+        <!-- ============ RESEARCH INTERESTS ============ -->
+        <!-- <section id="research" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Laboratory Focus</div>
+                <h2 class="section-title">Research</h2>
+            </div>
+            
+            <p class="research-intro reveal reveal-delay-1">
+                My research sits at the intersection of wireless communication systems and statistical machine learning. I investigate novel signal processing frameworks, optimization methods, and deep learning algorithms to enable high-efficiency, multi-functional networks for Beyond-5G (B5G) and 6G cellular paradigms.
+            </p>
+
+            <h3 class="research-subsection-title reveal"><i class="fas fa-wifi"></i> Core Focus Areas</h3>
+            <div class="research-grid">
+                <div class="research-card reveal reveal-delay-1">
+                    <div class="research-icon"><i class="fas fa-wifi"></i></div>
+                    <h3>Next-Gen Wireless</h3>
+                    <p>5G/6G systems, advanced modulation, and spectral efficiency optimization.</p>
+                </div>
+                <div class="research-card reveal reveal-delay-2">
+                    <div class="research-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h3>Joint Sensing & Communication</h3>
+                    <p>Integrated sensing and communication (ISAC) systems using shared waveforms and resources.</p>
+                </div>
+                <div class="research-card reveal reveal-delay-3">
+                    <div class="research-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Intelligent Reflecting Surfaces</h3>
+                    <p>Reconfigurable intelligent surfaces-aided wireless communications for enhanced coverage and capacity.</p>
+                </div>
+                <div class="research-card reveal reveal-delay-4">
+                    <div class="research-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Machine Learning & CV</h3>
+                    <p>Deep learning approaches for wireless signal processing for beamforming optimization.</p>
+                </div>
+            </div> -->
+<!-- 
+            <h3 class="research-subsection-title reveal"><i class="fas fa-project-diagram"></i> Current Research Projects</h3>
+            <div class="research-projects-grid">
+                <div class="project-card reveal reveal-delay-1">
+                    <div class="project-card-badge ongoing">Active Project</div>
+                    <h3>IRS-Assisted ISAC employing NOMA</h3>
+                    <p>Investigating the spectral co-existence of target detection and data downlink/uplink via reconfigurable intelligent surfaces, using NOMA principles for multiplexing.</p>
+                    <ul class="project-card-bullets">
+                        <li><i class="fas fa-check-circle"></i> Deriving closed-form target detection probabilities</li>
+                        <li><i class="fas fa-check-circle"></i> Optimizing phase shifts of the reflecting surface array</li>
+                        <li><i class="fas fa-check-circle"></i> Evaluating uplink and downlink outage performance</li>
+                    </ul>
+                </div>
+                <div class="project-card reveal reveal-delay-2">
+                    <div class="project-card-badge featured">Featured Work</div>
+                    <h3>Deep Learning for Joint  Beamforming</h3>
+                    <p>Developing neural network architectures for joint beamforming matrix selection in fast-fading Rician channels.</p>
+                    <ul class="project-card-bullets">
+                        <li><i class="fas fa-check-circle"></i> Designing lightweight convolutional neural networks</li>
+                        <li><i class="fas fa-check-circle"></i> Deploying ML models for real-time beam prediction</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="research-subsection-title reveal"><i class="fas fa-star"></i> Highlights & Ongoing Work</h3>
+            <div class="research-highlights-wrapper reveal">
+                <ul class="highlights-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Active collaboration with the Communication Research Lab at IIT Guwahati under Dr. Manoj B. R. on IRS-SSK.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recent paper accepted for publication in **IEEE Transactions on Cognitive Communications and Networking (IEEE TCCN) 2025** on DL/UL NOMA-ISAC.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Investigating cell-free massive MIMO integration with intelligent surfaces for 6G networks.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Open-source code repositories for our published papers are hosted on GitHub for scientific reproducibility.</span>
+                    </li>
+                </ul>
+            </div>
+        </section> -->
+
+        <!-- ============ TEACHING ASSISTANT ============ -->
+        <section id="teaching" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Mentorship & Instruction</div>
+                <h2 class="section-title">Teaching Assistantships</h2>
+            </div>
+            
+            <div class="teaching-intro-card reveal reveal-delay-1">
+                <p>
+                    Served as a Teaching Assistant for undergraduate and postgraduate courses in communication systems, wireless communications, digital communications, electronics laboratories, and machine learning at IIT Guwahati.
+                </p>
+            </div>
+
+            <div class="teaching-grid">
+                <!-- Course 1 -->
+                <div class="teaching-card reveal reveal-delay-2">
+                    <div class="teaching-course-code">EE 331</div>
+                    <h3>Principles of Communication</h3>
+                    <p>Undergraduate core course covering analog and digital modulation techniques, noise analysis, and receiver design.</p>
+                </div>
+                <!-- Course 2 -->
+                <div class="teaching-card reveal reveal-delay-3">
+                    <div class="teaching-course-code">EE 632</div>
+                    <h3>Advanced Topics in Communication Systems</h3>
+                    <p>Postgraduate level course covering advanced communication theory, intelligent reflecting surfaces (IRS), integrated sensing and communication (ISAC), and signal processing techniques.</p>
+                </div>
+                <!-- Course 3 -->
+                <div class="teaching-card reveal reveal-delay-4">
+                    <div class="teaching-course-code">EE 337</div>
+                    <h3>Fundamentals of Wireless Communications</h3>
+                    <p>Undergraduate elective covering fading channels, diversity techniques, MIMO, and cellular systems.</p>
+                </div>
+                <!-- Course 4 -->
+                <div class="teaching-card reveal reveal-delay-2">
+                    <div class="teaching-course-code">EE 530N</div>
+                    <h3>Digital Communications</h3>
+                    <p>Postgraduate core course on detection and estimation of symbols, signal space representation, and bit error rate (BER) analysis.</p>
+                </div>
+                <!-- Course 5 -->
+                <div class="teaching-card reveal reveal-delay-3">
+                    <div class="teaching-course-code">EE 101</div>
+                    <h3>Basic Electronics (Tutorial)</h3>
+                    <p>Undergraduate tutorial sessions covering semiconductor devices, diode circuits, BJT/FET amplifiers, and operational amplifiers.</p>
+                </div>
+                <!-- Course 6 -->
+                <div class="teaching-card reveal reveal-delay-2">
+                    <div class="teaching-course-code">EE 626</div>
+                    <h3>Pattern Recognition & Machine Learning</h3>
+                    <p>Postgraduate course covering classification, clustering, neural networks, and ML frameworks for signal analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ACHIEVEMENTS ============ -->
+        <section id="achievements" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Recognition & Milestones</div>
+                <h2 class="section-title">Achievements</h2>
+            </div>
+                <!-- Award 1 -->
+                <div class="award-card reveal reveal-delay-4">
+                    <div class="award-icon-box"><i class="fas fa-users"></i></div>
+                    <div class="award-info">
+                        <h3>Professional Contributions</h3>
+                        <p>Active Student Member of IEEE and IEEE Communications Society (ComSoc). Contributed to the research community as a reviewer for leading international conferences and journals.</p>
+                        <span class="award-date">Ongoing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section id="skills" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Technical Proficiency</div>
+                <h2 class="section-title">Skills & Tools</h2>
+            </div>
+            <div class="skills-container reveal reveal-delay-1">
+                <div class="skill-category">
+                    <div class="skill-category-title"><i class="fas fa-code"></i> Programming & Simulation</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-terminal"></i> MATLAB</span>
+                        <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                        <span class="skill-tag"><i class="fas fa-calculator"></i> Mathematica</span>
+                         <span class="skill-tag"><i class="fas fa-code"></i> C/C++</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title"><i class="fas fa-brain"></i> ML & Data Science</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-project-diagram"></i> TensorFlow</span>
+                        <span class="skill-tag"><i class="fas fa-chart-bar"></i> NumPy / SciPy</span>
+                        <span class="skill-tag"><i class="fas fa-eye"></i> Computer Vision</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title"><i class="fas fa-signal"></i> Wireless & Communication</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-wave-square"></i> Signal Processing</span>
+                        <span class="skill-tag"><i class="fas fa-cog"></i> Optimization Theory</span>
+                        <span class="skill-tag"><i class="fas fa-broadcast-tower"></i> OFDM / NOMA</span>
+                        <span class="skill-tag"><i class="fas fa-chart-line"></i> Statistical Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title"><i class="fas fa-tools"></i> Research Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag"><i class="fas fa-file-pdf"></i> LaTeX</span>
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="skill-tag"><i class="fas fa-pen-nib"></i> Overleaf</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section id="contact" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Connection & Collaboration</div>
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
+            
+            <div class="contact-grid reveal reveal-delay-1">
+                <!-- Left: Contact Channels -->
+                <div class="contact-channels">
+                    <a href="mailto:h.raj@iitg.ac.in" class="contact-channel-card">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-channel-info">
+                            <h3>Email Address</h3>
+                            <p>h.raj@iitg.ac.in</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="contact-channel-card">
+                        <i class="fab fa-google-scholar"></i>
+                        <div class="contact-channel-info">
+                            <h3>Google Scholar</h3>
+                            <p>Harsh Raj</p>
+                        </div>
+                    </a>
+
+                    <a href="https://orcid.org/0009-0009-5773-6266" target="_blank" class="contact-channel-card">
+                        <i class="fab fa-orcid"></i>
+                        <div class="contact-channel-info">
+                            <h3>ORCID iD</h3>
+                            <p>0009-0009-5773-6266</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/Harshra1-ultra" target="_blank" class="contact-channel-card">
+                        <i class="fab fa-github"></i>
+                        <div class="contact-channel-info">
+                            <h3>GitHub Profile</h3>
+                            <p>Harshra1-ultra</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="contact-channel-card">
+                        <i class="fab fa-linkedin"></i>
+                        <div class="contact-channel-info">
+                            <h3>LinkedIn Profile</h3>
+                            <p>harsh-raj-0a3a72203</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.researchgate.net/" target="_blank" class="contact-channel-card">
+                        <i class="fab fa-researchgate"></i>
+                        <div class="contact-channel-info">
+                            <h3>ResearchGate</h3>
+                            <p>Harsh Raj Profile</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="contact-form-container">
+                    <h3>Send a Direct Inquiry</h3>
+                    <form class="contact-form" id="contactForm" action="mailto:h.raj@iitg.ac.in" method="POST" enctype="text/plain">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="contact-name" name="name" placeholder="Your Name" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="contact-email" name="email" placeholder="Your Email" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="contact-subject" name="subject" placeholder="Subject" required />
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contact-message" name="message" placeholder="Your Message..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submit-contact">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">Harsh Raj</div>
+                    <p class="footer-brand-desc">Ph.D. Research Scholar in the Department of Electronics and Electrical Engineering at IIT Guwahati. Passionate about wireless communications and machine learning.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="second-page.html">Projects & Code</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/Harshra1-ultra" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" aria-label="Google Scholar"><i class="fab fa-google-scholar"></i></a>
+                        <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.iitg.ac.in/manojbr/research-group.html" target="_blank" aria-label="Research Group"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; <span id="currentYear"></span> Harsh Raj. All rights reserved.</p>
+                <div class="footer-time">
+                    <i class="fas fa-map-marker-alt"></i> Guwahati, Assam &nbsp;|&nbsp; <span class="pulse-dot"></span> <span id="liveTime"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ============================
+         JAVASCRIPT
+    ============================ -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // ==========================================
+        // 0. DYNAMIC PUBLICATION SORTING
+        // ==========================================
+        const pubList = document.querySelector('.pub-list');
+        if (pubList) {
+            const items = Array.from(pubList.querySelectorAll('.pub-item'));
+            
+            function parsePubDate(item) {
+                // Try data-date attribute first
+                const dataDate = item.getAttribute('data-date');
+                if (dataDate) {
+                    const cleanDate = dataDate.trim();
+                    if (/^\d{4}$/.test(cleanDate)) {
+                        return new Date(cleanDate + '-01-01').getTime();
+                    }
+                    const parsed = Date.parse(cleanDate);
+                    if (!isNaN(parsed)) return parsed;
+                }
+                
+                // Fallback: parse text content from details or venue elements
+                const yearEl = item.querySelector('.pub-year') || item.querySelector('.pub-venue-details');
+                if (yearEl) {
+                    const text = yearEl.textContent.trim();
+                    const parsed = Date.parse(text);
+                    if (!isNaN(parsed)) return parsed;
+                    
+                    const yearMatch = text.match(/\d{4}/);
+                    if (yearMatch) {
+                        const year = parseInt(yearMatch[0]);
+                        const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+                        const monthText = text.toLowerCase();
+                        let monthIdx = 0;
+                        for (let i = 0; i < 12; i++) {
+                            if (monthText.includes(months[i])) {
+                                monthIdx = i;
+                                break;
+                            }
+                        }
+                        return new Date(year, monthIdx, 1).getTime();
+                    }
+                }
+                return 0; // fallback if no date could be parsed
+            }
+            
+            // Sort descending: newest first
+            items.sort((a, b) => parsePubDate(b) - parsePubDate(a));
+            
+            // Re-append to DOM and update reveal animation delays
+            pubList.innerHTML = '';
+            items.forEach((item, index) => {
+                // Remove any existing delay class to prevent conflicts
+                item.className = item.className.replace(/\breveal-delay-\d+\b/g, '').trim();
+                // Assign new staggered delay based on its sorted position (1-4)
+                const delayClass = `reveal-delay-${(index % 4) + 1}`;
+                item.classList.add(delayClass);
+                pubList.appendChild(item);
+            });
+        }
+
+        // ==========================================
+        // 1. PARTICLE CANVAS
+        // ==========================================
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouseX = 0, mouseY = 0;
+        let animFrame;
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                // Mouse repulsion
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    this.x += dx / dist * 1.2;
+                    this.y += dy / dist * 1.2;
+                }
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                const isDark = document.body.classList.contains('dark-mode');
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = isDark
+                    ? `rgba(59, 130, 246, ${this.opacity})`
+                    : `rgba(37, 99, 235, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(80, Math.floor(canvas.width * canvas.height / 12000));
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+        initParticles();
+
+        function drawLines() {
+            const isDark = document.body.classList.contains('dark-mode');
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 140) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        const alpha = (1 - dist / 140) * 0.15;
+                        ctx.strokeStyle = isDark
+                            ? `rgba(59, 130, 246, ${alpha})`
+                            : `rgba(37, 99, 235, ${alpha})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            drawLines();
+            animFrame = requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        canvas.addEventListener('mousemove', e => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+
+
+        // ==========================================
+        // BIBTEX COPY HELPER
+        // ==========================================
+        window.copyBib = function(id) {
+            const el = document.getElementById(id);
+            const text = el.innerText.replace(/Copy/i, '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = el.querySelector('.copy-bib-btn');
+                const origText = btn.innerText;
+                btn.innerText = 'Copied!';
+                setTimeout(() => {
+                    btn.innerText = origText;
+                }, 1500);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        };
+
+        // ==========================================
+        // 3. SCROLL PROGRESS BAR
+        // ==========================================
+        const progressBar = document.getElementById('scrollProgress');
+
+        function updateScrollProgress() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        }
+
+        // ==========================================
+        // 4. THEME TOGGLE (default = light / white theme)
+        // ==========================================
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Default is light. If savedTheme is 'dark', apply dark mode.
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.querySelector('i').className = 'fas fa-sun';
+        } else {
+            themeToggle.querySelector('i').className = 'fas fa-moon';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            const isDark = document.body.classList.contains('dark-mode');
+            if (isDark) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+            // Trigger particle canvas colors redraw if it exists
+            if (typeof initParticles === 'function') {
+                initParticles();
+            }
+        });
+
+        // ==========================================
+        // 5. MOBILE MENU
+        // ==========================================
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // ==========================================
+        // 6. NAV SCROLL EFFECTS + ACTIVE LINK
+        // ==========================================
+        const navbar = document.getElementById('navbar');
+        const sections = document.querySelectorAll('section[id]');
+        const navLinksAll = document.querySelectorAll('.nav-links a[data-section]');
+
+        function onScroll() {
+            updateScrollProgress();
+
+            // Nav shadow
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            backToTop.classList.toggle('visible', window.scrollY > 500);
+
+            // Active nav link
+            let current = '';
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 120;
+                if (window.scrollY >= top) current = sec.id;
+            });
+            navLinksAll.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('data-section') === current);
+            });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // ==========================================
+        // 7. BACK TO TOP
+        // ==========================================
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ==========================================
+        // 8. INTERSECTION OBSERVER (Scroll Reveal)
+        // ==========================================
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+
+        // ==========================================
+        // 10. PUBLICATION TAB FILTERING
+        // ==========================================
+        const pubTabs = document.querySelectorAll('.pub-tab');
+        const pubItems = document.querySelectorAll('.pub-item');
+
+        pubTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                pubTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.dataset.filter;
+                pubItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.type === filter) {
+                        item.classList.add('show');
+                        item.style.animation = 'fadeSlideUp 0.4s forwards';
+                    } else {
+                        item.classList.remove('show');
+                    }
+                });
+            });
+        });
+
+
+
+        // ==========================================
+        // 12. FOOTER YEAR & LIVE CLOCK
+        // ==========================================
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const timeEl = document.getElementById('liveTime');
+        function updateClock() {
+            timeEl.textContent = new Date().toLocaleTimeString('en-US', {
+                timeZone: 'Asia/Kolkata',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+            });
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // ==========================================
+        // 13. CONTACT FORM (mailto fallback)
+        // ==========================================
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+            const mailto = `mailto:h.raj@iitg.ac.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
+            window.location.href = mailto;
+        });
+
+    });
+    </script>
+</body>
+</html>

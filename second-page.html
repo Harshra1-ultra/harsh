@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects & Code | Harsh Raj â€” IIT Guwahati</title>
+    <meta name="description" content="Research code, GitHub projects, and resources by Harsh Raj â€” Ph.D. Scholar at IIT Guwahati." />
+    <!-- Google Fonts: Outfit + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================
+           SHARED DESIGN TOKENS
+           (same as index.html)
+        ============================ */
+        /* DEFAULT: Professional Light Theme */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: rgba(255,255,255,0.85);
+            --bg-card-solid: #ffffff;
+            --bg-nav: rgba(255,255,255,0.85);
+            --text-primary: #0f172a; /* slate-900 */
+            --text-secondary: #475569; /* slate-600 */
+            --text-muted: #64748b; /* slate-500 */
+            --heading-color: #0f172a;
+            --accent-1: #1d4ed8; /* cobalt blue */
+            --accent-2: #2563eb;
+            --accent-3: #0f766e; /* teal */
+            --gradient-accent: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
+            --gradient-hero: linear-gradient(135deg, #ffffff 0%, #eff6ff 40%, #ffffff 100%);
+            --border-color: rgba(15, 23, 42, 0.08);
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.03);
+            --shadow-md: 0 4px 20px rgba(15, 23, 42, 0.05);
+            --shadow-lg: 0 8px 40px rgba(15, 23, 42, 0.08);
+            --shadow-glow: 0 0 30px rgba(29, 78, 216, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Dark mode override */
+        body.dark-mode {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #141414;
+            --bg-card: rgba(26,26,26,0.75);
+            --bg-card-solid: #1a1a1a;
+            --bg-nav: rgba(13,13,13,0.85);
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-muted: #606060;
+            --heading-color: #f0f0f0;
+            --accent-1: #3b82f6; /* blue */
+            --accent-2: #60a5fa; /* light blue */
+            --accent-3: #06b6d4; /* cyan */
+            --gradient-accent: linear-gradient(135deg, #2563eb, #3b82f6, #60a5fa);
+            --gradient-hero: linear-gradient(135deg, #0d0d0d 0%, #0d1117 40%, #0d0d0d 100%);
+            --border-color: rgba(255,255,255,0.06);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.35);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.45);
+            --shadow-glow: 0 0 30px rgba(59,130,246,0.15);
+        }
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background-color 0.4s, color 0.4s;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--heading-color);
+        }
+
+        a {
+            color: var(--accent-1);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        a:hover { color: var(--accent-2); }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* ============================
+           NAVIGATION (same as index)
+        ============================ */
+        nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--bg-nav);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition-smooth);
+        }
+        nav.scrolled { box-shadow: var(--shadow-md); }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-1);
+            background: rgba(59,130,246,0.08);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+        }
+        .theme-btn:hover {
+            transform: scale(1.08);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--accent-1);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px; height: 40px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        /* ============================
+           PAGE HERO BANNER
+        ============================ */
+        .page-hero {
+            padding: 8rem 0 4rem;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -30%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero .breadcrumb a {
+            color: var(--accent-1);
+            text-decoration: none;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+        }
+
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* ============================
+           SECTIONS
+        ============================ */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-1);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-label i { font-size: 0.7rem; }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ============================
+           GITHUB PROJECT CARDS
+        ============================ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(59,130,246,0.3);
+        }
+
+        .project-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 46px; height: 46px;
+            border-radius: var(--radius-md);
+            background: rgba(59,130,246,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-1);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .project-links a {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: color var(--transition-fast);
+        }
+        .project-links a:hover { color: var(--accent-1); }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-card h3 a {
+            color: var(--heading-color);
+            text-decoration: none;
+        }
+        .project-card h3 a:hover { color: var(--accent-1); }
+
+        .project-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(59,130,246,0.08);
+            color: var(--accent-1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .project-tag .dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .dot-matlab { background: #e16737; }
+        .dot-python { background: #3776ab; }
+        .dot-latex { background: #008080; }
+        .dot-cpp { background: #f34b7d; }
+        .dot-jupyter { background: #f37626; }
+
+        .project-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+        }
+
+        .status-active {
+            background: rgba(34,197,94,0.1);
+            color: #22c55e;
+        }
+
+        .status-updating {
+            background: rgba(234,179,8,0.1);
+            color: #eab308;
+        }
+
+        /* ============================
+           RESEARCH CODE SECTION
+        ============================ */
+        .research-code-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .research-code-item {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.8rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: all var(--transition-smooth);
+        }
+
+        .research-code-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(59,130,246,0.3);
+        }
+
+        .rci-icon {
+            width: 50px; height: 50px;
+            border-radius: var(--radius-md);
+            background: rgba(59,130,246,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-1);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .rci-content {
+            flex: 1;
+        }
+
+        .rci-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .rci-content h3 a {
+            color: var(--heading-color);
+        }
+        .rci-content h3 a:hover { color: var(--accent-1); }
+
+        .rci-content p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.6rem;
+        }
+
+        .rci-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .rci-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* ============================
+           RESOURCES
+        ============================ */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .resource-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+            display: block;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(59,130,246,0.4);
+        }
+
+        .resource-card i {
+            font-size: 1.5rem;
+            color: var(--accent-1);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .resource-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .resource-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================
+           FOOTER (same as index)
+        ============================ */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+
+        .footer-col ul a {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            transition: color var(--transition-fast);
+            text-decoration: none;
+        }
+        .footer-col ul a:hover { color: var(--accent-1); }
+
+        .footer-social {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-social a {
+            width: 36px; height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            color: var(--accent-1);
+            border-color: var(--accent-1);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .footer-time {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .pulse-dot {
+            width: 8px; height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(59,130,246,0); }
+        }
+
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-smooth);
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.35);
+        }
+        .back-to-top.visible {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(59,130,246,0.5);
+        }
+
+        /* ============================
+           RESPONSIVE
+        ============================ */
+        @media (max-width: 900px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+            .footer-social { justify-content: center; }
+            .footer-bottom { justify-content: center; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%; left: 0;
+                width: 100%;
+                background: var(--bg-nav);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .page-hero h1 { font-size: 2.2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .research-code-item { flex-direction: column; }
+            .resources-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero { padding: 7rem 0 3rem; }
+            .page-hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-brand">Harsh Raj</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#publications">Publications</a></li>
+            <li><a href="index.html#research">Research</a></li>
+            <li><a href="index.html#teaching">Teaching</a></li>
+            <li><a href="index.html#achievements">Achievements</a></li>
+            <li><a href="second-page.html" class="active">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ============ PAGE HERO ============ -->
+        <div class="page-hero">
+            <div class="container page-hero-content">
+                <div class="breadcrumb">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Projects & Code</span>
+                </div>
+                <h1>Projects & Code</h1>
+                <p>Research code, GitHub repositories, and useful resources from my work in wireless communications and machine learning.</p>
+            </div>
+        </div>
+
+        <!-- ============ GITHUB PROJECTS ============ -->
+        <section id="projects" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Open Source</div>
+                <h2 class="section-title">GitHub Projects</h2>
+                <p class="section-subtitle">Code repositories for research simulations and tools.</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card reveal reveal-delay-1">
+                    <div class="project-card-header">
+                        <div class="project-icon"><i class="fas fa-satellite-dish"></i></div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harshra1-ultra" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3><a href="https://github.com/Harshra1-ultra" target="_blank">IRS-assisted ISAC with NOMA</a></h3>
+                    <p>Simulation code for cascaded channel statistics and target detection analysis in IRS-assisted ISAC systems employing NOMA - as published in IEEE NCC 2025.</p>
+                    <div class="project-tags">
+                        <span class="project-tag"><span class="dot dot-matlab"></span> MATLAB</span>
+                        <span class="project-status status-updating"><i class="fas fa-sync-alt"></i> Updating Soon</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal reveal-delay-2">
+                    <div class="project-card-header">
+                        <div class="project-icon"><i class="fas fa-wave-square"></i></div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harshra1-ultra" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3><a href="https://github.com/Harshra1-ultra" target="_blank">IRS-SSK & RPM over Rician Channels</a></h3>
+                    <p>Performance analysis code for IRS-assisted Space Shift Keying and Receive Power Maximization over Rician fading channels - IEEE VTC-Spring 2024.</p>
+                    <div class="project-tags">
+                        <span class="project-tag"><span class="dot dot-matlab"></span> MATLAB</span>
+                        <span class="project-status status-updating"><i class="fas fa-sync-alt"></i> Updating Soon</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal reveal-delay-3">
+                    <div class="project-card-header">
+                        <div class="project-icon"><i class="fas fa-broadcast-tower"></i></div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harshra1-ultra" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3><a href="https://github.com/Harshra1-ultra" target="_blank">NOMA-ISAC System Simulation</a></h3>
+                    <p>Downlink and uplink performance simulation for NOMA-assisted ISAC systems in Rician fading channels at IEEE TCCN 2025.</p>
+                    <div class="project-tags">
+                        <span class="project-tag"><span class="dot dot-matlab"></span> MATLAB</span>
+                        <span class="project-status status-updating"><i class="fas fa-sync-alt"></i> Updating Soon</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal reveal-delay-4">
+                    <div class="project-card-header">
+                        <div class="project-icon"><i class="fas fa-brain"></i></div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harshra1-ultra" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3><a href="https://github.com/Harshra1-ultra" target="_blank">ML for Wireless Systems</a></h3>
+                    <p>Machine learning implementations for wireless communication applications and security - accompanying the Springer book chapter.</p>
+                    <div class="project-tags">
+                        <span class="project-tag"><span class="dot dot-python"></span> Python</span>
+                        <span class="project-tag"><span class="dot dot-jupyter"></span> Jupyter</span>
+                        <span class="project-status status-updating"><i class="fas fa-sync-alt"></i> Updating Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ RESEARCH CODE ============ -->
+        <section id="research-code" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Publication Code</div>
+                <h2 class="section-title">Research Code</h2>
+                <p class="section-subtitle">Code linked directly to published papers for reproducibility.</p>
+            </div>
+
+            <div class="research-code-list">
+                <div class="research-code-item reveal reveal-delay-1">
+                    <div class="rci-icon"><i class="fas fa-file-code"></i></div>
+                    <div class="rci-content">
+                        <h3><a href="https://ieeexplore.ieee.org/abstract/document/10982964" target="_blank">Cascaded Channel Statistics — IRS-ISAC-NOMA</a></h3>
+                        <p>MATLAB code for channel modeling, target detection probability analysis, and NOMA performance evaluation in IRS-assisted integrated sensing and communication systems.</p>
+                        <div class="rci-meta">
+                            <span><i class="fas fa-book"></i> IEEE NCC 2025</span>
+                            <span><i class="fas fa-code-branch"></i> <a href="https://github.com/Harshra1-ultra" target="_blank">Repository</a></span>
+                            <span><i class="fas fa-tag"></i> IRS, ISAC, NOMA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-code-item reveal reveal-delay-2">
+                    <div class="rci-icon"><i class="fas fa-file-code"></i></div>
+                    <div class="rci-content">
+                        <h3><a href="https://ieeexplore.ieee.org/document/10683164" target="_blank">IRS-SSK & RPM Performance Analysis</a></h3>
+                        <p>Simulation scripts for evaluating BER performance of space shift keying and receive power maximization schemes with intelligent reflecting surfaces over Rician channels.</p>
+                        <div class="rci-meta">
+                            <span><i class="fas fa-book"></i> IEEE VTC-Spring 2024</span>
+                            <span><i class="fas fa-code-branch"></i> <a href="https://github.com/Harshra1-ultra" target="_blank">Repository</a></span>
+                            <span><i class="fas fa-tag"></i> IRS, SSK, Rician</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-code-item reveal reveal-delay-3">
+                    <div class="rci-icon"><i class="fas fa-file-code"></i></div>
+                    <div class="rci-content">
+                        <h3><a href="https://ieeexplore.ieee.org/abstract/document/11219189/" target="_blank">NOMA-ISAC DL/UL Performance</a></h3>
+                        <p>End-to-end simulation for uplink and downlink NOMA-assisted ISAC including outage probability, detection metrics, and rate analysis under Rician fading.</p>
+                        <div class="rci-meta">
+                            <span><i class="fas fa-book"></i> IEEE TCCN 2025</span>
+                            <span><i class="fas fa-code-branch"></i> <a href="https://github.com/Harshra1-ultra" target="_blank">Repository</a></span>
+                            <span><i class="fas fa-tag"></i> NOMA, ISAC, DL/UL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ RESOURCES ============ -->
+        <section id="resources" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Useful Links</div>
+                <h2 class="section-title">Resources</h2>
+            </div>
+
+            <div class="resources-grid">
+                <a href="https://github.com/Harshra1-ultra" target="_blank" class="resource-card reveal reveal-delay-1">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub Profile</h3>
+                    <p>All repositories and contributions in one place.</p>
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="resource-card reveal reveal-delay-2">
+                    <i class="fab fa-google-scholar"></i>
+                    <h3>Google Scholar</h3>
+                    <p>Citation metrics and publication list.</p>
+                </a>
+                <a href="https://www.iitg.ac.in/manojbr/research-group.html" target="_blank" class="resource-card reveal reveal-delay-3">
+                    <i class="fas fa-users"></i>
+                    <h3>Research Group</h3>
+                    <p>Dr. Manoj B. R.'s research group at IIT Guwahati.</p>
+                </a>
+                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="resource-card reveal reveal-delay-4">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Professional network and updates.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">Harsh Raj</div>
+                    <p class="footer-brand-desc">Ph.D. Research Scholar in the Department of Electronics and Electrical Engineering at IIT Guwahati.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#education">Education</a></li>
+                        <li><a href="index.html#publications">Publications</a></li>
+                        <li><a href="index.html#research">Research</a></li>
+                        <li><a href="index.html#teaching">Teaching</a></li>
+                        <li><a href="index.html#achievements">Achievements</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/Harshra1-ultra" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" aria-label="Google Scholar"><i class="fab fa-google-scholar"></i></a>
+                        <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; <span id="currentYear"></span> Harsh Raj. All rights reserved.</p>
+                <div class="footer-time">
+                    <i class="fas fa-map-marker-alt"></i> Guwahati, Assam &nbsp;|&nbsp; <span class="pulse-dot"></span> <span id="liveTime"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Theme Toggle (synced with index via localStorage)
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Default is light. If savedTheme is 'dark', apply dark mode.
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.querySelector('i').className = 'fas fa-sun';
+        } else {
+            themeToggle.querySelector('i').className = 'fas fa-moon';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            const isDark = document.body.classList.contains('dark-mode');
+            if (isDark) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        // Mobile Menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Scroll effects
+        const navbar = document.getElementById('navbar');
+        const progressBar = document.getElementById('scrollProgress');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+            backToTop.classList.toggle('visible', window.scrollY > 500);
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            progressBar.style.width = (window.scrollY / scrollHeight * 100) + '%';
+        }, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Footer year & clock
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const timeEl = document.getElementById('liveTime');
+        function updateClock() {
+            timeEl.textContent = new Date().toLocaleTimeString('en-US', {
+                timeZone: 'Asia/Kolkata',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+            });
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+    });
+    </script>
+</body>
+</html>
