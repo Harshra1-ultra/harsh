@@ -724,12 +724,203 @@
         }
 
         /* ============================
+           RICIAN SIMULATOR DASHBOARD
+        ============================ */
+        .sim-dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sim-top-row {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .sim-controls {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            border-right: 1px solid var(--border-color);
+            padding-right: 2rem;
+        }
+
+        .sim-control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sim-control-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sim-control-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .sim-value-display {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent-1);
+            background: var(--bg-secondary);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .sim-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--bg-secondary);
+            outline: none;
+            border: 1px solid var(--border-color);
+        }
+
+        .sim-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-1);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .sim-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .sim-derived-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .sim-derived-panel h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.4rem;
+        }
+
+        .sim-derived-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+        }
+
+        .sim-derived-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .sim-derived-row strong {
+            color: var(--text-primary);
+            font-family: monospace;
+            font-size: 0.88rem;
+        }
+
+        .sim-math-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sim-math-panel h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .sim-math-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .sim-math-block {
+            margin-bottom: 0;
+            overflow-x: auto;
+        }
+
+        .sim-math-block h5 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+        }
+
+        .sim-plots {
+            flex: 2.1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .sim-plot-card {
+            background: var(--bg-card-solid);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.8rem;
+            box-shadow: var(--shadow-sm);
+            aspect-ratio: 1.3 / 1;
+            position: relative;
+        }
+
+        .sim-plot-card canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* ============================
            RESPONSIVE
         ============================ */
         @media (max-width: 900px) {
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
             .footer-social { justify-content: center; }
             .footer-bottom { justify-content: center; text-align: center; }
+            .sim-top-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .sim-controls {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-right: 0;
+                padding-bottom: 1.5rem;
+            }
+            .sim-math-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -751,6 +942,7 @@
             .projects-grid { grid-template-columns: 1fr; }
             .research-code-item { flex-direction: column; }
             .resources-grid { grid-template-columns: 1fr; }
+            .software-actions { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
         }
 
         @media (max-width: 480px) {
@@ -758,6 +950,16 @@
             .page-hero h1 { font-size: 1.8rem; }
         }
     </style>
+    <!-- MathJax for rendering LaTeX formulas -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -869,6 +1071,106 @@
                         <span class="project-tag"><span class="dot dot-python"></span> Python</span>
                         <span class="project-tag"><span class="dot dot-jupyter"></span> Jupyter</span>
                         <span class="project-status status-updating"><i class="fas fa-sync-alt"></i> Updating Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ RICIAN CHANNEL REAL-TIME SIMULATOR ============ -->
+        <section id="rician-simulator" class="container">
+            <div class="section-header reveal">
+                <div class="section-label"><i class="fas fa-circle"></i> Live Web Tool</div>
+                <h2 class="section-title">Rician Fading Simulator</h2>
+                <p class="section-subtitle">Adjust parameters to see the statistical behavior of Rician fading channels in real time.</p>
+            </div>
+
+            <div class="sim-dashboard reveal reveal-delay-1">
+                <div class="sim-top-row">
+                    <!-- Controls Column -->
+                    <div class="sim-controls">
+                        <div class="sim-control-group">
+                            <div class="sim-control-header">
+                                <span class="sim-control-title">Real Mean (\(m_1\))</span>
+                                <span class="sim-value-display" id="m1-val">1.0</span>
+                            </div>
+                            <input type="range" id="m1-slider" min="-10" max="10" step="0.1" value="1.0" class="sim-slider">
+                        </div>
+
+                        <div class="sim-control-group">
+                            <div class="sim-control-header">
+                                <span class="sim-control-title">Imaginary Mean (\(m_2\))</span>
+                                <span class="sim-value-display" id="m2-val">5.0</span>
+                            </div>
+                            <input type="range" id="m2-slider" min="-10" max="10" step="0.1" value="5.0" class="sim-slider">
+                        </div>
+
+                        <div class="sim-control-group">
+                            <div class="sim-control-header">
+                                <span class="sim-control-title">Std Dev (\(\sigma\))</span>
+                                <span class="sim-value-display" id="sigma-val">4.0</span>
+                            </div>
+                            <input type="range" id="sigma-slider" min="0.5" max="10" step="0.1" value="4.0" class="sim-slider">
+                        </div>
+
+                        <div class="sim-derived-panel">
+                            <h4>Derived Parameters:</h4>
+                            <div class="sim-derived-row">
+                                <span>LOS Component (\(s\)):</span>
+                                <strong id="derived-s">5.10</strong>
+                            </div>
+                            <div class="sim-derived-row">
+                                <span>K-factor (linear):</span>
+                                <strong id="derived-k">0.81</strong>
+                            </div>
+                            <div class="sim-derived-row">
+                                <span>K-factor (dB):</span>
+                                <strong id="derived-kdb">-0.91 dB</strong>
+                            </div>
+                            <div class="sim-derived-row">
+                                <span>Mean Amplitude:</span>
+                                <strong id="derived-mean">5.82</strong>
+                            </div>
+                            <div class="sim-derived-row">
+                                <span>Variance:</span>
+                                <strong id="derived-var">16.32</strong>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-outline" id="resample-btn" style="width: 100%; margin-top: 1rem;"><i class="fas fa-sync-alt"></i> Generate New Samples</button>
+                    </div>
+
+                    <!-- Plots Grid -->
+                    <div class="sim-plots">
+                        <div class="sim-plot-card">
+                            <canvas id="canvas-gauss"></canvas>
+                        </div>
+                        <div class="sim-plot-card">
+                            <canvas id="canvas-complex"></canvas>
+                        </div>
+                        <div class="sim-plot-card">
+                            <canvas id="canvas-amp"></canvas>
+                        </div>
+                        <div class="sim-plot-card">
+                            <canvas id="canvas-phase"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Math Panel at bottom -->
+                <div class="sim-math-panel">
+                    <h4>Theoretical Equations:</h4>
+                    <div class="sim-math-grid">
+                        <div class="sim-math-block">
+                            <h5>Amplitude PDF:</h5>
+                            \[f_A(x) = \frac{x}{\sigma^2} \exp\left(-\frac{x^2+s^2}{2\sigma^2}\right) I_0\left(\frac{x s}{\sigma^2}\right)\]
+                        </div>
+                        <div class="sim-math-block">
+                            <h5>Phase PDF:</h5>
+                            \[f_{\Phi}(\phi) = \frac{1}{2\pi} e^{-\frac{s^2}{2\sigma^2}} + \frac{m_{\text{til}}}{\sqrt{2\pi}\sigma} e^{\frac{m_{\text{til}}^2 - s^2}{2\sigma^2}} Q\left(-\frac{m_{\text{til}}}{\sigma}\right)\]
+                            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.35;">
+                                where \(m_{\text{til}} = m_1\cos\phi + m_2\sin\phi\) and \(s = \sqrt{m_1^2 + m_2^2}\).
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1027,6 +1329,7 @@
                 icon.className = 'fas fa-moon';
                 localStorage.setItem('theme', 'light');
             }
+            if (window.updateRicianSim) window.updateRicianSim();
         });
         // Mobile Menu
         const menuToggle = document.getElementById('menuToggle');
@@ -1061,6 +1364,506 @@
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // ========================================================
+        // RICIAN FADING CHANNEL SIMULATOR ENGINE
+        // ========================================================
+        const m1Slider = document.getElementById('m1-slider');
+        const m2Slider = document.getElementById('m2-slider');
+        const sigmaSlider = document.getElementById('sigma-slider');
+
+        const m1Val = document.getElementById('m1-val');
+        const m2Val = document.getElementById('m2-val');
+        const sigmaVal = document.getElementById('sigma-val');
+
+        const derivedS = document.getElementById('derived-s');
+        const derivedK = document.getElementById('derived-k');
+        const derivedKdb = document.getElementById('derived-kdb');
+        const derivedMean = document.getElementById('derived-mean');
+        const derivedVar = document.getElementById('derived-var');
+        const resampleBtn = document.getElementById('resample-btn');
+
+        const canvasGauss = document.getElementById('canvas-gauss');
+        const canvasComplex = document.getElementById('canvas-complex');
+        const canvasAmp = document.getElementById('canvas-amp');
+        const canvasPhase = document.getElementById('canvas-phase');
+
+        // State & Samples
+        let samples = [];
+        let amp = [];
+        let phase = [];
+        const N = 1500; // Optimal sample size for fast browser rendering
+
+        // Box-Muller transform for randn
+        function randn() {
+            let u = 0, v = 0;
+            while(u === 0) u = Math.random();
+            while(v === 0) v = Math.random();
+            return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        }
+
+        // Polynomial approximation of scaled modified Bessel function I0(z)*exp(-|z|)
+        // Prevents floating point overflow at large values of z
+        function scaledBesseli0(z) {
+            let abs_z = Math.abs(z);
+            if (abs_z <= 3.75) {
+                let t = z / 3.75;
+                let t2 = t * t;
+                // Unscaled I0
+                let i0 = 1.0 + 3.5156229 * t2 + 3.0899424 * Math.pow(t2, 2) + 1.2067492 * Math.pow(t2, 3) + 0.2659732 * Math.pow(t2, 4) + 0.0360768 * Math.pow(t2, 5) + 0.0045813 * Math.pow(t2, 6);
+                return i0 * Math.exp(-abs_z);
+            } else {
+                let t = 3.75 / abs_z;
+                // Asymptotic expansion representing I0(z)*exp(-|z|) directly
+                return (1.0 / Math.sqrt(abs_z)) * (0.39894228 + 0.01328592 * t + 0.00225319 * t * t - 0.00157565 * Math.pow(t, 3) + 0.00916281 * Math.pow(t, 4) - 0.02057706 * Math.pow(t, 5) + 0.02635537 * Math.pow(t, 6) - 0.01647633 * Math.pow(t, 7) + 0.00392377 * Math.pow(t, 8));
+            }
+        }
+
+        // erfc function numerical approximation (error < 1.5e-7)
+        function erfc(x) {
+            let w = Math.abs(x);
+            let p = 0.3275911;
+            let a1 = 0.254829592;
+            let a2 = -0.284496736;
+            let a3 = 1.421413741;
+            let a4 = -1.453152027;
+            let a5 = 1.061405429;
+            let t = 1.0 / (1.0 + p * w);
+            let poly = (a1 * t + a2 * t * t + a3 * Math.pow(t, 3) + a4 * Math.pow(t, 4) + a5 * Math.pow(t, 5));
+            let val = poly * Math.exp(-w * w);
+            return x >= 0 ? val : 2.0 - val;
+        }
+
+        function qfunc(x) {
+            return 0.5 * erfc(x / Math.sqrt(2.0));
+        }
+
+        // Gaussian Normal PDF
+        function normpdf(x, mu, sigma) {
+            return Math.exp(-Math.pow(x - mu, 2) / (2 * sigma * sigma)) / (sigma * Math.sqrt(2 * Math.PI));
+        }
+
+        // Generate Fading Channel Samples
+        function generateSamples(m1, m2, sigma) {
+            samples = [];
+            amp = [];
+            phase = [];
+            for (let i = 0; i < N; i++) {
+                let x = m1 + sigma * randn();
+                let y = m2 + sigma * randn();
+                let r = Math.sqrt(x*x + y*y);
+                let theta = Math.atan2(y, x);
+                samples.push({ x, y });
+                amp.push(r);
+                phase.push(theta);
+            }
+        }
+
+        // Helper to draw a standard plot grid/axes background
+        function setupPlotAxes(ctx, width, height, xMin, xMax, yMin, yMax, title, isDark) {
+            // Draw card background
+            ctx.fillStyle = isDark ? '#1e293b' : '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+
+            // Padding
+            const padL = 40;
+            const padR = 15;
+            const padT = 32;
+            const padB = 25;
+
+            const graphW = width - padL - padR;
+            const graphH = height - padT - padB;
+
+            // Draw grid lines
+            ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
+            ctx.lineWidth = 1;
+            
+            // X-axis grid lines
+            for (let i = 0; i <= 4; i++) {
+                let gx = padL + (i / 4) * graphW;
+                ctx.beginPath();
+                ctx.moveTo(gx, padT);
+                ctx.lineTo(gx, padT + graphH);
+                ctx.stroke();
+
+                // Label
+                let val = xMin + (i / 4) * (xMax - xMin);
+                ctx.fillStyle = isDark ? '#94a3b8' : '#64748b';
+                ctx.font = '9px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText(val.toFixed(1), gx, padT + graphH + 12);
+            }
+
+            // Y-axis grid lines
+            for (let i = 0; i <= 4; i++) {
+                let gy = padT + (i / 4) * graphH;
+                ctx.beginPath();
+                ctx.moveTo(padL, gy);
+                ctx.lineTo(padL + graphW, gy);
+                ctx.stroke();
+
+                // Label
+                let val = yMax - (i / 4) * (yMax - yMin);
+                ctx.fillStyle = isDark ? '#94a3b8' : '#64748b';
+                ctx.font = '9px monospace';
+                ctx.textAlign = 'right';
+                ctx.fillText(val.toFixed(2), padL - 5, gy + 3);
+            }
+
+            // Draw primary border outline
+            ctx.strokeStyle = isDark ? '#334155' : '#cbd5e1';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.rect(padL, padT, graphW, graphH);
+            ctx.stroke();
+
+            // Draw Title
+            ctx.fillStyle = isDark ? '#f8fafc' : '#0f172a';
+            ctx.font = '600 11px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(title, width / 2, padT - 12);
+
+            return { padL, padR, padT, padB, graphW, graphH };
+        }
+
+        // Coordinate transformation helpers
+        function getCanvasX(val, xMin, xMax, padL, graphW) {
+            return padL + ((val - xMin) / (xMax - xMin)) * graphW;
+        }
+
+        function getCanvasY(val, yMin, yMax, padT, graphH) {
+            return padT + (1.0 - (val - yMin) / (yMax - yMin)) * graphH;
+        }
+
+        // Main Simulation Draw Function
+        function updateSimulation() {
+            const m1 = parseFloat(m1Slider.value);
+            const m2 = parseFloat(m2Slider.value);
+            const sigma = parseFloat(sigmaSlider.value);
+
+            // Update UI Labels
+            m1Val.textContent = m1.toFixed(1);
+            m2Val.textContent = m2.toFixed(1);
+            sigmaVal.textContent = sigma.toFixed(1);
+
+            // Compute Derived Parameters
+            const s = Math.sqrt(m1*m1 + m2*m2);
+            const K = (s*s) / (2 * sigma * sigma);
+            const K_dB = 10 * Math.log10(K);
+            
+            // Empirical Mean & Variance
+            let sumAmp = 0;
+            let sumSqAmp = 0;
+            for(let i=0; i<N; i++) {
+                sumAmp += amp[i];
+                sumSqAmp += amp[i] * amp[i];
+            }
+            const empMean = sumAmp / N;
+            const empVar = (sumSqAmp / N) - (empMean * empMean);
+
+            derivedS.textContent = s.toFixed(3);
+            derivedK.textContent = K.toFixed(3);
+            derivedKdb.textContent = isFinite(K_dB) ? K_dB.toFixed(2) + ' dB' : '-inf dB';
+            derivedMean.textContent = empMean.toFixed(3);
+            derivedVar.textContent = empVar.toFixed(3);
+
+            // Get Theme State
+            const isDark = document.body.classList.contains('dark-mode');
+
+            // ----------------------------------------------------
+            // PLOT 1: Gaussian components
+            // ----------------------------------------------------
+            let ctx = canvasGauss.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvasGauss.width / dpr;
+            const h = canvasGauss.height / dpr;
+            ctx.clearRect(0, 0, w, h);
+
+            let gaussMin = Math.min(m1, m2) - 3.5 * sigma;
+            let gaussMax = Math.max(m1, m2) + 3.5 * sigma;
+            let gaussYMax = 1.1 / (sigma * Math.sqrt(2 * Math.PI));
+
+            let layout = setupPlotAxes(ctx, w, h, gaussMin, gaussMax, 0, gaussYMax, 'Underlying Gaussian Components', isDark);
+
+            // Draw Real Component curve (Green)
+            ctx.beginPath();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            for(let i=0; i<=150; i++) {
+                let val = gaussMin + (i / 150) * (gaussMax - gaussMin);
+                let yVal = normpdf(val, m1, sigma);
+                let cx = getCanvasX(val, gaussMin, gaussMax, layout.padL, layout.graphW);
+                let cy = getCanvasY(yVal, 0, gaussYMax, layout.padT, layout.graphH);
+                if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+            }
+            ctx.stroke();
+
+            // Draw Imaginary Component curve (Blue)
+            ctx.beginPath();
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = 1.5;
+            for(let i=0; i<=150; i++) {
+                let val = gaussMin + (i / 150) * (gaussMax - gaussMin);
+                let yVal = normpdf(val, m2, sigma);
+                let cx = getCanvasX(val, gaussMin, gaussMax, layout.padL, layout.graphW);
+                let cy = getCanvasY(yVal, 0, gaussYMax, layout.padT, layout.graphH);
+                if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+            }
+            ctx.stroke();
+
+            // Legend
+            ctx.fillStyle = '#10b981';
+            ctx.fillRect(layout.padL + 12, layout.padT + 10, 8, 4);
+            ctx.fillStyle = isDark ? '#e2e8f0' : '#334155';
+            ctx.font = '9px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Real (m1=' + m1.toFixed(1) + ')', layout.padL + 24, layout.padT + 14);
+
+            ctx.fillStyle = '#3b82f6';
+            ctx.fillRect(layout.padL + 12, layout.padT + 22, 8, 4);
+            ctx.fillStyle = isDark ? '#e2e8f0' : '#334155';
+            ctx.fillText('Imag (m2=' + m2.toFixed(1) + ')', layout.padL + 24, layout.padT + 26);
+
+            // ----------------------------------------------------
+            // PLOT 2: Complex Sample Scatter
+            // ----------------------------------------------------
+            ctx = canvasComplex.getContext('2d');
+            ctx.clearRect(0, 0, w, h);
+
+            let compXMin = m1 - 3 * sigma;
+            let compXMax = m1 + 3 * sigma;
+            let compYMin = m2 - 3 * sigma;
+            let compYMax = m2 + 3 * sigma;
+
+            layout = setupPlotAxes(ctx, w, h, compXMin, compXMax, compYMin, compYMax, 'Complex Sample Plane', isDark);
+
+            // Scatter points
+            ctx.fillStyle = isDark ? 'rgba(59, 130, 246, 0.22)' : 'rgba(59, 130, 246, 0.26)';
+            for(let i=0; i<N; i++) {
+                let cx = getCanvasX(samples[i].x, compXMin, compXMax, layout.padL, layout.graphW);
+                let cy = getCanvasY(samples[i].y, compYMin, compYMax, layout.padT, layout.graphH);
+                if (cx >= layout.padL && cx <= layout.padL + layout.graphW && cy >= layout.padT && cy <= layout.padT + layout.graphH) {
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 1.5, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+            }
+
+            // Draw 1-sigma & 2-sigma circles centered at (m1, m2)
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.45)' : 'rgba(15, 23, 42, 0.5)';
+            ctx.setLineDash([4, 3]);
+            
+            // 1-sigma circle
+            ctx.beginPath();
+            for(let th = 0; th <= 72; th++) {
+                let angle = (th / 72) * 2 * Math.PI;
+                let sx = m1 + sigma * Math.cos(angle);
+                let sy = m2 + sigma * Math.sin(angle);
+                let cx = getCanvasX(sx, compXMin, compXMax, layout.padL, layout.graphW);
+                let cy = getCanvasY(sy, compYMin, compYMax, layout.padT, layout.graphH);
+                if (th === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+            }
+            ctx.stroke();
+
+            // 2-sigma circle
+            ctx.strokeStyle = '#ef4444';
+            ctx.beginPath();
+            for(let th = 0; th <= 72; th++) {
+                let angle = (th / 72) * 2 * Math.PI;
+                let sx = m1 + 2 * sigma * Math.cos(angle);
+                let sy = m2 + 2 * sigma * Math.sin(angle);
+                let cx = getCanvasX(sx, compXMin, compXMax, layout.padL, layout.graphW);
+                let cy = getCanvasY(sy, compYMin, compYMax, layout.padT, layout.graphH);
+                if (th === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]); // Restore normal lines
+
+            // Draw Specular Mean marker (Black/White cross)
+            let meanCx = getCanvasX(m1, compXMin, compXMax, layout.padL, layout.graphW);
+            let meanCy = getCanvasY(m2, compYMin, compYMax, layout.padT, layout.graphH);
+            ctx.strokeStyle = isDark ? '#ffffff' : '#0f172a';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(meanCx - 5, meanCy);
+            ctx.lineTo(meanCx + 5, meanCy);
+            ctx.moveTo(meanCx, meanCy - 5);
+            ctx.lineTo(meanCx, meanCy + 5);
+            ctx.stroke();
+
+            // ----------------------------------------------------
+            // PLOT 3: Amplitude PDF
+            // ----------------------------------------------------
+            ctx = canvasAmp.getContext('2d');
+            ctx.clearRect(0, 0, w, h);
+
+            let maxAmp = Math.max(...amp);
+            let ampXMax = Math.max(10.0, maxAmp + 1.0);
+            
+            // Build Histogram
+            const numBins = 24;
+            let histCounts = new Array(numBins).fill(0);
+            let binWidth = ampXMax / numBins;
+            for(let i=0; i<N; i++) {
+                let idx = Math.floor(amp[i] / binWidth);
+                if (idx >= 0 && idx < numBins) histCounts[idx]++;
+            }
+            
+            // Normalize Histogram
+            let histPDF = histCounts.map(count => count / (N * binWidth));
+            let maxHistPDF = Math.max(...amp) > 0 ? Math.max(...histPDF) : 0;
+
+            // Compute Analytical Curve (using scaled Bessel to prevent NaN/Infinity)
+            let analyticalAmp = [];
+            let analyticalAmpMax = 0;
+            for(let i=0; i<=120; i++) {
+                let xVal = (i / 120) * ampXMax;
+                let z = (xVal * s) / (sigma * sigma);
+                let exponent = -Math.pow(xVal - s, 2) / (2 * sigma * sigma);
+                let val = (xVal / (sigma * sigma)) * scaledBesseli0(z) * Math.exp(exponent);
+                analyticalAmp.push({ x: xVal, y: val });
+                if (val > analyticalAmpMax) analyticalAmpMax = val;
+            }
+
+            let ampYMax = Math.max(0.1, maxHistPDF, analyticalAmpMax) * 1.15;
+            layout = setupPlotAxes(ctx, w, h, 0, ampXMax, 0, ampYMax, 'Amplitude PDF (Rician)', isDark);
+
+            // Draw Simulation Histogram bars (Blue)
+            ctx.fillStyle = isDark ? 'rgba(59, 130, 246, 0.45)' : 'rgba(59, 130, 246, 0.55)';
+            ctx.strokeStyle = isDark ? 'rgba(59, 130, 246, 0.8)' : 'rgba(59, 130, 246, 0.7)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < numBins; i++) {
+                let startX = i * binWidth;
+                let barH = histPDF[i];
+                let cx1 = getCanvasX(startX, 0, ampXMax, layout.padL, layout.graphW);
+                let cx2 = getCanvasX(startX + binWidth, 0, ampXMax, layout.padL, layout.graphW);
+                let cy1 = getCanvasY(barH, 0, ampYMax, layout.padT, layout.graphH);
+                let cy2 = getCanvasY(0, 0, ampYMax, layout.padT, layout.graphH);
+
+                ctx.fillRect(cx1 + 0.5, cy1, cx2 - cx1 - 1, cy2 - cy1);
+                ctx.strokeRect(cx1 + 0.5, cy1, cx2 - cx1 - 1, cy2 - cy1);
+            }
+
+            // Draw exact Rician analytical line (Red)
+            ctx.beginPath();
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2;
+            for(let i=0; i<analyticalAmp.length; i++) {
+                let cx = getCanvasX(analyticalAmp[i].x, 0, ampXMax, layout.padL, layout.graphW);
+                let cy = getCanvasY(analyticalAmp[i].y, 0, ampYMax, layout.padT, layout.graphH);
+                if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+            }
+            ctx.stroke();
+
+            // ----------------------------------------------------
+            // PLOT 4: Phase PDF
+            // ----------------------------------------------------
+            ctx = canvasPhase.getContext('2d');
+            ctx.clearRect(0, 0, w, h);
+
+            let phaseXMin = -Math.PI;
+            let phaseXMax = Math.PI;
+
+            // Build Histogram
+            let histPhaseCounts = new Array(numBins).fill(0);
+            let binPhaseWidth = (2 * Math.PI) / numBins;
+            for(let i=0; i<N; i++) {
+                let idx = Math.floor((phase[i] + Math.PI) / binPhaseWidth);
+                if (idx >= 0 && idx < numBins) histPhaseCounts[idx]++;
+            }
+
+            // Normalize
+            let histPhasePDF = histPhaseCounts.map(count => count / (N * binPhaseWidth));
+            let maxPhaseHistPDF = Math.max(...histPhasePDF);
+
+            // Compute Analytical curve
+            let analyticalPhase = [];
+            let analyticalPhaseMax = 0;
+            for(let i=0; i<=120; i++) {
+                let phi = phaseXMin + (i / 120) * (phaseXMax - phaseXMin);
+                let m_til = m1 * Math.cos(phi) + m2 * Math.sin(phi);
+                let f_phi = (1.0 / (2*Math.PI) * Math.exp(-s*s / (2*sigma*sigma))) + 
+                            (m_til / (Math.sqrt(2*Math.PI) * sigma)) * Math.exp((m_til*m_til - s*s) / (2 * sigma * sigma)) * qfunc(-m_til / sigma);
+                analyticalPhase.push({ x: phi, y: f_phi });
+                if (f_phi > analyticalPhaseMax) analyticalPhaseMax = f_phi;
+            }
+
+            let phaseYMax = Math.max(0.18, maxPhaseHistPDF, analyticalPhaseMax) * 1.15;
+            layout = setupPlotAxes(ctx, w, h, phaseXMin, phaseXMax, 0, phaseYMax, 'Phase PDF', isDark);
+
+            // Draw Simulation Histogram bars (Blue)
+            ctx.fillStyle = isDark ? 'rgba(59, 130, 246, 0.45)' : 'rgba(59, 130, 246, 0.55)';
+            ctx.strokeStyle = isDark ? 'rgba(59, 130, 246, 0.8)' : 'rgba(59, 130, 246, 0.7)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < numBins; i++) {
+                let startX = -Math.PI + i * binPhaseWidth;
+                let barH = histPhasePDF[i];
+                let cx1 = getCanvasX(startX, phaseXMin, phaseXMax, layout.padL, layout.graphW);
+                let cx2 = getCanvasX(startX + binPhaseWidth, phaseXMin, phaseXMax, layout.padL, layout.graphW);
+                let cy1 = getCanvasY(barH, 0, phaseYMax, layout.padT, layout.graphH);
+                let cy2 = getCanvasY(0, 0, phaseYMax, layout.padT, layout.graphH);
+
+                ctx.fillRect(cx1 + 0.5, cy1, cx2 - cx1 - 1, cy2 - cy1);
+                ctx.strokeRect(cx1 + 0.5, cy1, cx2 - cx1 - 1, cy2 - cy1);
+            }
+
+            // Draw exact Phase analytical line (Red)
+            ctx.beginPath();
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2;
+            for(let i=0; i<analyticalPhase.length; i++) {
+                let cx = getCanvasX(analyticalPhase[i].x, phaseXMin, phaseXMax, layout.padL, layout.graphW);
+                let cy = getCanvasY(analyticalPhase[i].y, 0, phaseYMax, layout.padT, layout.graphH);
+                if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+            }
+            ctx.stroke();
+        }
+
+        // Initialize and Setup Retina DPR Scaling
+        function setupCanvasDpr(canvas) {
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+        }
+
+        function initAllCanvases() {
+            setupCanvasDpr(canvasGauss);
+            setupCanvasDpr(canvasComplex);
+            setupCanvasDpr(canvasAmp);
+            setupCanvasDpr(canvasPhase);
+        }
+
+        // Resize Listener
+        window.addEventListener('resize', () => {
+            initAllCanvases();
+            updateSimulation();
+        });
+
+        // Sliders Listeners
+        m1Slider.addEventListener('input', updateSimulation);
+        m2Slider.addEventListener('input', updateSimulation);
+        sigmaSlider.addEventListener('input', updateSimulation);
+
+        // Resample Listener
+        resampleBtn.addEventListener('click', () => {
+            const m1 = parseFloat(m1Slider.value);
+            const m2 = parseFloat(m2Slider.value);
+            const sigma = parseFloat(sigmaSlider.value);
+            generateSamples(m1, m2, sigma);
+            updateSimulation();
+        });
+
+        // Initial setup
+        initAllCanvases();
+        generateSamples(1.0, 5.0, 4.0);
+        updateSimulation();
+
+        // Assign global handle for theme switches
+        window.updateRicianSim = updateSimulation;
 
         // Scroll reveal
         const revealObserver = new IntersectionObserver(entries => {
