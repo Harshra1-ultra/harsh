@@ -122,6 +122,8 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -132,6 +134,7 @@
             transition: background-color 0.4s, color 0.4s;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -1896,6 +1899,9 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
             .nav-links {
                 display: none;
                 position: absolute;
@@ -1922,8 +1928,15 @@
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
             .hero { padding-top: 100px; min-height: auto; padding-bottom: 4rem; }
             .hero-text h1 { font-size: 2rem; }
+            .hero-title-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
             .hero-plane-gif { width: 95px; }
             .hero-avatar { width: 160px; height: 160px; }
 
