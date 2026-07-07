@@ -980,6 +980,7 @@
             box-shadow: var(--shadow-sm);
             aspect-ratio: 1.3 / 1;
             position: relative;
+            overflow: hidden; /* Added to clip canvas corners */
         }
 
         .sim-plot-card canvas {
@@ -1551,7 +1552,7 @@
         // Helper to draw a standard plot grid/axes background
         function setupPlotAxes(ctx, width, height, xMin, xMax, yMin, yMax, title, isDark) {
             // Draw card background
-            ctx.fillStyle = isDark ? '#1e293b' : '#ffffff';
+            ctx.fillStyle = isDark ? '#1a1a1a' : '#ffffff';
             ctx.fillRect(0, 0, width, height);
 
             // Padding
