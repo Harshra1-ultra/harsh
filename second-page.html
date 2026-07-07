@@ -1034,6 +1034,15 @@
             .software-actions { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
         }
 
+        @media (max-width: 600px) {
+            .sim-dashboard {
+                padding: 1rem;
+            }
+            .sim-plots {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 480px) {
             .page-hero { padding: 7rem 0 3rem; }
             .page-hero h1 { font-size: 1.8rem; }
