@@ -1,0 +1,6 @@
+# Crawling rules for search engine bots
+User-agent: *
+Allow: /
+
+# Sitemap link
+Sitemap: https://harshra1-ultra.github.io/sitemap.xml
