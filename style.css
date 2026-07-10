@@ -2185,7 +2185,7 @@ footer {
    PRINT SPECIFIC SYSTEM
    ======================================================== */
 @media print {
-    #sidebar, .sidebar-trigger, .notion-topbar, .cv-toolbar, .back-to-top, footer, .bibtex-card, .copy-bib-btn, .notion-cover, .site-profile-header, .runner-profile-panel {
+    #sidebar, .sidebar-trigger, .notion-topbar, .cv-toolbar, .back-to-top, footer, .bibtex-card, .copy-bib-btn, .notion-cover, .site-profile-header, .runner-profile-panel, .research-runner-hero {
         display: none !important;
     }
 

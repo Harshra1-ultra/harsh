@@ -231,6 +231,9 @@
             </div>
         </aside>
 
+        <!-- Sidebar backdrop for mobile close-on-click -->
+        <button class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close navigation"></button>
+
         <!-- Sidebar Trigger Button -->
         <button class="sidebar-trigger" id="sidebarTrigger" aria-label="Expand sidebar">
             <i class="fas fa-bars"></i>
@@ -248,13 +251,22 @@
                 </div>
             </div>
 
-            <section class="site-profile-header" aria-labelledby="conference-title">
-                <div class="site-profile-copy">
-                    <p class="site-profile-kicker">RESEARCH PORTFOLIO / EVENTS</p>
-                    <h1 id="conference-title">Upcoming Conferences</h1>
-                    <p class="conference-updated"><i class="fas fa-clock"></i> Last updated: <time id="conferenceLastUpdated"></time></p>
+            <section class="research-runner-hero" aria-labelledby="conference-title">
+                <canvas class="cover-canvas" aria-hidden="false"></canvas>
+                <div class="runner-hero-content">
+                    <p class="runner-eyebrow"><span></span> Research portfolio / Conferences</p>
+                    <h1 id="conference-title">Conferences</h1>
+                    <p class="runner-role">Events &amp; Deadlines Tracker</p>
+                    <p class="runner-intro">Tracking call for papers, submission deadlines, and key wireless communication conferences.</p>
+                    <div class="runner-hero-actions">
+                        <a class="runner-action runner-action-primary" href="#react-calendar-root">View Tracker <i class="fas fa-arrow-down"></i></a>
+                        <span class="runner-action" style="background:transparent; border:none; display:inline-flex; align-items:center; color:var(--text-secondary); pointer-events:none;"><i class="fas fa-clock" style="margin-right:6px;"></i> Last updated: <time id="conferenceLastUpdated"></time></span>
+                    </div>
                 </div>
-                <img src="Harsh.jpeg" alt="Portrait of Harsh Raj" class="site-profile-photo" />
+                <div class="runner-profile-panel">
+                    <img src="Harsh.jpeg" alt="Portrait of Harsh Raj" />
+                </div>
+                <p class="runner-caption"><span></span> Currently a PhD Student at IIT Guwahati</p>
             </section>
 
             <div class="container">
@@ -277,14 +289,41 @@
                 <div id="react-calendar-root"></div>
             </div>
 
-            <!-- Footer -->
-            <footer class="footer">
-                <p class="copyright">© 2026 Harsh Raj. Inspired by Notion.</p>
-                <div class="social-row">
-                    <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="social-icon"><i class="fab fa-google-scholar"></i></a>
-                    <a href="https://github.com/Harshra1-ultra" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/harshraone" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <!-- ============ FOOTER ============ -->
+            <footer>
+                <div class="container">
+                    <div class="footer-grid">
+                        <div>
+                            <div class="footer-brand-title">Harsh Raj</div>
+                            <p>Ph.D. Scholar at IIT Guwahati. Specializing in next-gen reconfigurable wireless networks and communication signal processing.</p>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Directory</h4>
+                            <ul>
+                                <li><a href="index.html#about">About</a></li>
+                                <li><a href="index.html#education">Education</a></li>
+                                <li><a href="index.html#publications">Publications</a></li>
+                                <li><a href="second-page.html">Projects</a></li>
+                                <li><a href="cv.html">CV</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Connect</h4>
+                            <div class="footer-social-row">
+                                <a href="https://github.com/Harshra1-ultra" target="_blank" class="footer-social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="footer-social-btn" aria-label="Scholar"><i class="fab fa-google-scholar"></i></a>
+                                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/harshraone" target="_blank" class="footer-social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <p class="footer-copy">&copy; <span id="currentYear"></span> Harsh Raj. All rights reserved.</p>
+                        <div class="footer-time">
+                            <i class="fas fa-map-marker-alt"></i> Guwahati, Assam &nbsp;|&nbsp; <span class="pulse-dot"></span> <span id="liveTime"></span>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </main>
@@ -965,5 +1004,7 @@
             updated.textContent = text;
         })();
     </script>
+    <!-- Centralized Logic Script -->
+    <script src="script.js"></script>
 </body>
 </html>

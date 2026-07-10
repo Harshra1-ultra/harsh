@@ -104,6 +104,9 @@
             </div>
         </aside>
 
+        <!-- Sidebar backdrop for mobile close-on-click -->
+        <button class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close navigation"></button>
+
         <!-- Sidebar Trigger Button for mobile/collapsed states -->
         <button class="sidebar-trigger" id="sidebarTrigger" aria-label="Expand sidebar">
             <i class="fas fa-bars"></i>
@@ -121,14 +124,22 @@
                 </div>
             </div>
 
-            <section class="site-profile-header" aria-labelledby="cv-title">
-                <div class="site-profile-copy">
-                    <p class="site-profile-kicker">RESEARCH PORTFOLIO / 2026</p>
-                    <h1 id="cv-title">Harsh Raj</h1>
-                    <p class="site-profile-role">Research Scholar <b>·</b> IIT Guwahati</p>
-                    <p>Working on ISAC, IRS, MIMO, Beamforming, Machine Learning, B5G/6G Networks.</p>
+            <section class="research-runner-hero" aria-labelledby="cv-title">
+                <canvas class="cover-canvas" aria-hidden="false"></canvas>
+                <div class="runner-hero-content">
+                    <p class="runner-eyebrow"><span></span> Research portfolio / CV</p>
+                    <h1 id="cv-title">Curriculum Vitae</h1>
+                    <p class="runner-role">Academic &amp; Professional Record</p>
+                    <p class="runner-intro">Detailed record of education, publications, teaching assistantships, and professional awards.</p>
+                    <div class="runner-hero-actions">
+                        <button class="runner-action runner-action-primary" onclick="window.print()">Print / Save CV <i class="fas fa-print"></i></button>
+                        <a class="runner-action" href="Harsh_Raj_CV.pdf" target="_blank">Download PDF <i class="fas fa-file-pdf"></i></a>
+                    </div>
                 </div>
-                <img src="Harsh.jpeg" alt="Portrait of Harsh Raj" class="site-profile-photo" />
+                <div class="runner-profile-panel">
+                    <img src="Harsh.jpeg" alt="Portrait of Harsh Raj" />
+                </div>
+                <p class="runner-caption"><span></span> Currently a PhD Student at IIT Guwahati</p>
             </section>
 
             <div class="container">
