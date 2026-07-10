@@ -2174,16 +2174,23 @@ footer {
 }
 
 @media (max-width: 600px) {
+    .runner-hero-content {
+        width: 58% !important;
+        padding-left: 20px !important;
+        padding-right: 0 !important;
+    }
     .runner-hero-actions {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
     .runner-action {
-        width: 100%;
-        max-width: 170px;
+        width: 100% !important;
+        max-width: 170px !important;
         justify-content: center;
         box-sizing: border-box;
+        font-size: 0.72rem !important;
+        padding: 8px 10px !important;
     }
 }
 
@@ -2192,12 +2199,6 @@ footer {
         width: 135px !important;
         height: 135px !important;
         right: 15px !important;
-    }
-    .runner-intro {
-        max-width: calc(100% - 130px) !important;
-    }
-    .runner-hero-actions {
-        max-width: calc(100% - 130px) !important;
     }
     .runner-caption {
         right: 15px !important;
@@ -2210,12 +2211,6 @@ footer {
         width: 110px !important;
         height: 110px !important;
         right: 10px !important;
-    }
-    .runner-intro {
-        max-width: calc(100% - 100px) !important;
-    }
-    .runner-hero-actions {
-        max-width: 130px !important;
     }
     .runner-caption {
         right: 10px !important;
