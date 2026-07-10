@@ -110,9 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Auto collapse sidebar on resize
+    // Auto collapse sidebar on resize (only if width changes to prevent mobile address bar glitches)
+    let lastWidth = window.innerWidth;
     let resizeTimer;
     window.addEventListener('resize', () => {
+        const currentWidth = window.innerWidth;
+        if (currentWidth === lastWidth) return; // Skip height-only changes caused by mobile scrolling
+        lastWidth = currentWidth;
+
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
             const mobile = window.innerWidth <= 900;
