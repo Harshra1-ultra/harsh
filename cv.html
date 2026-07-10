@@ -11,7 +11,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Harsh Raj — Curriculum Vitae (CV)" />
     <meta property="og:description" content="Academic Curriculum Vitae (CV) of Harsh Raj, Ph.D. Scholar at IIT Guwahati." />
-    <meta property="og:image" content="harsh_profile.jpg" />
+    <meta property="og:image" content="Harsh.jpeg" />
 
     <!-- JSON-LD Structured Data (Google Schema) -->
     <script type="application/ld+json">
@@ -26,982 +26,379 @@
       }
     }
     </script>
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     
-    <style>
-        /* ============================
-           CSS DESIGN SYSTEM & VARIABLE SYNC
-        ============================ */
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-card: rgba(255,255,255,0.85);
-            --bg-card-solid: #ffffff;
-            --bg-nav: rgba(255,255,255,0.85);
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #64748b;
-            --heading-color: #0f172a;
-            --accent-1: #1d4ed8;
-            --accent-2: #2563eb;
-            --accent-3: #0f766e;
-            --gradient-accent: linear-gradient(135deg, #1d4ed8, #2563eb, #3b82f6);
-            --border-color: rgba(15, 23, 42, 0.08);
-            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.03);
-            --shadow-md: 0 4px 20px rgba(15, 23, 42, 0.05);
-            --shadow-lg: 0 8px 40px rgba(15, 23, 42, 0.08);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --font-heading: 'Outfit', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body.dark-mode {
-            --bg-primary: #0d0d0d;
-            --bg-secondary: #141414;
-            --bg-card: rgba(26,26,26,0.75);
-            --bg-card-solid: #1a1a1a;
-            --bg-nav: rgba(13,13,13,0.85);
-            --text-primary: #e8e8e8;
-            --text-secondary: #a0a0a0;
-            --text-muted: #606060;
-            --heading-color: #f0f0f0;
-            --accent-1: #3b82f6;
-            --accent-2: #60a5fa;
-            --accent-3: #06b6d4;
-            --gradient-accent: linear-gradient(135deg, #2563eb, #3b82f6, #60a5fa);
-            --border-color: rgba(255,255,255,0.06);
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.35);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.45);
-        }
-
-        *, *::before, *::after {
-            margin: 0; padding: 0; box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-secondary);
-            color: var(--text-secondary);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            padding-bottom: 5rem;
-            transition: background-color var(--transition-fast), color var(--transition-fast);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* ============================
-           CV TOP TOOLBAR
-        ============================ */
-        .cv-toolbar {
-            background: var(--bg-nav);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            padding: 0.8rem 0;
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .toolbar-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .toolbar-left a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color var(--transition-fast);
-        }
-
-        .toolbar-left a:hover {
-            color: var(--accent-1);
-        }
-
-        .toolbar-right {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            text-decoration: none;
-            border: 1px solid var(--border-color);
-            font-family: var(--font-body);
-        }
-
-        .btn-primary {
-            background: var(--accent-1);
-            color: #ffffff !important;
-            border-color: var(--accent-1);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-2);
-            border-color: var(--accent-2);
-            transform: translateY(-1.5px);
-        }
-
-        .btn-outline {
-            background: var(--bg-card-solid);
-            color: var(--text-primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--bg-secondary);
-            border-color: var(--accent-1);
-            color: var(--accent-1);
-            transform: translateY(-1.5px);
-        }
-
-        .theme-btn {
-            background: var(--bg-card-solid);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            width: 38px; height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.95rem;
-            transition: all var(--transition-fast);
-        }
-
-        .theme-btn:hover {
-            transform: scale(1.05);
-            border-color: var(--accent-1);
-        }
-
-        /* ============================
-           CV PAPER CONTAINER
-        ============================ */
-        .cv-paper {
-            background: var(--bg-card-solid);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 3rem;
-        }
-
-        /* ============ CV HEADER ============ */
-        .cv-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2.5rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .cv-title-block h1 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--heading-color);
-            margin-bottom: 0.3rem;
-            letter-spacing: -0.02em;
-        }
-
-        .cv-title-block .designation {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--accent-1);
-            margin-bottom: 0.4rem;
-        }
-
-        .cv-title-block .dept {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .cv-title-block .inst {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .cv-photo-wrapper {
-            width: 130px; height: 130px;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .cv-photo-wrapper img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
-
-        /* ============ CONTACT INFO ============ */
-        .cv-contacts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 1.25rem;
-        }
-
-        .contact-item {
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .contact-item i {
-            color: var(--accent-1);
-            font-size: 0.95rem;
-            width: 18px;
-            text-align: center;
-        }
-
-        .contact-item a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-        .contact-item a:hover {
-            color: var(--accent-1);
-            text-decoration: underline;
-        }
-
-        /* ============ CV SECTIONS ============ */
-        .cv-section {
-            margin-bottom: 2.2rem;
-        }
-
-        .cv-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .cv-section-title {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--heading-color);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-left: 3px solid var(--accent-1);
-            padding-left: 0.75rem;
-            margin-bottom: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .cv-section p {
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* ============ LISTS & ENTRIES ============ */
-        .interest-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.4rem;
-        }
-
-        .interest-tag {
-            font-size: 0.8rem;
-            font-weight: 550;
-            color: var(--accent-1);
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 0.3rem 0.75rem;
-            border-radius: 50px;
-        }
-
-        /* Timeline / Education */
-        .cv-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .timeline-entry {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .entry-time {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-1);
-            width: 140px;
-            flex-shrink: 0;
-            text-align: right;
-            padding-top: 0.15rem;
-        }
-
-        .entry-details {
-            flex: 1;
-        }
-
-        .entry-details h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.15rem;
-        }
-
-        .entry-details .inst-name {
-            font-size: 0.85rem;
-            font-weight: 550;
-            color: var(--text-secondary);
-            margin-bottom: 0.3rem;
-        }
-
-        .entry-details p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* TA Grid */
-        .ta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .ta-course-card {
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 0.9rem 1.1rem;
-            background: var(--bg-secondary);
-        }
-
-        .ta-course-code {
-            font-size: 0.72rem;
-            font-weight: 750;
-            color: var(--accent-1);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.25rem;
-        }
-
-        .ta-course-card h4 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .ta-course-card p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Skills Lists */
-        .skills-list-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-group h4 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.25rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .skill-tag {
-            font-size: 0.78rem;
-            font-weight: 500;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        /* Placeholder cards */
-        .placeholder-box {
-            border: 1px dashed var(--border-color);
-            background: rgba(15, 23, 42, 0.01);
-            border-radius: var(--radius-sm);
-            padding: 1.5rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            font-style: italic;
-        }
-
-        /* ============================
-           RESPONSIVE OVERRIDES
-        ============================ */
-        @media (max-width: 768px) {
-            .cv-header {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 1.5rem;
-            }
-            .cv-photo-wrapper {
-                margin: 0 auto;
-            }
-            .timeline-entry {
-                flex-direction: column;
-                gap: 0.25rem;
-            }
-            .entry-time {
-                text-align: left;
-                width: auto;
-            }
-            .cv-paper {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cv-title-block h1 {
-                font-size: 1.8rem;
-            }
-            .cv-title-block .designation {
-                font-size: 1rem;
-            }
-            .cv-paper {
-                padding: 1.1rem;
-            }
-        }
-
-        /* Publications List in CV */
-        .cv-publications-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .cv-pub-item {
-            display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-        }
-
-        .pub-type-badge {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--accent-1);
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            width: 100px;
-            text-align: center;
-            flex-shrink: 0;
-            letter-spacing: 0.03em;
-        }
-
-        .cv-pub-content {
-            flex: 1;
-            font-size: 0.9rem;
-        }
-
-        .pub-number {
-            font-weight: 700;
-            color: var(--accent-1);
-            margin-right: 0.25rem;
-        }
-
-        .cv-pub-content strong {
-            color: var(--text-primary);
-        }
-
-        .cv-pub-content .pub-authors {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin: 0.2rem 0;
-        }
-
-        .cv-pub-content .pub-venue {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ============================
-           PRINT MEDIA STYLES (ATS & Print Friendly)
-        ============================ */
-        @media print {
-            body {
-                background: #ffffff !important;
-                color: #000000 !important;
-                padding: 0 !important;
-                font-size: 10pt !important;
-            }
-
-            .cv-toolbar,
-            .theme-btn,
-            .btn,
-            footer,
-            .back-to-top {
-                display: none !important;
-            }
-
-            .cv-paper {
-                border: none !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                background: #ffffff !important;
-            }
-
-            .cv-header {
-                border-bottom: 1.5pt solid #333333 !important;
-                padding-bottom: 1rem !important;
-                margin-bottom: 1.5rem !important;
-                flex-direction: row !important;
-                text-align: left !important;
-            }
-
-            .cv-title-block h1 {
-                font-size: 22pt !important;
-                color: #000000 !important;
-            }
-
-            .cv-title-block .designation {
-                color: #000000 !important;
-                font-size: 11pt !important;
-            }
-
-            .cv-contacts {
-                background: none !important;
-                border: none !important;
-                padding: 0 !important;
-                margin-bottom: 1.5rem !important;
-                grid-template-columns: repeat(3, 1fr) !important;
-            }
-
-            .contact-item {
-                font-size: 8.5pt !important;
-                color: #000000 !important;
-            }
-
-            .contact-item i {
-                color: #000000 !important;
-            }
-
-            .cv-section {
-                margin-bottom: 1.5rem !important;
-                page-break-inside: avoid !important;
-            }
-
-            .cv-section-title {
-                font-size: 11pt !important;
-                border-left: 2pt solid #000000 !important;
-                color: #000000 !important;
-                padding-left: 0.5rem !important;
-                margin-bottom: 0.6rem !important;
-            }
-
-            .entry-time {
-                color: #000000 !important;
-                width: 100px !important;
-            }
-
-            .ta-grid {
-                grid-template-columns: 1fr !important;
-                gap: 0.5rem !important;
-            }
-
-            .ta-course-card {
-                background: none !important;
-                border: 0.5pt solid #cccccc !important;
-                padding: 0.5rem !important;
-            }
-
-            .ta-course-code {
-                color: #000000 !important;
-            }
-
-            .skill-tag,
-            .interest-tag,
-            .pub-type-badge {
-                border: 0.5pt solid #cccccc !important;
-                background: none !important;
-                color: #000000 !important;
-            }
-
-            a {
-                color: #000000 !important;
-                text-decoration: none !important;
-            }
-        }
-    </style>
+    <!-- Centralized Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Toolbar -->
-    <div class="cv-toolbar">
-        <div class="container toolbar-content">
-            <div class="toolbar-left">
-                <a href="index.html"><i class="fas fa-arrow-left"></i> Portfolio Home</a>
-            </div>
-            <div class="toolbar-right">
-                <button onclick="window.print()" class="btn btn-outline"><i class="fas fa-print"></i> Print CV</button>
-                <a href="Harsh_Raj_CV.pdf" download class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</a>
-                <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- App Layout Wrap -->
+    <div id="app-container">
+
+        <!-- COLLAPSIBLE LEFT SIDEBAR (Notion Style) -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html#home" class="sidebar-brand">
+                    <img src="Harsh.jpeg" alt="Harsh" class="sidebar-brand-avatar">
+                    <span>Harsh Raj Profile</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Collapse sidebar">
+                    <i class="fas fa-angles-left"></i>
                 </button>
             </div>
-        </div>
-    </div>
-
-    <!-- Paper Container -->
-    <div class="container">
-        <main class="cv-paper">
             
-            <!-- Header Block -->
-            <header class="cv-header">
-                <div class="cv-title-block">
-                    <h1>Harsh Raj</h1>
-                    <p class="designation">Ph.D. Research Scholar</p>
-                    <p class="dept">Department of Electronics and Electrical Engineering</p>
-                    <p class="inst">Indian Institute of Technology Guwahati</p>
-                </div>
-                <div class="cv-photo-wrapper">
-                    <img src="Harsh.jpeg" alt="Harsh Raj" onerror="this.onerror=null; this.src='https://placehold.co/280x280/EBF8FF/6366f1?text=HR';">
-                </div>
-            </header>
+            <div class="sidebar-scroll">
+                <div class="sidebar-section-title">Pages</div>
+                <a href="index.html" class="sidebar-item">
+                    <span class="sidebar-item-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="second-page.html" class="sidebar-item">
+                    <span class="sidebar-item-icon">🚀</span>
+                    <span>Projects & Simulator</span>
+                </a>
+                <a href="cv.html" class="sidebar-item active">
+                    <span class="sidebar-item-icon">📄</span>
+                    <span>Curriculum Vitae</span>
+                </a>
+                <a href="conference.html" class="sidebar-item">
+                    <span class="sidebar-item-icon">📅</span>
+                    <span>Conference Tracker</span>
+                </a>
 
-            <!-- Contact Grid -->
-            <section class="cv-contacts">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:h.raj@iitg.ac.in">h.raj@iitg.ac.in</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>IIT Guwahati, Assam, India</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-google-scholar"></i>
-                    <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank">Google Scholar Profile</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-orcid"></i>
-                    <a href="https://orcid.org/0009-0009-5773-6266" target="_blank">0009-0009-5773-6266</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/Harshra1-ultra" target="_blank">Harshra1-ultra</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank">harsh-raj-0a3a72203</a>
-                </div>
-            </section>
+                <div class="sidebar-section-title">Links</div>
+                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item">
+                    <span class="sidebar-item-icon"><i class="fab fa-google-scholar"></i></span>
+                    <span>Google Scholar</span>
+                </a>
+                <a href="https://github.com/Harshra1-ultra" target="_blank" class="sidebar-item">
+                    <span class="sidebar-item-icon"><i class="fab fa-github"></i></span>
+                    <span>GitHub Profile</span>
+                </a>
+                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item">
+                    <span class="sidebar-item-icon"><i class="fab fa-linkedin"></i></span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/harshraone" target="_blank" class="sidebar-item">
+                    <span class="sidebar-item-icon"><i class="fab fa-instagram"></i></span>
+                    <span>Instagram</span>
+                </a>
+            </div>
 
-            <!-- Summary -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Professional Summary</h3>
-                <p>
-                    Active Ph.D. Research Scholar in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati. Highly interested in modeling, analyzing, and optimizing next-generation wireless communications systems. Primary expertise lies in Joint Sensing and Communication (ISAC), Reconfigurable Intelligent Surfaces (IRS), and Machine Learning applications for cellular networks.
-                </p>
-            </section>
+            <div class="sidebar-footer">
+                <button class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">v2.0</div>
+            </div>
+        </aside>
 
-            <!-- Interests -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Research Interests</h3>
-                <div class="interest-list">
-                    <span class="interest-tag">Integrated Sensing and Communication (ISAC)</span>
-                    <span class="interest-tag">Wireless Communications</span>
-                    <span class="interest-tag">Machine Learning for Wireless Systems</span>
-                    <span class="interest-tag">Beamforming</span>
-                    <span class="interest-tag">Signal Processing</span>
-                    <span class="interest-tag">Optimization</span>
-                    <span class="interest-tag">Deep Learning</span>
-                    <span class="interest-tag">MIMO Systems</span>
-                    <span class="interest-tag">Beyond 5G / 6G Networks</span>
+        <!-- Sidebar Trigger Button for mobile/collapsed states -->
+        <button class="sidebar-trigger" id="sidebarTrigger" aria-label="Expand sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- MAIN PAGE CONTAINER -->
+        <main id="main-content">
+
+            <!-- Breadcrumbs Topbar -->
+            <div class="notion-topbar">
+                <div class="notion-breadcrumbs" id="breadcrumbs">
+                    <span>Profile</span>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-active">📄 Curriculum Vitae</span>
                 </div>
-            </section>
+            </div>
 
-            <!-- Education -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Education</h3>
-                <div class="cv-timeline">
-                    <div class="timeline-entry">
-                        <div class="entry-time">2022 — Present</div>
-                        <div class="entry-details">
-                            <h4>Ph.D. in Electronics & Electrical Engineering</h4>
-                            <p class="inst-name">Indian Institute of Technology Guwahati</p>
-                            <p>Thesis research under Dr. Manoj B. R. focusing on IRS-assisted ISAC and ML applications for B5G networks.</p>
+            <!-- Page Cover Banner -->
+            <div class="notion-cover">
+                <canvas class="cover-canvas"></canvas>
+                <img src="plane.gif" alt="Plane" class="cover-plane-gif" />
+                <img src="Paper Plane Sticker by SparkPoint.gif" alt="Spark Paper Plane" class="cover-spark-plane" />
+            </div>
+
+            <div class="container">
+                
+                <!-- CV Print Toolbar Controls -->
+                <div class="cv-toolbar">
+                    <div class="cv-toolbar-content">
+                        <div class="cv-toolbar-left">
+                            <a href="index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Return Home</a>
                         </div>
-                    </div>
-                    <div class="timeline-entry">
-                        <div class="entry-time">2020 — 2022</div>
-                        <div class="entry-details">
-                            <h4>M.Tech. in Communication & Signal Processing</h4>
-                            <p class="inst-name">Indian Institute of Technology Ropar</p>
-                            <p>Specialization in signal representation, neural networks, and image super-resolution under Dr. J.S. Sahambi.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-entry">
-                        <div class="entry-time">2015 — 2019</div>
-                        <div class="entry-details">
-                            <h4>B.E. in Electronics & Communication Engineering</h4>
-                            <p class="inst-name">University Institute of Technology Burdwan</p>
-                            <p>Undergraduate coursework covering digital systems, electronic circuits, electromagnetic theory, and signal analysis.</p>
+                        <div class="cv-toolbar-right">
+                            <button onclick="window.print()" class="btn btn-primary"><i class="fas fa-print"></i> Print / Save PDF</button>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Teaching Assistantships -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Teaching Assistant Experience</h3>
-                <div class="ta-grid">
-                    <div class="ta-course-card">
-                        <div class="ta-course-code">EE 3002 / EE 331</div>
-                        <h4>Principles of Communication</h4>
-                        <p>Tutored students on baseband modulation, noise in receivers, and analog/digital demodulators.</p>
-                    </div>
-                    <div class="ta-course-card">
-                        <div class="ta-course-code">EE 632</div>
-                        <h4>Advanced Topics in Communication Systems</h4>
-                        <p>Assisted postgraduate students with signal estimation, optimization, and complex coding structures.</p>
-                    </div>
-                    <div class="ta-course-card">
-                        <div class="ta-course-code">EE 337</div>
-                        <h4>Fundamentals of Wireless Communications</h4>
-                        <p>Provided guidance on channel models, Rayleigh/Rician fading channels, and MIMO capacities.</p>
-                    </div>
-                    <div class="ta-course-card">
-                        <div class="ta-course-code">EE 530N</div>
-                        <h4>Digital Communications</h4>
-                        <p>Graded assignments and conducted tutorials on detection theory and error-control codes.</p>
-                    </div>
-                    <div class="ta-course-card">
-                        <div class="ta-course-code">EE 101</div>
-                        <h4>Basic Electronics (Tutorial)</h4>
-                        <p>Conducted weekly problem-solving tutorials covering diodes, BJTs, MOSFETs, and op-amps.</p>
-                    </div>
-                    <div class="ta-course-card">
-                        <div class="ta-course-code">EE 102</div>
-                        <h4>Basic Electronics Laboratory</h4>
-                        <p>Supervised undergraduate students during hardware testing, wiring, and oscilloscope measurements.</p>
-                    </div>
-                    <div class="ta-course-card">
-                        <div class="ta-course-code">EE 626</div>
-                        <h4>Pattern Recognition & Machine Learning</h4>
-                        <p>Supported PG course labs covering PCA, clustering, support vector machines, and deep neural nets.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Skills & Proficiencies</h3>
-                <div class="skills-list-grid">
-                    <div class="skill-group">
-                        <h4>Expertise Areas</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Signal Processing</span>
-                            <span class="skill-tag">Wireless Channels</span>
-                            <span class="skill-tag">MIMO Arrays</span>
-                            <span class="skill-tag">Beamforming</span>
-                            <span class="skill-tag">Convex Optimization</span>
-                            <span class="skill-tag">Target Detection</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <h4>Software & Code</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">MATLAB</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">PyTorch</span>
-                            <span class="skill-tag">Jupyter</span>
-                            <span class="skill-tag">LaTeX</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <h4>UX/UI & Pro Design</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">Responsive Design</span>
-                            <span class="skill-tag">Wireframing</span>
-                            <span class="skill-tag">Prototyping</span>
-                            <span class="skill-tag">Data Visualization</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Awards -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Awards & Fellowships</h3>
-                <div class="cv-timeline">
-                    <div class="timeline-entry">
-                        <div class="entry-time">2022 — Present</div>
-                        <div class="entry-details">
-                            <h4>Ministry of Education Doctoral Fellowship</h4>
-                            <p class="inst-name">Government of India</p>
-                            <p>Secured full scholarship for conducting doctoral research at IIT Guwahati.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-entry">
-                        <div class="entry-time">2020</div>
-                        <div class="entry-details">
-                            <h4>Qualified GATE ECE Exam</h4>
-                            <p class="inst-name">Ministry of Education, India</p>
-                            <p>Ranked in top percentiles, qualifying for admissions and research fellowships in India.</p>
-                        </div>
-                    </div>
-                    <!-- <div class="timeline-entry">
-                        <div class="entry-time">2022</div>
-                        <div class="entry-details">
-                            <h4>M.Tech. Academic Honours</h4>
-                            <p class="inst-name">Indian Institute of Technology Ropar</p>
-                            <p>Recognized for stellar academic performance in Communication & Signal Processing.</p>
-                        </div>
-                    </div> -->
-                </div>
-            </section>
-
-            <!-- Publications -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Publications</h3>
-                <div class="cv-publications-list">
+                <!-- CV Paper Document Area -->
+                <div class="cv-page">
                     
-                    <!-- J1 -->
-                    <div class="cv-pub-item">
-                        <span class="pub-type-badge">Journal</span>
-                        <div class="cv-pub-content">
-                            <span class="pub-number">[J1]</span>
-                            <strong><a href="NOMA-Assisted_ISAC_System_Downlink_and_Uplink_Performance_in_Rician_Fading_Channels.pdf" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--accent-1);">NOMA-Assisted ISAC System: Downlink and Uplink Performance in Rician Fading Channels</a></strong>
-                            <div class="pub-authors">I. Agrawal*, <strong>H. Raj*</strong>, and B. R. Manoj</div>
-                            <div class="pub-venue"><em>IEEE Transactions on Cognitive Communications and Networking</em>, vol. 12, pp. 3073-3087, 2026. (* Equal Contribution)</div>
+                    <!-- CV Header Card -->
+                    <div class="cv-header-grid">
+                        <div class="cv-personal-info">
+                            <h1>Harsh Raj</h1>
+                            <h2>Ph.D. Research Scholar</h2>
+                            <p>Department of Electronics and Electrical Engineering</p>
+                            <p>Indian Institute of Technology Guwahati</p>
+                        </div>
+                        <div class="cv-contact-info">
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:h.raj@iitg.ac.in">h.raj@iitg.ac.in</a></p>
+                            <p><i class="fas fa-map-marker-alt"></i> Guwahati, Assam, India</p>
+                            <p><i class="fab fa-github"></i> <a href="https://github.com/Harshra1-ultra" target="_blank">github.com/Harshra1-ultra</a></p>
+                            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank">linkedin/in/harsh-raj</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title"><i class="fas fa-file-alt"></i> Professional Summary</h3>
+                        <p style="font-size:0.92rem; text-align:justify;">
+                            Active Ph.D. Research Scholar in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati. Highly interested in modeling, analyzing, and optimizing next-generation wireless communications systems. Primary expertise lies in Joint Sensing and Communication (ISAC), Reconfigurable Intelligent Surfaces (IRS), and Machine Learning applications for cellular networks.
+                        </p>
+                    </div>
+
+                    <!-- Interests -->
+                    <div class="cv-section" style="margin-top:1.5rem;">
+                        <h3 class="cv-section-title"><i class="fas fa-bullseye"></i> Research Interests</h3>
+                        <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                            <span class="notion-tag tag-blue">Integrated Sensing and Communication (ISAC)</span>
+                            <span class="notion-tag tag-green">Wireless Communications</span>
+                            <span class="notion-tag tag-purple">Machine Learning for Wireless Systems</span>
+                            <span class="notion-tag tag-orange">Beamforming</span>
+                            <span class="notion-tag tag-red">Signal Processing</span>
+                            <span class="notion-tag tag-pink">Convex Optimization</span>
+                            <span class="notion-tag tag-gray">Deep Learning</span>
+                            <span class="notion-tag tag-yellow">MIMO Systems</span>
+                            <span class="notion-tag tag-blue">Beyond 5G / 6G Networks</span>
+                        </div>
+                    </div>
+
+                    <!-- Education Table -->
+                    <div class="cv-section" style="margin-top:2rem;">
+                        <h3 class="cv-section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <table class="cv-table">
+                            <tr>
+                                <td class="cv-table-date">2022 — Present</td>
+                                <td>
+                                    <strong style="font-size:0.95rem; color:var(--text-primary);">Ph.D. in Electronics & Electrical Engineering</strong><br/>
+                                    <span style="color:var(--accent-blue); font-weight:600;">Indian Institute of Technology Guwahati</span><br/>
+                                    <span style="color:var(--text-secondary); font-size:0.88rem;">Doctoral Thesis research focusing on Intelligent Reflecting Surface (IRS)-assisted ISAC systems employing Non-Orthogonal Multiple Access (NOMA) under Dr. Manoj B. R.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">2020 — 2022</td>
+                                <td>
+                                    <strong style="font-size:0.95rem; color:var(--text-primary);">M.Tech. in Communication & Signal Processing</strong><br/>
+                                    <span style="color:var(--accent-blue); font-weight:600;">Indian Institute of Technology Ropar</span><br/>
+                                    <span style="color:var(--text-secondary); font-size:0.88rem;">M.Tech. Dissertation project on Deep Learning-based Image Super-resolution under Dr. J.S. Sahambi. Completed core coursework on random processes, ML, and digital communication receivers.</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">2015 — 2019</td>
+                                <td>
+                                    <strong style="font-size:0.95rem; color:var(--text-primary);">B.E. in Electronics & Communication Engineering</strong><br/>
+                                    <span style="color:var(--accent-blue); font-weight:600;">University Institute of Technology Burdwan</span><br/>
+                                    <span style="color:var(--text-secondary); font-size:0.88rem;">Undergraduate engineering curriculum covering fundamentals of digital electronics, electromagnetic fields, analog communications, signal processing, and laboratory testing.</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- TA Experience -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title"><i class="fas fa-chalkboard-teacher"></i> Teaching Assistant Experience</h3>
+                        <table class="cv-table">
+                            <tr>
+                                <td class="cv-table-date">EE 331 / EE 3002</td>
+                                <td><strong>Principles of Communication</strong><br/>Guided students on baseband analog/digital modulation techniques, spectral efficiencies, and receiver noise characteristics.</td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">EE 632</td>
+                                <td><strong>Advanced Topics in Communication Systems</strong><br/>Assisted postgraduate scholars with channel estimation equations, convex optimization solvers, and reconfigurable surface modeling.</td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">EE 337</td>
+                                <td><strong>Fundamentals of Wireless Communications</strong><br/>Provided tutorials and homework solutions covering multipath Rayleigh and Rician fading envelopes, Doppler spreads, and MIMO channel capacities.</td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">EE 530N</td>
+                                <td><strong>Digital Communications</strong><br/>Conducted grading, assignments coordination, and solved tutorial worksheets on matched filtering, symbol detection, and error bounds.</td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">EE 101</td>
+                                <td><strong>Basic Electronics (Tutorial)</strong><br/>Conducted weekly discussion sessions for first-year engineering students covering operational amplifiers, BJTs, and diodes.</td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">EE 102</td>
+                                <td><strong>Basic Electronics Laboratory</strong><br/>Instructed and evaluated lab groups conducting experiments on signal generators, rectifiers, filter circuits, and operational amplifier configurations.</td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">EE 626</td>
+                                <td><strong>Pattern Recognition & Machine Learning</strong><br/>Supported computer lab exercises involving PCA dimensionality reduction, support vector machines (SVM), K-means, and convolutional layers.</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title"><i class="fas fa-tools"></i> Skills & Proficiencies</h3>
+                        <table class="cv-table">
+                            <tr>
+                                <td class="cv-table-date">Expertise Areas</td>
+                                <td>
+                                    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                                        <span class="notion-tag tag-blue">Signal Processing</span>
+                                        <span class="notion-tag tag-green">Wireless Channels</span>
+                                        <span class="notion-tag tag-purple">MIMO Arrays</span>
+                                        <span class="notion-tag tag-orange">Beamforming</span>
+                                        <span class="notion-tag tag-red">Convex Optimization</span>
+                                        <span class="notion-tag tag-pink">Target Detection</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">Software & Code</td>
+                                <td>
+                                    <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                                        <span class="notion-tag tag-blue">MATLAB</span>
+                                        <span class="notion-tag tag-green">Python</span>
+                                        <span class="notion-tag tag-purple">PyTorch</span>
+                                        <span class="notion-tag tag-orange">Jupyter</span>
+                                        <span class="notion-tag tag-pink">LaTeX</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                    <!-- Awards -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title"><i class="fas fa-award"></i> Awards & Fellowships</h3>
+                        <table class="cv-table">
+                            <tr>
+                                <td class="cv-table-date">2022 — Present</td>
+                                <td><strong>Ministry of Education Doctoral Fellowship</strong><br/>Awarded national fellowship by the Government of India for pursuing Ph.D. research at IIT Guwahati.</td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">2020</td>
+                                <td><strong>Qualified GATE ECE Exam</strong><br/>Secured rank in top percentiles in the national-level Graduate Aptitude Test in Engineering.</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Publications -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title"><i class="fas fa-book"></i> Publications</h3>
+                        <table class="cv-table">
+                            <tr>
+                                <td class="cv-table-date">[J1] Journal</td>
+                                <td>
+                                    <strong><a href="NOMA-Assisted_ISAC_System_Downlink_and_Uplink_Performance_in_Rician_Fading_Channels.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">NOMA-Assisted ISAC System: Downlink and Uplink Performance in Rician Fading Channels</a></strong><br/>
+                                    I. Agrawal*, <em>H. Raj*</em>, and B. R. Manoj<br/>
+                                    <em>IEEE Transactions on Cognitive Communications and Networking</em>, vol. 12, pp. 3073-3087, 2026. (* Equal Contribution)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">[C1] Conference</td>
+                                <td>
+                                    <strong><a href="Cascaded_Channel_Statistics_and_Target_Detection_Analysis_for_IRS-Assisted_ISAC_Employing_NOMA.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">Cascaded Channel Statistics and Target Detection Analysis for IRS-Assisted ISAC Employing NOMA</a></strong><br/>
+                                    <em>H. Raj</em> and B. R. Manoj<br/>
+                                    In <em>Proc. IEEE National Conference on Communications (NCC)</em>, IIT Delhi, India, Mar. 6–9, 2025.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">[B1] Book Chapter</td>
+                                <td>
+                                    <strong>Machine Learning for Wireless Communications: Applications and Security</strong><br/>
+                                    B. R. Manoj*, N. M. Baishya*, and <em>H. Raj*</em><br/>
+                                    Springer Chapter in <em>"Next-Generation Wireless Systems: Fundamentals and Applications,"</em> Transactions on Computer Systems and Networks, Springer, Singapore, pp. 309-368, 2025. (* Equal Contribution)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cv-table-date">[C2] Conference</td>
+                                <td>
+                                    <strong><a href="On_the_Performance_of_IRS-Assisted_SSK_and_RPM_over_Rician_Fading_Channels.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">On the Performance of IRS-Assisted SSK and RPM over Rician Fading Channels</a></strong><br/>
+                                    <em>H. Raj</em>, U. Singh, and B. R. Manoj<br/>
+                                    In <em>Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring)</em>, Singapore, Jun. 24–27, 2024.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Code / Projects Link -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title"><i class="fas fa-link"></i> Research Projects & Software Code</h3>
+                        <div class="notion-callout">
+                            <div class="notion-callout-icon">💻</div>
+                            <div class="notion-callout-content">
+                                All simulation source codes, reconfigurable array modeling scripts, and the interactive web-based simulator are hosted on my projects page. Please refer to <a href="second-page.html" style="color:var(--accent-blue); font-weight:600; text-decoration:underline;">Projects & Software Dashboard</a>.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============ FOOTER ============ -->
+            <footer>
+                <div class="container">
+                    <div class="footer-grid">
+                        <div>
+                            <div class="footer-brand-title">Harsh Raj</div>
+                            <p>Ph.D. Scholar at IIT Guwahati. Specializing in next-gen reconfigurable wireless networks and communication signal processing.</p>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Directory</h4>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.html#about">About</a></li>
+                                <li><a href="index.html#education">Education</a></li>
+                                <li><a href="index.html#publications">Publications</a></li>
+                                <li><a href="second-page.html">Projects</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Connect</h4>
+                            <div class="footer-social-row">
+                                <a href="https://github.com/Harshra1-ultra" target="_blank" class="footer-social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="footer-social-btn" aria-label="Scholar"><i class="fab fa-google-scholar"></i></a>
+                                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/harshraone" target="_blank" class="footer-social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- C1 -->
-                    <div class="cv-pub-item">
-                        <span class="pub-type-badge">Conference</span>
-                        <div class="cv-pub-content">
-                            <span class="pub-number">[C1]</span>
-                            <strong><a href="Cascaded_Channel_Statistics_and_Target_Detection_Analysis_for_IRS-Assisted_ISAC_Employing_NOMA.pdf" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--accent-1);">Cascaded Channel Statistics and Target Detection Analysis for IRS-Assisted ISAC Employing NOMA</a></strong>
-                            <div class="pub-authors"><strong>H. Raj</strong> and B. R. Manoj</div>
-                            <div class="pub-venue">In <em>Proc. IEEE National Conference on Communications (NCC)</em>, IIT Delhi, India, Mar. 6–9, 2025.</div>
+                    <div class="footer-bottom">
+                        <p class="footer-copy">&copy; <span id="currentYear"></span> Harsh Raj. All rights reserved.</p>
+                        <div class="footer-time">
+                            <i class="fas fa-map-marker-alt"></i> Guwahati, Assam &nbsp;|&nbsp; <span class="pulse-dot"></span> <span id="liveTime"></span>
                         </div>
                     </div>
-
-                    <!-- B1 -->
-                    <div class="cv-pub-item">
-                        <span class="pub-type-badge">Book Chapter</span>
-                        <div class="cv-pub-content">
-                            <span class="pub-number">[B1]</span>
-                            <strong>Machine Learning for Wireless Communications: Applications and Security</strong>
-                            <div class="pub-authors">B. R. Manoj*, N. M. Baishya*, and <strong>H. Raj*</strong></div>
-                            <div class="pub-venue">Springer Chapter in <em>"Next-Generation Wireless Systems: Fundamentals and Applications,"</em> Transactions on Computer Systems and Networks, Springer, Singapore, pp. 309-368, 2025. (* Equal Contribution)</div>
-                        </div>
-                    </div>
-
-                    <!-- C2 -->
-                    <div class="cv-pub-item">
-                        <span class="pub-type-badge">Conference</span>
-                        <div class="cv-pub-content">
-                            <span class="pub-number">[C2]</span>
-                            <strong><a href="On_the_Performance_of_IRS-Assisted_SSK_and_RPM_over_Rician_Fading_Channels.pdf" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--accent-1);">On the Performance of IRS-Assisted SSK and RPM over Rician Fading Channels</a></strong>
-                            <div class="pub-authors"><strong>H. Raj</strong>, U. Singh, and B. R. Manoj</div>
-                            <div class="pub-venue">In <em>Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring)</em>, Singapore, Jun. 24–27, 2024.</div>
-                        </div>
-                    </div>
-
                 </div>
-            </section>
+            </footer>
 
-            <!-- Projects (Placeholder) -->
-            <section class="cv-section">
-                <h3 class="cv-section-title">Research Projects & Software</h3>
-                <div class="placeholder-box">
-                    <i class="fas fa-laptop-code"></i> GitHub projects and code repositories are listed on the dedicated projects page. Please refer to the <a href="second-page.html" style="font-weight:600;">Projects & Code</a> page.
-                </div>
-            </section>
-
+            <!-- Floating Back to Top Button -->
+            <button class="back-to-top" id="backToTop" aria-label="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
         </main>
     </div>
 
-    <!-- Scripts -->
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Theme Toggle (synced with index via localStorage)
-        const themeToggle = document.getElementById('themeToggle');
-        const savedTheme = localStorage.getItem('theme');
-        
-        // Default is light. If savedTheme is 'dark', apply dark mode.
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeToggle.querySelector('i').className = 'fas fa-sun';
-        } else {
-            themeToggle.querySelector('i').className = 'fas fa-moon';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = themeToggle.querySelector('i');
-            const isDark = document.body.classList.contains('dark-mode');
-            if (isDark) {
-                icon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                icon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    });
-    </script>
+    <!-- Centralized Logic Script -->
+    <script src="script.js"></script>
 </body>
 </html>
