@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const sidebarTriggers = document.querySelectorAll('.sidebar-trigger');
     const sidebarClose = document.getElementById('sidebarClose');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
     const breadcrumbs = document.getElementById('breadcrumbs');
     
     function toggleSidebar(forceState) {
@@ -56,10 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const isCollapsed = forceState !== undefined ? !forceState : !sidebar.classList.contains('collapsed');
         sidebar.classList.toggle('collapsed', isCollapsed);
+        const usesMobileDrawer = window.innerWidth <= 900;
+        const isDrawerOpen = usesMobileDrawer && !isCollapsed;
+        document.body.classList.toggle('sidebar-open', isDrawerOpen);
+        sidebar.setAttribute('aria-hidden', String(usesMobileDrawer && isCollapsed));
+        if (sidebarBackdrop) sidebarBackdrop.classList.toggle('visible', isDrawerOpen);
         
         // Toggle visibility of hamburger triggers
         sidebarTriggers.forEach(trigger => {
             trigger.classList.toggle('visible', isCollapsed);
+            trigger.setAttribute('aria-expanded', String(!isCollapsed));
         });
         
         // Toggle spacing on breadcrumbs
@@ -91,6 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sidebarClose) {
             sidebarClose.addEventListener('click', () => toggleSidebar(false));
         }
+
+        if (sidebarBackdrop) {
+            sidebarBackdrop.addEventListener('click', () => toggleSidebar(false));
+        }
+
+        sidebar.querySelectorAll('.sidebar-item').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 900) toggleSidebar(false);
+            });
+        });
     }
     
     // Auto collapse sidebar on resize
@@ -99,8 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
             const mobile = window.innerWidth <= 900;
-            if (mobile && sidebar && !sidebar.classList.contains('collapsed')) {
-                toggleSidebar(false);
+            if (sidebar) {
+                if (mobile && !sidebar.classList.contains('collapsed')) {
+                    toggleSidebar(false);
+                } else if (!mobile) {
+                    document.body.classList.remove('sidebar-open');
+                    if (sidebarBackdrop) sidebarBackdrop.classList.remove('visible');
+                    sidebar.removeAttribute('aria-hidden');
+                }
             }
         }, 100);
     });
@@ -271,6 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let obstacles = [];
         let stars = [];
         let backgroundDoodles = [];
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         // Companion Paper Plane definition
         const companionPlane = {
@@ -320,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Autopilot Astronaut definition
         const astronaut = {
-            x: 75,
+            x: 420,
             y: 0, // offset from ground
             vy: 0,
             width: 20,
@@ -403,6 +428,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const fillColor = isDark ? '#0f172a' : '#ffffff';
                 
                 ctx.save();
+                // Draw the little explorer at a deliberately oversized, readable scale.
+                ctx.translate(this.x, pxY);
+                ctx.scale(1.6, 1.6);
+                ctx.translate(-this.x, -pxY);
                 ctx.strokeStyle = lineColor;
                 ctx.fillStyle = fillColor;
                 ctx.lineWidth = 1.5;
@@ -556,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
             reset(init = false) {
                 this.x = init ? Math.random() * width : width + 100;
                 this.y = Math.random() * (groundY - 60) + 15;
-                this.type = Math.floor(Math.random() * 3); // 0: Saturn, 1: Constellation, 2: Orbit Path
+                this.type = Math.floor(Math.random() * 6); // planet, constellation, orbit, radar, wave, engineering sketch
                 this.speed = Math.random() * 0.15 + 0.05;
                 this.size = Math.random() * 15 + 10;
                 this.angle = Math.random() * Math.PI;
@@ -595,11 +624,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.fillRect(this.x - 1.5, this.y - 1.5, 3, 3);
                     ctx.fillRect(this.x + 10.5, this.y - 9.5, 3, 3);
                     ctx.fillRect(this.x + 18.5, this.y + 2.5, 3, 3);
-                } else {
+                } else if (this.type === 2) {
                     // Orbit dotted arc
                     ctx.setLineDash([2, 4]);
                     ctx.beginPath();
                     ctx.arc(this.x, this.y + 30, 40, -Math.PI*0.7, -Math.PI*0.3);
+                    ctx.stroke();
+                } else if (this.type === 3) {
+                    ctx.setLineDash([2, 4]);
+                    ctx.beginPath(); ctx.arc(this.x, this.y, 14 + Math.sin(this.angle * 8) * 3, -Math.PI * .8, Math.PI * .15); ctx.stroke();
+                    ctx.setLineDash([]);
+                    ctx.beginPath(); ctx.moveTo(this.x, this.y); ctx.lineTo(this.x + 11, this.y - 7); ctx.stroke();
+                } else if (this.type === 4) {
+                    ctx.beginPath(); ctx.arc(this.x, this.y, 8, -Math.PI * .8, Math.PI * .1); ctx.stroke();
+                    ctx.beginPath(); ctx.arc(this.x, this.y, 14, -Math.PI * .8, Math.PI * .1); ctx.stroke();
+                } else {
+                    ctx.strokeRect(this.x - 12, this.y - 8, 24, 16);
+                    ctx.beginPath();
+                    ctx.moveTo(this.x - 9, this.y + 4); ctx.lineTo(this.x - 3, this.y - 3); ctx.lineTo(this.x + 3, this.y + 2); ctx.lineTo(this.x + 9, this.y - 5);
                     ctx.stroke();
                 }
                 ctx.restore();
@@ -622,7 +664,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     { name: 'ufo', isHigh: true },
                     { name: 'binary', isHigh: true },
                     { name: 'equation1', isHigh: true },
-                    { name: 'equation2', isHigh: true }
+                    { name: 'equation2', isHigh: true },
+                    { name: 'rocket', isHigh: false },
+                    { name: 'asteroid', isHigh: false },
+                    { name: 'tower', isHigh: false },
+                    { name: 'mimo', isHigh: false },
+                    { name: 'constellation', isHigh: true }
                 ];
                 
                 const select = types[Math.floor(Math.random() * types.length)];
@@ -639,6 +686,9 @@ document.addEventListener('DOMContentLoaded', () => {
             draw(isDark) {
                 const lineColor = isDark ? '#ffffff' : '#0f172a';
                 ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.scale(1.35, 1.35);
+                ctx.translate(-this.x, -this.y);
                 ctx.strokeStyle = lineColor;
                 ctx.lineWidth = 1.5;
                 ctx.lineCap = 'round';
@@ -713,6 +763,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.font = 'italic 700 0.8rem var(--font-body)';
                     ctx.fillText('∇×E', this.x - 12, this.y + 3);
                 }
+                if (this.type === 'rocket') {
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y - 22); ctx.lineTo(this.x + 6, this.y - 6); ctx.lineTo(this.x - 6, this.y - 6); ctx.closePath(); ctx.stroke();
+                    ctx.beginPath(); ctx.arc(this.x, this.y - 14, 2, 0, Math.PI * 2); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(this.x - 3, this.y - 6); ctx.lineTo(this.x - 6, this.y); ctx.moveTo(this.x + 3, this.y - 6); ctx.lineTo(this.x + 6, this.y); ctx.stroke();
+                } else if (this.type === 'asteroid') {
+                    ctx.beginPath(); ctx.arc(this.x + 3, this.y - 9, 8, 0, Math.PI * 2); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(this.x - 6, this.y - 7); ctx.lineTo(this.x - 16, this.y - 2); ctx.moveTo(this.x - 7, this.y - 13); ctx.lineTo(this.x - 19, this.y - 17); ctx.stroke();
+                    ctx.beginPath(); ctx.arc(this.x + 5, this.y - 11, 1.4, 0, Math.PI * 2); ctx.stroke();
+                } else if (this.type === 'tower') {
+                    ctx.beginPath(); ctx.moveTo(this.x - 7, this.y); ctx.lineTo(this.x, this.y - 26); ctx.lineTo(this.x + 7, this.y); ctx.moveTo(this.x - 5, this.y - 10); ctx.lineTo(this.x + 5, this.y - 10); ctx.moveTo(this.x - 3, this.y - 18); ctx.lineTo(this.x + 3, this.y - 18); ctx.stroke();
+                    ctx.beginPath(); ctx.arc(this.x, this.y - 27, 8, -Math.PI * .85, -Math.PI * .15); ctx.stroke();
+                } else if (this.type === 'mimo') {
+                    for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.moveTo(this.x - 9 + i * 6, this.y); ctx.lineTo(this.x - 9 + i * 6, this.y - 20); ctx.stroke(); ctx.beginPath(); ctx.arc(this.x - 9 + i * 6, this.y - 22, 2, 0, Math.PI * 2); ctx.stroke(); }
+                    ctx.beginPath(); ctx.moveTo(this.x - 12, this.y); ctx.lineTo(this.x + 12, this.y); ctx.stroke();
+                } else if (this.type === 'constellation') {
+                    ctx.beginPath(); ctx.moveTo(this.x - 12, this.y); ctx.lineTo(this.x - 2, this.y - 12); ctx.lineTo(this.x + 11, this.y - 4); ctx.stroke();
+                    ctx.fillStyle = lineColor;
+                    [[-12, 0], [-2, -12], [11, -4]].forEach(([dx, dy]) => ctx.fillRect(this.x + dx - 1, this.y + dy - 1, 2, 2));
+                }
                 ctx.restore();
             }
         }
@@ -721,18 +791,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = coverCanvas.parentElement.getBoundingClientRect();
             width = rect.width;
             height = rect.height;
-            coverCanvas.width = width;
-            coverCanvas.height = height;
+            coverCanvas.width = Math.floor(width * pixelRatio);
+            coverCanvas.height = Math.floor(height * pixelRatio);
+            ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
             groundY = height - 20;
-            companionPlane.x = Math.max(165, width * 0.45); // Set in middle
+            astronaut.x = Math.max(120, width * (width < 600 ? 0.64 : 0.63));
+            companionPlane.x = astronaut.x + 90;
         }
 
         resize();
         window.addEventListener('resize', resize);
 
         // Generate elements
-        stars = Array.from({ length: 25 }, () => new Star());
-        backgroundDoodles = Array.from({ length: 4 }, () => new BackgroundDoodle());
+        stars = Array.from({ length: 54 }, () => new Star());
+        backgroundDoodles = Array.from({ length: 8 }, () => new BackgroundDoodle());
         
         // Autoplay Dino Spawning intervals
         function updateGame() {
@@ -802,7 +874,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function loop() {
-            const isDark = document.body.classList.contains('dark-mode');
+            // The runner remains an ink-on-paper illustration in both site themes.
+            const isDark = false;
             
             // Pure white cover background in light mode, slate in dark mode
             ctx.fillStyle = isDark ? '#0f172a' : '#ffffff';
@@ -856,9 +929,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             
             time++;
-            requestAnimationFrame(loop);
+            if (!reduceMotion) requestAnimationFrame(loop);
         }
         
-        requestAnimationFrame(loop);
+        loop();
     }
 });

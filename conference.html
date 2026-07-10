@@ -237,7 +237,7 @@
         </button>
 
         <!-- MAIN PAGE CONTENT -->
-        <main id="main-content">
+        <main id="main-content" class="conference-page">
             
             <!-- Breadcrumbs Top Bar -->
             <div class="notion-topbar">
@@ -248,12 +248,14 @@
                 </div>
             </div>
 
-            <!-- Page Cover Banner -->
-            <div class="notion-cover">
-                <canvas class="cover-canvas"></canvas>
-                <img src="plane.gif" alt="Plane" class="cover-plane-gif" />
-                <img src="Paper Plane Sticker by SparkPoint.gif" alt="Spark Paper Plane" class="cover-spark-plane" />
-            </div>
+            <section class="site-profile-header" aria-labelledby="conference-title">
+                <div class="site-profile-copy">
+                    <p class="site-profile-kicker">RESEARCH PORTFOLIO / EVENTS</p>
+                    <h1 id="conference-title">Upcoming Conferences</h1>
+                    <p class="conference-updated"><i class="fas fa-clock"></i> Last updated: <time id="conferenceLastUpdated"></time></p>
+                </div>
+                <img src="Harsh.jpeg" alt="Portrait of Harsh Raj" class="site-profile-photo" />
+            </section>
 
             <div class="container">
                 <!-- Page Header -->
@@ -277,7 +279,7 @@
 
             <!-- Footer -->
             <footer class="footer">
-                <p class="copyright">© 2026 Harsh Raj. Powered by Notion Design System.</p>
+                <p class="copyright">© 2026 Harsh Raj. Inspired by Notion.</p>
                 <div class="social-row">
                     <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="social-icon"><i class="fab fa-google-scholar"></i></a>
                     <a href="https://github.com/Harshra1-ultra" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
@@ -830,7 +832,10 @@
         // Main App Controller
         const App = () => {
             const [view, setView] = useState('calendar');
-            const [currentDate, setCurrentDate] = useState(new Date(2026, 4, 1)); // Default: May 2026
+            const [currentDate, setCurrentDate] = useState(() => {
+                const today = new Date();
+                return new Date(today.getFullYear(), today.getMonth(), 1);
+            });
             const [searchQuery, setSearchQuery] = useState('');
             const [category, setCategory] = useState('All');
             const [selectedConf, setSelectedConf] = useState(null);
@@ -947,6 +952,18 @@
 
         const root = ReactDOM.createRoot(document.getElementById('react-calendar-root'));
         root.render(<App />);
+    </script>
+    <script>
+        (() => {
+            const updated = document.getElementById('conferenceLastUpdated');
+            if (!updated) return;
+            const date = new Date(document.lastModified);
+            const text = Number.isNaN(date.getTime())
+                ? 'Recently'
+                : new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+            updated.dateTime = Number.isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10);
+            updated.textContent = text;
+        })();
     </script>
 </body>
 </html>

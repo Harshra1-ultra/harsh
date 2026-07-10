@@ -207,6 +207,10 @@ button {
     transform: scale(1.05);
 }
 
+.sidebar-backdrop {
+    display: none;
+}
+
 /* Sidebar Headers */
 .sidebar-header {
     padding: 14px 16px;
@@ -331,6 +335,7 @@ button {
 /* MAIN CONTENT AREA */
 #main-content {
     flex: 1;
+    min-width: 0;
     height: 100%;
     overflow-y: auto;
     position: relative;
@@ -342,17 +347,113 @@ button {
    NOTION DESIGN COMPONENT STYLES
    ======================================================== */
 
-/* COVER BANNER */
+/* RESEARCH RUNNER HERO */
 .notion-cover {
     height: 180px;
     width: 100%;
-    background: var(--gradient-cover);
-    background-size: cover;
-    background-position: center;
     position: relative;
     overflow: hidden;
+    background: var(--gradient-cover);
     border-bottom: 1px solid var(--border-color);
 }
+
+.research-runner-hero {
+    height: clamp(350px, 51vw, 450px);
+    min-height: 350px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #fff;
+    border-bottom: 1px solid #171717;
+}
+
+.site-profile-header {
+    width: min(100% - clamp(2.5rem, 8vw, 9rem), 1180px);
+    margin: 0 auto;
+    padding: clamp(32px, 5vw, 64px) 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 200px;
+    align-items: stretch;
+    gap: clamp(30px, 7vw, 96px);
+    background: #fff;
+}
+
+.site-profile-copy {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #171717;
+}
+
+.site-profile-kicker {
+    margin: 0 0 15px;
+    color: #555;
+    font: 700 0.68rem/1 var(--font-mono);
+    letter-spacing: .12em;
+}
+
+.site-profile-kicker::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    margin-right: 9px;
+    background: #171717;
+}
+
+.site-profile-copy h1 {
+    margin: 0;
+    color: #111;
+    font-size: clamp(2.1rem, 4.1vw, 4rem);
+    line-height: 1;
+    letter-spacing: -.055em;
+}
+
+.site-profile-copy p:not(.site-profile-kicker) {
+    max-width: 540px;
+    margin: 14px 0 0;
+    color: #4c4c4c;
+    font-size: clamp(.9rem, 1.3vw, 1.05rem);
+    line-height: 1.55;
+}
+
+.site-profile-copy .site-profile-role {
+    margin-top: 15px;
+    color: #171717;
+    font: 600 clamp(.86rem, 1.25vw, 1rem)/1.4 var(--font-mono);
+}
+
+.site-profile-role b { color: #777; margin: 0 4px; }
+
+.conference-updated {
+    margin: 16px 0 0;
+    color: #666;
+    font: 600 .72rem/1.4 var(--font-mono);
+    letter-spacing: .02em;
+}
+
+.conference-updated i { margin-right: 5px; }
+
+.site-profile-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 3px solid #fff;
+    outline: 1px solid #171717;
+    box-shadow: 7px 7px 0 #171717;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.site-profile-photo:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 #171717;
+}
+
+.conference-page .notion-page-header { display: none; }
 
 .cover-canvas {
     position: absolute;
@@ -362,8 +463,117 @@ button {
     height: 100%;
     display: block;
     z-index: 1;
-    pointer-events: auto;
+    pointer-events: none;
 }
+
+.runner-hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(48%, 540px);
+    min-width: 360px;
+    height: 100%;
+    padding: clamp(44px, 7vw, 82px) 0 40px clamp(32px, 6vw, 88px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: #171717;
+}
+
+.runner-hero-content::before {
+    display: none;
+}
+
+.runner-profile-panel {
+    position: absolute;
+    z-index: 3;
+    right: clamp(28px, 6vw, 92px);
+    top: 50%;
+    width: clamp(200px, 29vw, 200px);
+    height: clamp(200px, 29vw, 200px);
+    transform: translateY(-50%);
+    border: 3px solid #fff;
+    outline: 1px solid #171717;
+    box-shadow: 7px 7px 0 #171717;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.runner-profile-panel img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.runner-profile-panel:hover {
+    transform: translate(-2px, calc(-50% - 2px));
+    box-shadow: 10px 10px 0 #171717;
+}
+
+.runner-eyebrow, .runner-caption {
+    font: 700 0.68rem/1 var(--font-mono);
+    letter-spacing: 0.12em;
+    color: #515151;
+}
+
+.runner-eyebrow { margin-bottom: 18px; }
+.runner-eyebrow span, .runner-caption span {
+    width: 7px;
+    height: 7px;
+    background: #171717;
+    display: inline-block;
+    margin-right: 8px;
+    animation: runnerBlink 1.6s steps(1) infinite;
+}
+
+.runner-hero-content h1 {
+    margin: 0;
+    color: #101010;
+    font-size: clamp(2.8rem, 5vw, 4.65rem);
+    font-weight: 800;
+    letter-spacing: -0.065em;
+    line-height: 0.95;
+}
+
+.runner-role {
+    margin: 16px 0 0;
+    font: 600 clamp(0.86rem, 1.25vw, 1rem)/1.4 var(--font-mono);
+    color: #171717;
+}
+.runner-role b { color: #777; margin: 0 4px; }
+.runner-intro { max-width: 420px; margin: 17px 0 0; font-size: clamp(0.9rem, 1.35vw, 1.05rem); line-height: 1.55; color: #454545; }
+
+.runner-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+.runner-action {
+    border: 1px solid #171717;
+    color: #171717;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    font: 700 0.74rem/1 var(--font-mono);
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.runner-action:hover { background: #171717; color: #fff; transform: translateY(-2px); }
+.runner-action-primary { background: #171717; color: #fff; }
+.runner-action-primary:hover { background: #fff; color: #171717; }
+
+.runner-socials { display: flex; gap: 9px; margin-top: 21px; }
+.runner-socials a {
+    width: 29px;
+    height: 29px;
+    border: 1px solid #171717;
+    display: grid;
+    place-items: center;
+    font-size: 0.78rem;
+    color: #171717;
+    transition: all .2s ease;
+}
+.runner-socials a:hover { background: #171717; color: #fff; transform: rotate(-7deg); }
+.runner-caption { position: absolute; z-index: 2; bottom: 17px; right: clamp(20px, 3vw, 46px); color: #555; }
+
+@keyframes runnerBlink { 50% { opacity: .2; } }
 
 /* BREADCRUMBS BAR (Floating top nav inside content) */
 .notion-topbar {
@@ -412,7 +622,7 @@ body.dark-mode .notion-topbar {
 
 /* PAGE HEADER AND TITLE */
 .notion-page-header {
-    padding-top: 0;
+    padding-top: 2.25rem;
     position: relative;
     margin-bottom: 2rem;
 }
@@ -1888,18 +2098,43 @@ footer {
    ======================================================== */
 @media (max-width: 900px) {
     #sidebar {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        transform: translateX(0);
+        position: fixed;
+        inset: 0 auto 0 0;
+        height: 100dvh;
+        margin-left: 0 !important;
+        transform: translateX(-100%);
+        box-shadow: 12px 0 30px rgba(0, 0, 0, 0.16);
+        z-index: 1200;
     }
-    
-    #sidebar.collapsed {
-        transform: translateX(-240px);
+
+    #sidebar:not(.collapsed) {
+        transform: translateX(0);
     }
 
     .sidebar-trigger {
+        z-index: 1210;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .sidebar-trigger.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .sidebar-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1190;
+        border: 0;
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-smooth);
+    }
+
+    .sidebar-backdrop.visible {
         opacity: 1;
         pointer-events: auto;
     }
@@ -1910,34 +2145,47 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .notion-cover {
-        height: 120px;
+    .site-profile-header {
+        width: calc(100% - 2.5rem);
+        grid-template-columns: minmax(0, 1fr) 128px;
+        gap: 20px;
+        padding: 30px 0;
     }
-    .notion-page-icon-wrapper {
-        top: -60px;
-        left: 1.5rem;
+    .site-profile-copy, .site-profile-photo { min-height: 128px; }
+    .site-profile-copy h1 { font-size: clamp(1.85rem, 9vw, 2.5rem); }
+    .site-profile-kicker { font-size: .57rem; letter-spacing: .08em; }
+    .site-profile-copy p:not(.site-profile-kicker) { margin-top: 10px; font-size: .78rem; }
+    .site-profile-photo { border-width: 2px; box-shadow: 4px 4px 0 #171717; }
+    .research-runner-hero { height: 600px; min-height: 600px; }
+    .runner-hero-content {
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+        padding: 47px 28px 0;
     }
-    .notion-page-icon {
-        width: 105px;
-        height: 105px;
-        border-radius: 20px;
-    }
-    .notion-title-section {
-        padding-top: 55px;
-    }
-    .notion-title {
-        font-size: 2rem;
-    }
+    .runner-hero-content h1 { font-size: clamp(3rem, 15vw, 4.3rem); }
+    .runner-intro { max-width: 310px; }
+    .runner-profile-panel { top: auto; right: 20px; bottom: 54px; width: 180px; height: 180px; transform: none; box-shadow: 4px 4px 0 #171717; }
+    .runner-profile-panel:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #171717; }
+    .runner-caption { right: 20px; bottom: 16px; font-size: 0.58rem; }
     .container {
         padding: 0 1.25rem;
     }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .runner-hero-content { width: 57%; min-width: 390px; padding-left: 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .runner-eyebrow span, .runner-caption span { animation: none; }
 }
 
 /* ========================================================
    PRINT SPECIFIC SYSTEM
    ======================================================== */
 @media print {
-    #sidebar, .sidebar-trigger, .notion-topbar, .cv-toolbar, .back-to-top, footer, .bibtex-card, .copy-bib-btn, .notion-cover {
+    #sidebar, .sidebar-trigger, .notion-topbar, .cv-toolbar, .back-to-top, footer, .bibtex-card, .copy-bib-btn, .notion-cover, .site-profile-header, .runner-profile-panel {
         display: none !important;
     }
 
