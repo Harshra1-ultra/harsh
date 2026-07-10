@@ -2275,7 +2275,7 @@ footer {
 
 /* Floating Paper Plane Styling */
 .hero-plane-gif {
-    height: clamp(55px, 8vw, 85px);
+    height: 110px;
     width: auto;
     vertical-align: middle;
     margin-left: 12px;
@@ -2286,12 +2286,12 @@ footer {
 
 @media (max-width: 768px) {
     .hero-plane-gif {
-        height: 55px;
+        height: 75px;
     }
 }
 @media (max-width: 480px) {
     .hero-plane-gif {
-        height: 40px;
+        height: 55px;
         margin-left: 8px;
     }
 }
