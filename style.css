@@ -2189,8 +2189,10 @@ footer {
         max-width: 170px !important;
         justify-content: center;
         box-sizing: border-box;
-        font-size: 0.72rem !important;
-        padding: 8px 10px !important;
+        font-size: clamp(0.55rem, 3vw, 0.72rem) !important;
+        padding: 6px 8px !important;
+        white-space: normal !important;
+        text-align: center;
     }
 }
 
