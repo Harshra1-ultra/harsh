@@ -800,8 +800,14 @@ document.addEventListener('DOMContentLoaded', () => {
             coverCanvas.height = Math.floor(height * pixelRatio);
             ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
             groundY = height - 20;
-            astronaut.x = Math.max(120, width * (width < 600 ? 0.64 : 0.63));
-            companionPlane.x = astronaut.x + 90;
+            if (width < 600) {
+                // Mobile layout: move astronaut and plane to the left side to avoid profile photo overlap on the right
+                astronaut.x = Math.min(80, width * 0.22);
+                companionPlane.x = astronaut.x + 60;
+            } else {
+                astronaut.x = Math.max(120, width * 0.63);
+                companionPlane.x = astronaut.x + 90;
+            }
         }
 
         resize();
