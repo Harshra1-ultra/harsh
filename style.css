@@ -2275,13 +2275,25 @@ footer {
 
 /* Floating Paper Plane Styling */
 .hero-plane-gif {
-    height: 110px;
+    height: clamp(55px, 8vw, 85px);
     width: auto;
     vertical-align: middle;
     margin-left: 12px;
     display: inline-block;
     animation: floatPlane 3s ease-in-out infinite;
     filter: drop-shadow(0 2px 4px rgba(11, 110, 159, 0.15));
+}
+
+@media (max-width: 768px) {
+    .hero-plane-gif {
+        height: 55px;
+    }
+}
+@media (max-width: 480px) {
+    .hero-plane-gif {
+        height: 40px;
+        margin-left: 8px;
+    }
 }
 
 @keyframes floatPlane {
