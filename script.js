@@ -801,9 +801,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
             groundY = height - 20;
             if (width < 600) {
-                // Mobile layout: move astronaut and plane to the left side to avoid profile photo overlap on the right
-                astronaut.x = Math.min(80, width * 0.22);
-                companionPlane.x = astronaut.x + 60;
+                // Mobile layout: move astronaut a little left of the middle to avoid profile photo on the right
+                astronaut.x = Math.min(130, width * 0.36);
+                companionPlane.x = astronaut.x + 55;
             } else {
                 astronaut.x = Math.max(120, width * 0.63);
                 companionPlane.x = astronaut.x + 90;
