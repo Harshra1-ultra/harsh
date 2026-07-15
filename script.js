@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let stars = [];
         let backgroundDoodles = [];
         const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const reduceMotion = false;
         
         // Pixel Art Matrices
         const PLAYER_COLORS = {
