@@ -2423,3 +2423,49 @@ body.dark-mode .cover-spark-plane {
         transform: translateY(-98%) rotate(3deg);
     }
 }
+
+/* Dark Mode Hero Header Overrides */
+body.dark-mode .runner-eyebrow,
+body.dark-mode .runner-caption {
+    color: #94a3b8;
+}
+body.dark-mode .runner-eyebrow span,
+body.dark-mode .runner-caption span {
+    background: #cbd5e1;
+}
+body.dark-mode .runner-hero-content h1 {
+    color: #f8fafc;
+}
+body.dark-mode .runner-role {
+    color: #cbd5e1;
+}
+body.dark-mode .runner-role b {
+    color: #475569;
+}
+body.dark-mode .runner-intro {
+    color: #94a3b8;
+}
+body.dark-mode .runner-action {
+    border-color: #cbd5e1;
+    color: #cbd5e1;
+}
+body.dark-mode .runner-action:hover {
+    background: #cbd5e1;
+    color: #0f172a;
+}
+body.dark-mode .runner-action-primary {
+    background: #cbd5e1;
+    color: #0f172a;
+}
+body.dark-mode .runner-action-primary:hover {
+    background: transparent;
+    color: #cbd5e1;
+}
+body.dark-mode .runner-socials a {
+    border-color: #cbd5e1;
+    color: #cbd5e1;
+}
+body.dark-mode .runner-socials a:hover {
+    background: #cbd5e1;
+    color: #0f172a;
+}
