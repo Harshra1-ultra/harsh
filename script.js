@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial theme check
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const initialTheme = savedTheme || 'light'; // Always default to light mode on first visit
     applyTheme(initialTheme);
     
     // Bind toggle buttons
