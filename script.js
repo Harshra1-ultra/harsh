@@ -302,6 +302,142 @@ document.addEventListener('DOMContentLoaded', () => {
         const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
         const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
+        // Pixel Art Matrices
+        const PLAYER_COLORS = {
+            1: '#090d16', // Bold black outline
+            2: '#f8fafc', // Clean white suit
+            3: '#cbd5e1', // Light gray shadow
+            4: '#0f172a', // Dark blue visor
+            5: '#38bdf8', // Cyan reflection
+            6: '#0284c7', // Chest symbol (blue)
+            7: '#f97316'  // Jetpack accent (orange)
+        };
+
+        const ASTEROID_COLORS = {
+            1: '#090d16',
+            2: '#cbd5e1',
+            3: '#475569'
+        };
+
+        const ASTRONAUT_HEAD_TORSO = [
+            [0,0,0,1,1,1,1,1,0,0,0,0],
+            [0,0,1,2,2,2,2,2,1,0,0,0],
+            [0,1,2,4,4,4,4,4,2,1,0,0],
+            [0,1,2,4,5,5,4,4,2,1,0,0],
+            [0,1,2,4,4,4,4,4,2,1,0,0],
+            [0,0,1,2,2,2,2,2,1,0,0,0],
+            [0,0,0,1,1,1,1,1,0,0,0,0],
+            [0,1,3,1,2,2,2,1,3,1,0,0],
+            [0,1,3,1,2,6,2,1,3,1,0,0],
+            [0,1,3,1,2,6,2,1,3,1,0,0],
+            [0,0,1,1,2,2,2,1,1,0,0,0],
+            [0,0,0,1,1,1,1,1,0,0,0,0]
+        ];
+
+        const LEG_FRAMES = [
+            [
+                [0,2,2,1,1,2,2,0],
+                [0,2,2,1,1,2,2,0],
+                [0,2,2,0,0,2,2,0],
+                [0,3,3,0,0,3,3,0],
+                [0,3,3,0,0,3,3,0],
+                [1,1,1,0,0,1,1,1]
+            ],
+            [
+                [0,2,2,0,0,2,2,0],
+                [0,0,2,2,2,2,0,0],
+                [0,0,0,2,2,0,0,0],
+                [0,0,3,3,3,3,0,0],
+                [0,3,3,0,0,3,3,0],
+                [1,1,1,0,0,1,1,1]
+            ],
+            [
+                [0,2,2,0,0,2,2,0],
+                [0,2,0,0,0,0,2,0],
+                [2,2,0,0,0,0,2,2],
+                [3,3,0,0,0,0,3,3],
+                [3,0,0,0,0,0,0,3],
+                [1,1,1,0,0,0,1,1]
+            ],
+            [
+                [0,2,2,0,0,2,2,0],
+                [0,2,2,0,0,2,2,0],
+                [0,0,2,2,0,2,0,0],
+                [0,0,0,3,3,3,0,0],
+                [0,0,0,3,3,0,0,0],
+                [0,0,1,1,1,0,0,0]
+            ],
+            [
+                [0,2,2,1,1,2,2,0],
+                [0,2,2,1,1,2,2,0],
+                [0,2,2,0,0,2,2,0],
+                [0,3,3,0,0,3,3,0],
+                [0,3,3,0,0,3,3,0],
+                [1,1,1,0,0,1,1,1]
+            ],
+            [
+                [0,2,2,0,0,2,2,0],
+                [0,0,2,2,2,2,0,0],
+                [0,0,2,2,0,0,0,0],
+                [0,0,3,3,3,3,0,0],
+                [0,3,3,0,0,3,3,0],
+                [1,1,1,0,0,1,1,1]
+            ],
+            [
+                [0,2,2,0,0,2,2,0],
+                [0,2,0,0,0,0,2,0],
+                [2,2,0,0,0,0,2,2],
+                [3,3,0,0,0,0,3,3],
+                [0,3,0,0,0,0,3,0],
+                [1,1,1,0,0,0,1,1]
+            ],
+            [
+                [0,2,2,0,0,2,2,0],
+                [0,2,2,0,0,2,2,0],
+                [0,2,0,2,2,0,0,0],
+                [0,3,3,3,0,0,0,0],
+                [0,0,3,3,0,0,0,0],
+                [0,0,1,1,1,0,0,0]
+            ]
+        ];
+
+        const ROCKET_MATRIX = [
+            [0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,1,7,7,1,0,0,0,0,0,0],
+            [0,0,0,0,0,1,2,2,7,7,1,0,0,0,0,0],
+            [0,0,0,1,1,2,2,4,4,2,2,1,1,0,0,0],
+            [0,1,1,2,2,2,2,4,5,2,2,2,2,1,1,0],
+            [7,7,2,2,2,2,2,4,4,2,2,2,2,2,7,7],
+            [0,1,1,2,2,2,2,2,2,2,2,2,2,1,1,0],
+            [0,0,0,1,1,2,2,2,2,2,2,1,1,0,0,0],
+            [0,0,0,0,0,1,2,2,2,2,1,0,0,0,0,0],
+            [0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0]
+        ];
+
+        const ASTEROID_MATRIX = [
+            [0,0,1,1,1,1,0,0],
+            [0,1,2,2,3,3,1,0],
+            [1,2,2,2,3,3,3,1],
+            [1,2,2,3,3,3,3,1],
+            [1,2,3,3,3,3,3,1],
+            [0,1,3,3,3,3,1,0],
+            [0,0,1,1,1,1,0,0]
+        ];
+
+        function drawMatrix(ctx, matrix, startX, startY, pixelSize, colorMap, flipX = false) {
+            for (let r = 0; r < matrix.length; r++) {
+                const row = matrix[r];
+                for (let c = 0; c < row.length; c++) {
+                    const colIndex = flipX ? (row.length - 1 - c) : c;
+                    const val = row[colIndex];
+                    if (val > 0) {
+                        ctx.fillStyle = colorMap[val];
+                        ctx.fillRect(startX + c * pixelSize, startY + r * pixelSize, pixelSize, pixelSize);
+                    }
+                }
+            }
+        }
+        
         // Companion Paper Plane definition
         const companionPlane = {
             x: 165, // Positioned dynamically in resize()
@@ -429,135 +565,55 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             draw(isDark) {
                 const pxY = groundY + this.y;
-                const lineColor = isDark ? '#ffffff' : '#0f172a';
-                const fillColor = isDark ? '#0f172a' : '#ffffff';
+                const pixelSize = 1.8; // Deliberately oversized and retro pixel size
+                const startX = Math.floor(this.x - 6 * pixelSize);
+                const startY = Math.floor(pxY - 18 * pixelSize);
                 
                 ctx.save();
-                // Draw the little explorer at a deliberately oversized, readable scale.
-                ctx.translate(this.x, pxY);
-                ctx.scale(1.6, 1.6);
-                ctx.translate(-this.x, -pxY);
-                ctx.strokeStyle = lineColor;
-                ctx.fillStyle = fillColor;
-                ctx.lineWidth = 1.5;
-                ctx.lineCap = 'round';
-                ctx.lineJoin = 'round';
                 
-                if (this.isDucking) {
-                    // Squished suit for ducking
-                    ctx.beginPath();
-                    ctx.fillRect(this.x - 7, pxY - 8, 14, 8);
-                    ctx.rect(this.x - 7, pxY - 8, 14, 8);
-                    ctx.stroke();
-                    
-                    ctx.beginPath();
-                    ctx.fillRect(this.x - 11, pxY - 8, 4, 7);
-                    ctx.rect(this.x - 11, pxY - 8, 4, 7);
-                    ctx.stroke();
-                    
-                    ctx.beginPath();
-                    ctx.arc(this.x + 1, pxY - 14, 7, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.stroke();
-                    
-                    ctx.beginPath();
-                    ctx.fillStyle = lineColor;
-                    ctx.ellipse(this.x + 4, pxY - 14, 3.5, 2, 0, -Math.PI / 2, Math.PI / 2);
-                    ctx.fill();
-                    
-                    ctx.strokeStyle = lineColor;
-                    ctx.beginPath();
-                    ctx.moveTo(this.x - 4, pxY); ctx.lineTo(this.x - 7, pxY - 2);
-                    ctx.moveTo(this.x + 3, pxY); ctx.lineTo(this.x + 1, pxY - 2);
-                    ctx.stroke();
-                } else if (this.isFloating) {
-                    // Flying/Floating Posture
-                    // Suit
-                    ctx.beginPath();
-                    ctx.fillRect(this.x - 6, pxY - 16, 12, 16);
-                    ctx.rect(this.x - 6, pxY - 16, 12, 16);
-                    ctx.stroke();
-                    
-                    // Backpack/Jetpack
-                    ctx.beginPath();
-                    ctx.fillRect(this.x - 10, pxY - 15, 4, 13);
-                    ctx.rect(this.x - 10, pxY - 15, 4, 13);
-                    ctx.stroke();
-                    
-                    // Jetpack exhaust trails (under backpack at x - 8)
-                    ctx.save();
-                    ctx.strokeStyle = lineColor;
-                    ctx.setLineDash([2, 3]);
-                    ctx.lineWidth = 1;
-                    const exhaustOffset = (this.runCycle * 0.4) % 6;
-                    ctx.beginPath();
-                    ctx.moveTo(this.x - 8, pxY);
-                    ctx.lineTo(this.x - 11, pxY + 7 + exhaustOffset);
-                    ctx.moveTo(this.x - 9, pxY);
-                    ctx.lineTo(this.x - 7, pxY + 5 + (exhaustOffset * 0.7));
-                    ctx.stroke();
-                    ctx.restore();
-                    
-                    // Helmet
-                    ctx.beginPath();
-                    ctx.arc(this.x + 1, pxY - 23, 9, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.stroke();
-                    
-                    // Visor
-                    ctx.beginPath();
-                    ctx.fillStyle = lineColor;
-                    ctx.ellipse(this.x + 5, pxY - 23, 4.5, 2.5, 0, -Math.PI / 2, Math.PI / 2);
-                    ctx.fill();
-                    
-                    // Legs angled backwards slightly
-                    ctx.strokeStyle = lineColor;
-                    ctx.beginPath();
-                    ctx.moveTo(this.x - 3, pxY);
-                    ctx.lineTo(this.x - 6, pxY + 4);
-                    ctx.moveTo(this.x + 3, pxY);
-                    ctx.lineTo(this.x - 1, pxY + 4);
-                    ctx.stroke();
-                } else {
-                    // Normal run/jump cycle
-                    ctx.beginPath();
-                    ctx.fillRect(this.x - 6, pxY - 16, 12, 16);
-                    ctx.rect(this.x - 6, pxY - 16, 12, 16);
-                    ctx.stroke();
-                    
-                    ctx.beginPath();
-                    ctx.fillRect(this.x - 10, pxY - 15, 4, 13);
-                    ctx.rect(this.x - 10, pxY - 15, 4, 13);
-                    ctx.stroke();
-                    
-                    ctx.beginPath();
-                    ctx.arc(this.x + 1, pxY - 23, 9, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.stroke();
-                    
-                    ctx.beginPath();
-                    ctx.fillStyle = lineColor;
-                    ctx.ellipse(this.x + 5, pxY - 23, 4.5, 2.5, 0, -Math.PI / 2, Math.PI / 2);
-                    ctx.fill();
-                    
-                    ctx.strokeStyle = lineColor;
-                    if (this.isJumping) {
-                        ctx.beginPath();
-                        ctx.moveTo(this.x - 3, pxY);
-                        ctx.lineTo(this.x - 3, pxY + 5);
-                        ctx.moveTo(this.x + 3, pxY);
-                        ctx.lineTo(this.x + 3, pxY + 5);
-                        ctx.stroke();
-                    } else {
-                        const swing = Math.sin(this.runCycle * 0.3) * 5;
-                        ctx.beginPath();
-                        ctx.moveTo(this.x - 3, pxY);
-                        ctx.lineTo(this.x - 3 + swing, pxY + 5);
-                        ctx.moveTo(this.x + 3, pxY);
-                        ctx.lineTo(this.x + 3 - swing, pxY + 5);
-                        ctx.stroke();
+                // Draw Jetpack Flame if floating/jumping
+                if (this.isFloating || this.isJumping) {
+                    const flameColor = Math.random() < 0.5 ? '#f97316' : '#eab308';
+                    ctx.fillStyle = flameColor;
+                    for (let i = 0; i < 4; i++) {
+                        const fx = startX + (Math.random() * 3 - 2.5) * pixelSize;
+                        const fy = startY + 12 * pixelSize + (Math.random() * 6 + 1) * pixelSize;
+                        ctx.fillRect(fx, fy, pixelSize * 1.2, pixelSize * 1.2);
                     }
                 }
+
+                // Leg run frame selector
+                let legFrameIndex = 0;
+                if (this.isFloating) {
+                    legFrameIndex = 6;
+                } else if (this.isJumping) {
+                    legFrameIndex = 2;
+                } else if (this.isDucking) {
+                    legFrameIndex = 1;
+                } else {
+                    legFrameIndex = Math.floor(this.runCycle * 0.22) % 8;
+                }
+
+                // If ducking, squish head/torso down slightly
+                const headTorsoY = this.isDucking ? startY + 2 * pixelSize : startY;
+
+                // Adjust color map according to light/dark modes
+                const colors = {
+                    1: isDark ? '#ffffff' : '#090d16', // outline matches theme color
+                    2: '#f8fafc', // Suit white
+                    3: '#cbd5e1', // Suit gray shadow
+                    4: '#0f172a', // Visor base
+                    5: '#38bdf8', // Visor reflection
+                    6: '#0284c7', // Emblem
+                    7: '#f97316'  // Accent flame
+                };
+
+                // Draw Head & Torso
+                drawMatrix(ctx, ASTRONAUT_HEAD_TORSO, startX, headTorsoY, pixelSize, colors);
+
+                // Draw Legs
+                drawMatrix(ctx, LEG_FRAMES[legFrameIndex], startX + 2 * pixelSize, headTorsoY + 12 * pixelSize, pixelSize, colors);
+
                 ctx.restore();
             }
         };
@@ -588,66 +644,136 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.reset(true);
             }
             reset(init = false) {
-                this.x = init ? Math.random() * width : width + 100;
-                this.y = Math.random() * (groundY - 60) + 15;
-                this.type = Math.floor(Math.random() * 6); // planet, constellation, orbit, radar, wave, engineering sketch
-                this.speed = Math.random() * 0.15 + 0.05;
-                this.size = Math.random() * 15 + 10;
+                this.x = init ? Math.random() * width : width + 120;
+                this.y = Math.random() * (groundY - 70) + 20;
+                this.type = Math.floor(Math.random() * 5); // 0: Orange, 1: Red/Blue, 2: Saturn, 3: Galaxy, 4: Big Star
+                this.speed = Math.random() * 0.12 + 0.04;
+                this.size = Math.random() * 12 + 8; // planet radius
                 this.angle = Math.random() * Math.PI;
+                
+                // Pre-generate craters
+                this.craters = [];
+                const numCraters = 2 + Math.floor(Math.random() * 3);
+                for (let i = 0; i < numCraters; i++) {
+                    this.craters.push({
+                        cx: (Math.random() - 0.5) * this.size * 0.9,
+                        cy: (Math.random() - 0.5) * this.size * 0.9,
+                        r: 1.5 + Math.random() * (this.size * 0.2)
+                    });
+                }
             }
             update() {
                 this.x -= this.speed;
-                this.angle += 0.002;
-                if (this.x < -100) this.reset();
+                this.angle += 0.003;
+                if (this.x < -120) this.reset();
             }
             draw(isDark) {
-                const color = isDark ? 'rgba(255,255,255,0.09)' : 'rgba(15,23,42,0.06)';
                 ctx.save();
-                ctx.strokeStyle = color;
-                ctx.lineWidth = 1;
+                const pixelSize = 2;
                 
-                if (this.type === 0) {
-                    // Saturn Planet
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, 8, 0, Math.PI * 2);
-                    ctx.stroke();
-                    ctx.translate(this.x, this.y);
-                    ctx.rotate(0.3);
-                    ctx.beginPath();
-                    ctx.ellipse(0, 0, 16, 3, 0, 0, Math.PI * 2);
-                    ctx.stroke();
-                } else if (this.type === 1) {
-                    // Constellation (connected triangles)
-                    ctx.beginPath();
-                    ctx.moveTo(this.x, this.y);
-                    ctx.lineTo(this.x + 12, this.y - 8);
-                    ctx.lineTo(this.x + 20, this.y + 4);
-                    ctx.closePath();
-                    ctx.stroke();
-                    // dots
-                    ctx.fillStyle = color;
-                    ctx.fillRect(this.x - 1.5, this.y - 1.5, 3, 3);
-                    ctx.fillRect(this.x + 10.5, this.y - 9.5, 3, 3);
-                    ctx.fillRect(this.x + 18.5, this.y + 2.5, 3, 3);
-                } else if (this.type === 2) {
-                    // Orbit dotted arc
-                    ctx.setLineDash([2, 4]);
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y + 30, 40, -Math.PI*0.7, -Math.PI*0.3);
-                    ctx.stroke();
-                } else if (this.type === 3) {
-                    ctx.setLineDash([2, 4]);
-                    ctx.beginPath(); ctx.arc(this.x, this.y, 14 + Math.sin(this.angle * 8) * 3, -Math.PI * .8, Math.PI * .15); ctx.stroke();
-                    ctx.setLineDash([]);
-                    ctx.beginPath(); ctx.moveTo(this.x, this.y); ctx.lineTo(this.x + 11, this.y - 7); ctx.stroke();
-                } else if (this.type === 4) {
-                    ctx.beginPath(); ctx.arc(this.x, this.y, 8, -Math.PI * .8, Math.PI * .1); ctx.stroke();
-                    ctx.beginPath(); ctx.arc(this.x, this.y, 14, -Math.PI * .8, Math.PI * .1); ctx.stroke();
+                // Color choices depending on theme
+                let baseColor, shadowColor;
+                if (isDark) {
+                    if (this.type === 0) {
+                        baseColor = '#ef4444'; // Red planet
+                        shadowColor = '#991b1b';
+                    } else if (this.type === 1) {
+                        baseColor = '#3b82f6'; // Blue planet
+                        shadowColor = '#1d4ed8';
+                    } else if (this.type === 2) {
+                        baseColor = '#a855f7'; // Purple planet
+                        shadowColor = '#6b21a8';
+                    } else {
+                        baseColor = '#f97316'; // Orange / Saturn
+                        shadowColor = '#c2410c';
+                    }
                 } else {
-                    ctx.strokeRect(this.x - 12, this.y - 8, 24, 16);
-                    ctx.beginPath();
-                    ctx.moveTo(this.x - 9, this.y + 4); ctx.lineTo(this.x - 3, this.y - 3); ctx.lineTo(this.x + 3, this.y + 2); ctx.lineTo(this.x + 9, this.y - 5);
-                    ctx.stroke();
+                    // Subtle light-mode pastel colors with low opacity
+                    if (this.type === 0) {
+                        baseColor = 'rgba(239, 68, 68, 0.13)';
+                        shadowColor = 'rgba(153, 27, 27, 0.18)';
+                    } else if (this.type === 1) {
+                        baseColor = 'rgba(59, 130, 246, 0.13)';
+                        shadowColor = 'rgba(29, 78, 216, 0.18)';
+                    } else if (this.type === 2) {
+                        baseColor = 'rgba(168, 85, 247, 0.13)';
+                        shadowColor = 'rgba(107, 33, 168, 0.18)';
+                    } else {
+                        baseColor = 'rgba(249, 115, 22, 0.13)';
+                        shadowColor = 'rgba(194, 65, 12, 0.18)';
+                    }
+                }
+
+                if (this.type === 0 || this.type === 1 || this.type === 2) {
+                    // Draw pixelated spherical planet
+                    const rBlocks = Math.ceil(this.size / pixelSize);
+                    for (let dy = -rBlocks; dy <= rBlocks; dy++) {
+                        for (let dx = -rBlocks; dx <= rBlocks; dx++) {
+                            if (dx * dx + dy * dy <= rBlocks * rBlocks) {
+                                const px = Math.floor(this.x + dx * pixelSize);
+                                const py = Math.floor(this.y + dy * pixelSize);
+                                
+                                // Determine if shadow or crater
+                                let color = (dx + dy > rBlocks * 0.45) ? shadowColor : baseColor;
+                                
+                                for (let c of this.craters) {
+                                    const cdx = (dx * pixelSize) - c.cx;
+                                    const cdy = (dy * pixelSize) - c.cy;
+                                    if (cdx * cdx + cdy * cdy <= c.r * c.r) {
+                                        color = shadowColor;
+                                        break;
+                                    }
+                                }
+                                ctx.fillStyle = color;
+                                ctx.fillRect(px, py, pixelSize, pixelSize);
+                            }
+                        }
+                    }
+                } else if (this.type === 3) {
+                    // Saturn: draw Saturn ring + Saturn body
+                    // Body
+                    const bodySize = this.size * 0.85;
+                    const rBlocks = Math.ceil(bodySize / pixelSize);
+                    for (let dy = -rBlocks; dy <= rBlocks; dy++) {
+                        for (let dx = -rBlocks; dx <= rBlocks; dx++) {
+                            if (dx * dx + dy * dy <= rBlocks * rBlocks) {
+                                const px = Math.floor(this.x + dx * pixelSize);
+                                const py = Math.floor(this.y + dy * pixelSize);
+                                ctx.fillStyle = (dx + dy > rBlocks * 0.45) ? shadowColor : baseColor;
+                                ctx.fillRect(px, py, pixelSize, pixelSize);
+                            }
+                        }
+                    }
+                    // Ring (diagonal line)
+                    ctx.fillStyle = isDark ? 'rgba(253, 224, 71, 0.65)' : 'rgba(234, 179, 8, 0.22)';
+                    const ringLength = Math.ceil(this.size * 2.2 / pixelSize);
+                    for (let i = -ringLength; i <= ringLength; i++) {
+                        // Skip body overlapping if behind, or draw it on top
+                        if (Math.abs(i) < rBlocks * 0.6) continue;
+                        const rx = Math.floor(this.x + i * pixelSize);
+                        const ry = Math.floor(this.y + i * 0.4 * pixelSize);
+                        ctx.fillRect(rx, ry, pixelSize * 1.3, pixelSize);
+                    }
+                } else {
+                    // Spiral Galaxy
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.angle * 2.5);
+                    const numArms = 2;
+                    const points = 24;
+                    for (let arm = 0; arm < numArms; arm++) {
+                        const armOffset = arm * Math.PI;
+                        for (let i = 0; i < points; i++) {
+                            const theta = (i / points) * Math.PI * 2.2;
+                            const r = Math.pow(i / points, 0.7) * (this.size * 1.5);
+                            const gx = Math.floor(Math.cos(theta + armOffset) * r);
+                            const gy = Math.floor(Math.sin(theta + armOffset) * r);
+                            const fade = 1 - (i / points);
+                            ctx.fillStyle = isDark 
+                                ? (i < 8 ? `rgba(253, 186, 116, ${fade * 0.65})` : `rgba(147, 51, 234, ${fade * 0.35})`)
+                                : (i < 8 ? `rgba(9, 13, 22, ${fade * 0.25})` : `rgba(71, 85, 105, ${fade * 0.12})`);
+                            ctx.fillRect(gx, gy, pixelSize, pixelSize);
+                        }
+                    }
                 }
                 ctx.restore();
             }
@@ -689,6 +815,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.x -= this.speed;
             }
             draw(isDark) {
+                if (this.type === 'rocket') {
+                    const pixelSize = 1.8;
+                    ctx.save();
+                    // Draw rocket matrix flipped horizontally
+                    drawMatrix(ctx, ROCKET_MATRIX, Math.floor(this.x - 8 * pixelSize), Math.floor(this.y - 12 * pixelSize), pixelSize, PLAYER_COLORS, true);
+                    ctx.restore();
+                    return;
+                } else if (this.type === 'asteroid') {
+                    const pixelSize = 2;
+                    ctx.save();
+                    drawMatrix(ctx, ASTEROID_MATRIX, Math.floor(this.x - 4 * pixelSize), Math.floor(this.y - 7 * pixelSize), pixelSize, ASTEROID_COLORS);
+                    ctx.restore();
+                    return;
+                }
+                
                 const lineColor = isDark ? '#ffffff' : '#0f172a';
                 ctx.save();
                 ctx.translate(this.x, this.y);
@@ -768,16 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.font = 'italic 700 0.8rem var(--font-body)';
                     ctx.fillText('∇×E', this.x - 12, this.y + 3);
                 }
-                if (this.type === 'rocket') {
-                    ctx.beginPath();
-                    ctx.moveTo(this.x, this.y - 22); ctx.lineTo(this.x + 6, this.y - 6); ctx.lineTo(this.x - 6, this.y - 6); ctx.closePath(); ctx.stroke();
-                    ctx.beginPath(); ctx.arc(this.x, this.y - 14, 2, 0, Math.PI * 2); ctx.stroke();
-                    ctx.beginPath(); ctx.moveTo(this.x - 3, this.y - 6); ctx.lineTo(this.x - 6, this.y); ctx.moveTo(this.x + 3, this.y - 6); ctx.lineTo(this.x + 6, this.y); ctx.stroke();
-                } else if (this.type === 'asteroid') {
-                    ctx.beginPath(); ctx.arc(this.x + 3, this.y - 9, 8, 0, Math.PI * 2); ctx.stroke();
-                    ctx.beginPath(); ctx.moveTo(this.x - 6, this.y - 7); ctx.lineTo(this.x - 16, this.y - 2); ctx.moveTo(this.x - 7, this.y - 13); ctx.lineTo(this.x - 19, this.y - 17); ctx.stroke();
-                    ctx.beginPath(); ctx.arc(this.x + 5, this.y - 11, 1.4, 0, Math.PI * 2); ctx.stroke();
-                } else if (this.type === 'tower') {
+                if (this.type === 'tower') {
                     ctx.beginPath(); ctx.moveTo(this.x - 7, this.y); ctx.lineTo(this.x, this.y - 26); ctx.lineTo(this.x + 7, this.y); ctx.moveTo(this.x - 5, this.y - 10); ctx.lineTo(this.x + 5, this.y - 10); ctx.moveTo(this.x - 3, this.y - 18); ctx.lineTo(this.x + 3, this.y - 18); ctx.stroke();
                     ctx.beginPath(); ctx.arc(this.x, this.y - 27, 8, -Math.PI * .85, -Math.PI * .15); ctx.stroke();
                 } else if (this.type === 'mimo') {
@@ -885,10 +1017,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function loop() {
-            // The runner remains an ink-on-paper illustration in both site themes.
-            const isDark = false;
+            // Read theme dynamically from body class
+            const isDark = document.body.classList.contains('dark-mode');
             
-            // Pure white cover background in light mode, slate in dark mode
+            // Slate in dark mode, pure white in light mode
             ctx.fillStyle = isDark ? '#0f172a' : '#ffffff';
             ctx.fillRect(0, 0, width, height);
             
