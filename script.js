@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             draw(isDark) {
                 const pxY = groundY + this.y;
-                const pixelSize = 3.6; // Doubled in size
+                const pixelSize = 2.88; // 20% smaller than 3.6
                 const startX = Math.floor(this.x - 6 * pixelSize);
                 const startY = Math.floor(pxY - 18 * pixelSize);
                 
