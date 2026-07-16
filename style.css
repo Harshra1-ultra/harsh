@@ -12,8 +12,8 @@
     /* Notion Light Mode Colors */
     --bg-primary: #ffffff;
     --bg-sidebar: #fbfbfa;
-    --border-color: rgba(55, 53, 47, 0.09);
-    --border-strong: rgba(55, 53, 47, 0.16);
+    --border-color: rgba(55, 53, 47, 0.16);
+    --border-strong: rgba(55, 53, 47, 0.28);
     --text-primary: #37352f;
     --text-secondary: #787774;
     --text-muted: #9b9a97;
@@ -51,8 +51,8 @@
 body.dark-mode {
     --bg-primary: #191919;
     --bg-sidebar: #202020;
-    --border-color: rgba(255, 255, 255, 0.075);
-    --border-strong: rgba(255, 255, 255, 0.14);
+    --border-color: rgba(255, 255, 255, 0.15);
+    --border-strong: rgba(255, 255, 255, 0.26);
     --text-primary: #ebece6;
     --text-secondary: #9b9b9b;
     --text-muted: #606060;
@@ -2468,4 +2468,31 @@ body.dark-mode .runner-socials a {
 body.dark-mode .runner-socials a:hover {
     background: #cbd5e1;
     color: #0f172a;
+}
+
+/* MODERN & USER-FRIENDLY INTERACTION REFINEMENTS */
+.skills-card, .award-item, .about-card, .education-card, .ta-card, .sim-plot-card, .notion-callout, .notion-gallery-card {
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.skills-card:hover, .award-item:hover, .about-card:hover, .education-card:hover, .ta-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-strong);
+}
+
+/* Tactile button active click feedback */
+.btn:active, 
+.runner-action:active, 
+.sidebar-item:active, 
+.copy-bib-btn:active, 
+.runner-socials a:active,
+.theme-toggle-btn:active {
+    transform: scale(0.96) !important;
+}
+
+/* Scrollbar tracks modernization */
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
 }
