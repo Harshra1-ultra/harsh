@@ -556,8 +556,26 @@ button {
     transition: background .2s ease, color .2s ease, transform .2s ease;
 }
 .runner-action:hover { background: #171717; color: #fff; transform: translateY(-2px); }
-.runner-action-primary { background: #171717; color: #fff; }
+.runner-action-primary { 
+    background: #171717; 
+    color: #fff; 
+    position: relative; 
+    overflow: visible; 
+}
 .runner-action-primary:hover { background: #fff; color: #171717; }
+.btn-panda-gif {
+    position: absolute;
+    top: -25px;
+    left: 14px;
+    height: 28px;
+    width: auto;
+    display: block;
+    pointer-events: none;
+    transition: transform .2s ease;
+}
+.runner-action:hover .btn-panda-gif {
+    transform: translateY(-2px) scale(1.1);
+}
 
 .runner-socials { display: flex; gap: 9px; margin-top: 21px; }
 .runner-socials a {
