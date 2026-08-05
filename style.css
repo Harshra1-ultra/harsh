@@ -565,12 +565,16 @@ button {
 .runner-action-primary:hover { background: #fff; color: #171717; }
 .btn-panda-gif {
     position: absolute;
-    top: -25px;
-    left: 14px;
-    height: 28px;
-    width: auto;
-    display: block;
+    top: -24px;
+    left: 12px;
+    height: 28px !important;
+    max-height: 28px !important;
+    width: 54px !important;
+    max-width: 54px !important;
+    object-fit: contain !important;
+    display: block !important;
     pointer-events: none;
+    z-index: 10;
     transition: transform .2s ease;
 }
 .runner-action:hover .btn-panda-gif {
