@@ -930,16 +930,16 @@
             });
             const [searchQuery, setSearchQuery] = useState('');
             const [category, setCategory] = useState('All');
+            const [deadlineFilter, setDeadlineFilter] = useState('all');
             const [selectedConf, setSelectedConf] = useState(null);
 
             const filteredConferences = useMemo(() => {
                 const today = new Date();
-                // Automatic 3-month cutoff limit date (90 days prior to current date)
                 const threeMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
 
                 return INITIAL_DATA.filter(conf => {
-                    // Automatic deadline cutoff: remove if deadline passed > 3 months ago
-                    if (conf.deadline) {
+                    // Optional 3-month cutoff limit if 'recent' mode selected
+                    if (deadlineFilter === 'recent' && conf.deadline) {
                         const deadlineDate = new Date(conf.deadline);
                         if (!isNaN(deadlineDate.getTime()) && deadlineDate < threeMonthsAgo) {
                             return false;
@@ -952,7 +952,7 @@
                     const matchesCategory = category === 'All' || conf.category === category;
                     return matchesSearch && matchesCategory;
                 });
-            }, [searchQuery, category]);
+            }, [searchQuery, category, deadlineFilter]);
 
             // Sync Dark Mode class for Tailwind scoping
             useEffect(() => {
@@ -1029,9 +1029,14 @@
                             <option value="Information Theory">Information Theory</option>
                             <option value="VTC">VTC</option>
                         </select>
-                        <span className="text-[11px] font-medium text-[var(--text-secondary)] border border-[var(--border-color)] px-2.5 py-1 rounded bg-[var(--hover-bg)] flex items-center gap-1.5 ml-auto">
-                            ⏳ Auto-hiding deadlines passed &gt; 3 months ago
-                        </span>
+                        <select 
+                            value={deadlineFilter} 
+                            onChange={(e) => setDeadlineFilter(e.target.value)}
+                            className="notion-select"
+                        >
+                            <option value="all">Show All Conferences</option>
+                            <option value="recent">Upcoming & Recent (Past 3 Months)</option>
+                        </select>
                     </div>
 
                     {/* View rendering */}
