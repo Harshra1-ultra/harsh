@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Projects | Harsh Raj — IIT Guwahati</title>
     <meta name="description" content="Explore research code repositories, simulation scripts, and the interactive web-based Rician fading channel simulator created by Harsh Raj, Ph.D. Scholar at IIT Guwahati." />
     <meta name="keywords" content="Harsh Raj projects, Harsh Raj code, Rician fading simulator, Rician channel simulator, Harsh Raj IIT Guwahati, wireless communication code, IRS simulation, ISAC code, MATLAB wireless simulation" />
@@ -36,10 +39,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     
     <!-- LaTeX Support via MathJax -->
+    <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+    </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Centralized Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=2.6">
+    <link rel="stylesheet" href="style.css?v=2.7">
 </head>
 <body>
 
@@ -503,7 +512,7 @@
     </div>
 
     <!-- Centralized Logic Script -->
-    <script src="script.js?v=2.5"></script>
+    <script src="script.js?v=2.7"></script>
 
     <!-- Rician Simulator Logic -->
     <script>
