@@ -933,7 +933,19 @@
             const [selectedConf, setSelectedConf] = useState(null);
 
             const filteredConferences = useMemo(() => {
+                const today = new Date();
+                // Automatic 3-month cutoff limit date (90 days prior to current date)
+                const threeMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
+
                 return INITIAL_DATA.filter(conf => {
+                    // Automatic deadline cutoff: remove if deadline passed > 3 months ago
+                    if (conf.deadline) {
+                        const deadlineDate = new Date(conf.deadline);
+                        if (!isNaN(deadlineDate.getTime()) && deadlineDate < threeMonthsAgo) {
+                            return false;
+                        }
+                    }
+
                     const matchesSearch = conf.acronym.toLowerCase().includes(searchQuery.toLowerCase()) ||
                                           conf.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                                           conf.venue.toLowerCase().includes(searchQuery.toLowerCase());
@@ -996,8 +1008,8 @@
                     </div>
 
                     {/* Filter & Search Bar */}
-                    <div className="notion-filter-bar">
-                        <div className="relative flex-1 max-w-xs">
+                    <div className="notion-filter-bar flex-wrap gap-2">
+                        <div className="relative flex-1 max-w-xs min-w-[180px]">
                             <input 
                                 type="text"
                                 placeholder="Search by acronym, title..."
@@ -1017,6 +1029,9 @@
                             <option value="Information Theory">Information Theory</option>
                             <option value="VTC">VTC</option>
                         </select>
+                        <span className="text-[11px] font-medium text-[var(--text-secondary)] border border-[var(--border-color)] px-2.5 py-1 rounded bg-[var(--hover-bg)] flex items-center gap-1.5 ml-auto">
+                            ⏳ Auto-hiding deadlines passed &gt; 3 months ago
+                        </span>
                     </div>
 
                     {/* View rendering */}
