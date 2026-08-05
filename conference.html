@@ -369,13 +369,13 @@
             },
             {
                 id: 4,
-                title: "IEEE Vehicular Technology Conference (Spring)",
-                acronym: "VTC 2026-Spring",
+                title: "IEEE Vehicular Technology Conference (Spring 2027)",
+                acronym: "VTC 2027-Spring",
                 category: "VTC",
-                venue: "Nice, France",
-                dates: "June 9-12, 2026",
-                deadline: "2025-12-10",
-                website: "https://events.vtsociety.org/vtc2026-spring/"
+                venue: "Yokohama, Japan",
+                dates: "May 16-19, 2027",
+                deadline: "2026-12-15",
+                website: "https://events.vtsociety.org/vtc2027-spring/"
             },  
             {
                 id: 5,
@@ -439,13 +439,13 @@
             },
             {
                 id: 11,
-                title: "IEEE Vehicular Technology Conference (Fall)",
-                acronym: "VTC 2026-Fall",
+                title: "IEEE Vehicular Technology Conference (Fall 2027)",
+                acronym: "VTC 2027-Fall",
                 category: "VTC",
                 venue: "TBD",
-                dates: "TBD, 2026",
-                deadline: "2027-02-01",
-                website: "https://events.vtsociety.org/vtc2026-fall/"
+                dates: "Oct. 2027",
+                deadline: "2027-02-15",
+                website: "https://events.vtsociety.org/vtc2027-fall/"
             },
             {
                 id: 12,
@@ -569,13 +569,13 @@
             },
             {
                 id: 24,
-                title: "International Symposium on Modeling and Optimization in Mobile, Ad hoc, and Wireless Networks",
-                acronym: "WiOpt 2026",
+                title: "International Symposium on Modeling and Optimization in Mobile, Ad hoc, and Wireless Networks (WiOpt 2027)",
+                acronym: "WiOpt 2027",
                 category: "Information Theory",
                 venue: "TBD",
-                dates: "TBD, 2026",
-                deadline: "2026-02-02",
-                website: "https://wiopt2026.github.io/"
+                dates: "Oct. 2027",
+                deadline: "2027-02-15",
+                website: "https://wiopt2027.github.io/"
             },
             {
                 id: 25,
@@ -616,6 +616,16 @@
                 dates: "TBD, 2026",
                 deadline: "2026-05-31",
                 website: "http://iswcs.org/iswcs2026/"
+            },
+            {
+                id: 29,
+                title: "IEEE National Conference on Communications (NCC 2027)",
+                acronym: "NCC 2027",
+                category: "ComSoc",
+                venue: "IISc Bangalore, India",
+                dates: "Feb. 20-22, 2027",
+                deadline: "2026-10-15",
+                website: "https://ncc2027.in"
             }
         ];
 
@@ -810,7 +820,7 @@
         };
 
         // Notion-Style Details Modal
-        const DetailsModal = ({ conf, onClose }) => {
+        const DetailsModal = ({ conf, onClose, onJumpToCalendar }) => {
             if (!conf) return null;
             const isFuture = new Date(conf.deadline) >= new Date();
 
@@ -851,20 +861,30 @@
                                 <div className="flex items-start gap-2 text-xs">
                                     <i className="fa-regular fa-clock text-[var(--text-muted)] mt-0.5 w-4 text-center"></i>
                                     <div>
-                                        <span className="font-semibold block text-[10px] text-[var(--text-muted)]">DEADLINE</span>
-                                        <span className={`font-semibold ${isFuture ? 'text-green-600' : 'text-red-500'}`}>{conf.deadline}</span>
+                                        <span className="font-semibold block text-[10px] text-[var(--text-muted)]">PAPER SUBMISSION DEADLINE</span>
+                                        <span className={`font-bold ${isFuture ? 'text-green-600' : 'text-red-500'}`}>📌 {conf.deadline}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* Footer */}
-                        <div className="bg-[var(--hover-bg)] px-5 py-3 border-t border-[var(--border-color)] flex justify-end gap-2">
-                            <button onClick={onClose} className="px-3 py-1.5 border border-[var(--border-color)] text-xs font-semibold rounded-md text-[var(--text-secondary)] bg-[var(--bg-primary)] hover:bg-[var(--hover-bg)] cursor-pointer">
-                                Close
+                        <div className="bg-[var(--hover-bg)] px-5 py-3 border-t border-[var(--border-color)] flex justify-between items-center gap-2">
+                            <button 
+                                onClick={() => {
+                                    if (onJumpToCalendar) onJumpToCalendar(conf);
+                                }}
+                                className="px-2.5 py-1.5 border border-[var(--border-color)] text-xs font-semibold rounded-md text-[var(--text-primary)] bg-[var(--bg-primary)] hover:bg-[var(--hover-bg)] cursor-pointer flex items-center gap-1.5"
+                            >
+                                📅 View Deadline in Calendar
                             </button>
-                            <a href={conf.website} target="_blank" className="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 shadow-sm">
-                                Website <i className="fa-solid fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
-                            </a>
+                            <div className="flex gap-2">
+                                <button onClick={onClose} className="px-3 py-1.5 border border-[var(--border-color)] text-xs font-semibold rounded-md text-[var(--text-secondary)] bg-[var(--bg-primary)] hover:bg-[var(--hover-bg)] cursor-pointer">
+                                    Close
+                                </button>
+                                <a href={conf.website} target="_blank" className="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 shadow-sm">
+                                    Website <i className="fa-solid fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -913,6 +933,17 @@
                 }
                 return () => observer.disconnect();
             }, []);
+
+            const handleJumpToCalendar = (conf) => {
+                if (conf && conf.deadline) {
+                    const d = new Date(conf.deadline);
+                    if (!isNaN(d.getTime())) {
+                        setCurrentDate(new Date(d.getFullYear(), d.getMonth(), 1));
+                    }
+                }
+                setView('calendar');
+                setSelectedConf(null);
+            };
 
             return (
                 <div className="w-full text-[var(--text-primary)]">
@@ -987,6 +1018,7 @@
                     <DetailsModal 
                         conf={selectedConf}
                         onClose={() => setSelectedConf(null)}
+                        onJumpToCalendar={handleJumpToCalendar}
                     />
                 </div>
             );
