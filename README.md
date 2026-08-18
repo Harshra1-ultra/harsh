@@ -1,4 +1,4 @@
-# Harsh Raj — Academic Portfolio & Research Simulator
+# Harsh Raj-Academic Portfolio & Research Simulator
 
 This repository contains the source code for the professional academic portfolio, interactive simulator, and Curriculum Vitae (CV) of **Harsh Raj**, a Ph.D. Research Scholar in the Department of Electronics and Electrical Engineering at the Indian Institute of Technology Guwahati.
 
