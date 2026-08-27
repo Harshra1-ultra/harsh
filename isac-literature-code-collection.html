@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>ISAC-literature-code-collection | Harsh Raj — IIT Guwahati</title>
+    <meta name="description" content="A curated open-source collection of reproducible codes, simulation packages, datasets, and literature implementations for Integrated Sensing and Communication (ISAC) research by Harsh Raj." />
+    <meta name="keywords" content="ISAC-literature-code-collection, ISAC code collection, Integrated Sensing and Communication code, ISAC literature review, ISAC simulation MATLAB Python, MIMO ISAC, RIS ISAC, 6G ISAC research, Harsh Raj IIT Guwahati" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ISAC-literature-code-collection | Harsh Raj" />
+    <meta property="og:description" content="A curated open-source collection of reproducible codes, simulation packages, datasets, and literature implementations for ISAC research." />
+    <meta property="og:image" content="Harsh.jpeg" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "ISAC-literature-code-collection",
+      "description": "Curated database of reproducible ISAC research code, simulation models, datasets, and literature.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Harsh Raj"
+      }
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- Centralized Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=2.7">
+
+    <!-- React, ReactDOM & Babel -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .isac-sync-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .isac-sync-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.6; }
+        }
+        .isac-table-container {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--bg-primary);
+        }
+        .isac-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .isac-table th {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+            font-weight: 700;
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        .isac-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+        .isac-table tr:hover {
+            background-color: var(--hover-bg);
+        }
+        .topic-pill {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 2px 7px;
+            margin: 2px 2px 2px 0;
+            border-radius: 4px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        body.dark-mode .topic-pill {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .github-code-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 11px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 6px;
+            background: #24292e;
+            color: #ffffff !important;
+            border: 1px solid #333;
+            transition: all 0.2s ease;
+        }
+        .github-code-btn:hover {
+            background: #000000;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- App Layout Wrap -->
+    <div id="app-container">
+
+        <!-- COLLAPSIBLE LEFT SIDEBAR (Notion Style) -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html#home" class="sidebar-brand">
+                    <img src="Harsh.jpeg" alt="Harsh" class="sidebar-brand-avatar">
+                    <span>Harsh Raj Profile</span>
+                </a>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Collapse sidebar">
+                    <i class="fas fa-angles-left"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-scroll">
+                <div class="sidebar-section-title">Pages</div>
+                <a href="index.html" class="sidebar-item">
+                    <span class="sidebar-item-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="second-page.html" class="sidebar-item">
+                    <span class="sidebar-item-icon">🚀</span>
+                    <span>Projects</span>
+                </a>
+                <a href="isac-literature-code-collection.html" class="sidebar-item active">
+                    <span class="sidebar-item-icon">📡</span>
+                    <span>ISAC-literature-code-collection</span>
+                </a>
+                <a href="cv.html" class="sidebar-item">
+                    <span class="sidebar-item-icon">📄</span>
+                    <span>Curriculum Vitae</span>
+                </a>
+                <a href="conference.html" class="sidebar-item">
+                    <span class="sidebar-item-icon">📅</span>
+                    <span>Conference Tracker</span>
+                </a>
+
+                <div class="sidebar-section-title">External Links</div>
+                <a href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank" class="sidebar-item">
+                    <span class="sidebar-item-icon"><i class="fab fa-github"></i></span>
+                    <span>ISAC GitHub Repo</span>
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item">
+                    <span class="sidebar-item-icon"><i class="fab fa-google-scholar"></i></span>
+                    <span>Google Scholar</span>
+                </a>
+                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item">
+                    <span class="sidebar-item-icon"><i class="fab fa-linkedin"></i></span>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">v2.7</div>
+            </div>
+        </aside>
+
+        <!-- Sidebar backdrop for mobile -->
+        <button class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close navigation"></button>
+
+        <!-- Sidebar Trigger Button -->
+        <button class="sidebar-trigger" id="sidebarTrigger" aria-label="Expand sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- MAIN PAGE CONTAINER -->
+        <main id="main-content">
+
+            <!-- Breadcrumbs Topbar -->
+            <div class="notion-topbar">
+                <div class="notion-breadcrumbs" id="breadcrumbs">
+                    <a href="index.html" class="hover:underline">Research portfolio</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <a href="second-page.html" class="hover:underline">Projects</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-active">ISAC-literature-code-collection</span>
+                </div>
+            </div>
+
+            <!-- Runner Hero Section Matching website style -->
+            <section class="research-runner-hero" aria-labelledby="title-head">
+                <canvas class="cover-canvas" aria-hidden="false"></canvas>
+                <div class="runner-hero-content">
+                    <p class="runner-eyebrow"><span></span> Research portfolio / ISAC Literature</p>
+                    <h1 id="title-head">ISAC-literature-code-collection <img src="paper_plane.gif" alt="" class="hero-plane-gif" onerror="this.style.display='none'"></h1>
+                    <p class="runner-role">Reproducible Code &amp; Research Database</p>
+                    <p class="runner-intro">A curated, open-source collection of reproducible codes, simulation packages, datasets, and literature implementations for Integrated Sensing and Communication (ISAC) research in MATLAB &amp; Python.</p>
+                    <div class="runner-hero-actions">
+                        <a class="runner-action runner-action-primary" href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank">Star on GitHub <i class="fab fa-github"></i></a>
+                        <button class="runner-action" id="manual-sync-btn">Refresh Live Data <i class="fas fa-sync-alt" id="sync-icon"></i></button>
+                    </div>
+                </div>
+                <div class="runner-profile-panel">
+                    <img src="Harsh.jpeg" alt="Portrait of Harsh Raj" />
+                </div>
+                <p class="runner-caption"><span></span> Currently a PhD Student at IIT Guwahati</p>
+            </section>
+
+            <div class="container">
+                <!-- Notion Page Header with Properties Grid -->
+                <div class="notion-page-header" style="margin-top: 1.5rem;">
+                    <div class="notion-properties">
+                        <div class="prop-name"><i class="fas fa-user-edit"></i> Maintainer</div>
+                        <div class="prop-value">Harsh Raj</div>
+                        
+                        <div class="prop-name"><i class="fas fa-tags"></i> Languages</div>
+                        <div class="prop-value">MATLAB, Python, Sionna, TensorFlow, PyTorch</div>
+                        
+                        <div class="prop-name"><i class="fas fa-database"></i> Live Sync</div>
+                        <div class="prop-value">
+                            <span class="isac-sync-badge">
+                                <span class="isac-sync-dot"></span>
+                                <span id="sync-status-text">GitHub Auto-Sync Active</span>
+                            </span>
+                        </div>
+                        
+                        <div class="prop-name"><i class="fas fa-laptop-code"></i> Repository</div>
+                        <div class="prop-value">
+                            <a href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">
+                                Harshra1-ultra/ISAC-Code-collections
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Summary Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4">
+                    <div class="bg-[var(--bg-primary)] p-3 rounded-lg border border-[var(--border-color)]">
+                        <div class="text-[11px] text-[var(--text-muted)] font-medium">Total Papers</div>
+                        <div class="text-lg font-bold text-[var(--text-primary)] mt-0.5" id="stat-total-papers">43+</div>
+                    </div>
+                    <div class="bg-[var(--bg-primary)] p-3 rounded-lg border border-[var(--border-color)]">
+                        <div class="text-[11px] text-[var(--text-muted)] font-medium">Platforms</div>
+                        <div class="text-lg font-bold text-[var(--text-primary)] mt-0.5">MATLAB & Python</div>
+                    </div>
+                    <div class="bg-[var(--bg-primary)] p-3 rounded-lg border border-[var(--border-color)]">
+                        <div class="text-[11px] text-[var(--text-muted)] font-medium">Latest Update</div>
+                        <div class="text-lg font-bold text-[var(--text-primary)] mt-0.5" id="stat-latest-update">25/08/2026</div>
+                    </div>
+                    <div class="bg-[var(--bg-primary)] p-3 rounded-lg border border-[var(--border-color)]">
+                        <div class="text-[11px] text-[var(--text-muted)] font-medium">Access License</div>
+                        <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">Open Source</div>
+                    </div>
+                </div>
+
+                <!-- React Root Container for Interactive Table & Search Engine -->
+                <div id="react-isac-root" class="w-full mt-6"></div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="runner-footer" style="margin-top: 40px;">
+                <div class="runner-footer-inner">
+                    <div class="runner-footer-left">
+                        <p>© 2026 Harsh Raj — IIT Guwahati. ISAC-literature-code-collection repository curated under MIT License.</p>
+                    </div>
+                    <div class="runner-footer-right">
+                        <div class="runner-footer-location">
+                            <i class="fas fa-map-marker-alt"></i> Guwahati, Assam &nbsp;|&nbsp; <span class="pulse-dot"></span> <span id="liveTime"></span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- Floating Back to Top Button -->
+            <button class="back-to-top" id="backToTop" aria-label="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </main>
+    </div>
+
+    <!-- Centralized Logic Script -->
+    <script src="script.js?v=2.7"></script>
+
+    <!-- Embedded Initial Fallback Dataset -->
+    <script>
+    window.INITIAL_ISAC_DATA = [
+      {
+        "id": 1,
+        "title": "Multi-Domain Optimization Framework for ISAC: From Electromagnetic Shaping to Network Cooperation",
+        "paperUrl": "https://ieeexplore.ieee.org/document/11347588",
+        "authors": "R. Liu, M. Li, M. Zafari, B. Ottersten, and A. L. Swindlehurst",
+        "year": 2026,
+        "venue": "IEEE Wireless Communications",
+        "topics": ["ISAC", "reconfigurable antenna array", "signal processing", "resource allocation"],
+        "codeUrl": "https://github.com/RangLiu0706/Multi-Domain-Optimization-for-ISAC"
+      },
+      {
+        "id": 2,
+        "title": "Clutter-Aware Integrated Sensing and Communication: Models, Methods, and Future Directions",
+        "paperUrl": "https://arxiv.org/abs/2602.10537",
+        "authors": "R. Liu, P. Li, M. Li, and A. L. Swindlehurst",
+        "year": 2026,
+        "venue": "Proceedings of the IEEE",
+        "topics": ["ISAC", "clutter-aware ISAC", "sensing", "clutter modeling"],
+        "codeUrl": "https://github.com/RangLiu0706/Clutter-Aware-ISAC-Tutorial"
+      },
+      {
+        "id": 3,
+        "title": "SIMAC: A Semantic-Driven Integrated Multimodal Sensing and Communication Framework",
+        "paperUrl": "https://ieeexplore.ieee.org/document/11165352",
+        "authors": "Y. Peng, L. Xiang, K. Yang, F. Jiang, K. Wang, and D. O. Wu",
+        "year": 2026,
+        "venue": "IEEE JSAC",
+        "topics": ["ISAC", "multimodal sensing", "semantic communication", "LLM", "deep learning"],
+        "codeUrl": "https://github.com/NJU-NINELab/SIMAC"
+      },
+      {
+        "id": 4,
+        "title": "Integrated Sensing and Communication Using a Smart Leaky-Wave Antenna",
+        "paperUrl": "https://ieeexplore.ieee.org/document/11642268",
+        "authors": "G. Inglés-Muñoz, J. A. López-Pastor, A. Pérez-Navarro, et al.",
+        "year": 2026,
+        "venue": "IEEE TNSE",
+        "topics": ["ISAC", "Wi-Fi", "leaky-wave antenna", "DoA estimation"],
+        "codeUrl": "https://github.com/joseantoniolopezupct/WiFi-5GHZ-ISAC"
+      },
+      {
+        "id": 5,
+        "title": "CISSIR: Beam Codebooks With Self-Interference Reduction Guarantees for ISAC Beyond 5G",
+        "paperUrl": "https://ieeexplore.ieee.org/document/11223631",
+        "authors": "R. Hernangómez, J. Fink, R. L. G. Cavalcante, and S. Stanczak",
+        "year": 2026,
+        "venue": "IEEE TWC",
+        "topics": ["ISAC", "self-interference", "beam codebooks", "5G/6G", "Sionna"],
+        "codeUrl": "https://github.com/rodrihgh/cissir"
+      },
+      {
+        "id": 6,
+        "title": "ISAC for Unsourced Random Access via Spectrum Sharing Compressive Sensing Approach",
+        "paperUrl": "https://ieeexplore.ieee.org/document/11363004",
+        "authors": "Z. Zhang, Y. Wu, X. Meng, C. Yuen, and M. Tao",
+        "year": 2026,
+        "venue": "IEEE TVT",
+        "topics": ["ISAC", "unsourced random access", "massive MIMO", "compressive sensing"],
+        "codeUrl": "https://github.com/BrooklynSEUPHD/Spectrum-Sharing-Compressive-Sensing-Unsourced-ISAC-SSCS-UNISAC-"
+      },
+      {
+        "id": 7,
+        "title": "MIMO-OFDM ISAC Waveform Design for Range-Doppler Sidelobe Suppression",
+        "paperUrl": "https://ieeexplore.ieee.org/document/10771629/",
+        "authors": "P. Li, M. Li, R. Liu, Q. Liu, and A. L. Swindlehurst",
+        "year": 2025,
+        "venue": "IEEE TWC",
+        "topics": ["MIMO-OFDM", "ISAC", "waveform design", "range-Doppler", "sidelobe suppression"],
+        "codeUrl": "https://github.com/RangLiu0706/MIMO-OFDM-ISAC-Waveform-Sidelobe-Suppression"
+      },
+      {
+        "id": 8,
+        "title": "Sparsity Exploitation via Joint Receive Processing and Transmit Beamforming Design for MIMO-OFDM ISAC",
+        "paperUrl": "https://ieeexplore.ieee.org/document/10736664/",
+        "authors": "Z. Xiao, R. Liu, M. Li, W. Wang, and Q. Liu",
+        "year": 2025,
+        "venue": "IEEE TCOMM",
+        "topics": ["MIMO-OFDM", "ISAC", "sparsity", "beamforming"],
+        "codeUrl": "https://github.com/RangLiu0706/Sparsity-Exploitation-MIMO-OFDM-ISAC"
+      },
+      {
+        "id": 9,
+        "title": "Synesthesia of Machines (SoM)-Enhanced ISAC Precoding for Vehicular Networks",
+        "paperUrl": "https://doi.org/10.1109/tcomm.2025.3549503",
+        "authors": "Z. Yang, S. Gao, X. Cheng, and L. Yang",
+        "year": 2025,
+        "venue": "IEEE TCOMM",
+        "topics": ["ISAC", "vehicular networks", "DRL", "precoding"],
+        "codeUrl": "https://github.com/PKU-PCNI/DRL-ISAC"
+      },
+      {
+        "id": 10,
+        "title": "Unsupervised Learning Approach for Distributed Beamforming in Cell-Free ISAC",
+        "paperUrl": "https://doi.org/10.1016/j.phycom.2024.102591",
+        "authors": "M. Elrashidy, M. Masood, and A. A. Nasir",
+        "year": 2025,
+        "venue": "Physical Communication",
+        "topics": ["Cell-free ISAC", "distributed beamforming", "unsupervised learning"],
+        "codeUrl": "https://github.com/Z-MohamedElrashidy/UnsupDL_CF_ISAC"
+      },
+      {
+        "id": 11,
+        "title": "Optimal ISAC Beamforming Structure and Efficient Algorithms for Sum Rate and CRLB Balancing",
+        "paperUrl": "https://arxiv.org/abs/2503.09489",
+        "authors": "T. Fang, C. Qi, and X. Yuan",
+        "year": 2025,
+        "venue": "IEEE TSP",
+        "topics": ["ISAC beamforming", "CRLB", "sum-rate tradeoff"],
+        "codeUrl": "https://github.com/Nostalgia2022/OBS-for-CRLB-ISAC"
+      },
+      {
+        "id": 12,
+        "title": "Cell-Free ISAC MIMO Systems: Joint Sensing and Communication Beamforming",
+        "paperUrl": "https://doi.org/10.1109/tcomm.2024.3490740",
+        "authors": "U. Demirhan and A. Alkhateeb",
+        "year": 2025,
+        "venue": "IEEE TCOMM",
+        "topics": ["Cell-free ISAC", "MIMO", "joint beamforming"],
+        "codeUrl": "https://github.com/umut-demirhan/Cell-free-ISAC-beamforming"
+      },
+      {
+        "id": 13,
+        "title": "Sensing-Aided Beamforming for LEO Satellite-Ground Communications",
+        "paperUrl": "https://doi.org/10.1109/globecom59602.2025.11432021",
+        "authors": "Q. He, Y. Liu, and K. Yang",
+        "year": 2025,
+        "venue": "IEEE GLOBECOM",
+        "topics": ["Deep learning", "RNN", "sensing-aided beamforming", "LEO"],
+        "codeUrl": "https://github.com/Eric-he-cn/SANet_source_codes"
+      },
+      {
+        "id": 14,
+        "title": "CORDIS: A Scalable Coordinated Resource Allocation Framework for Distributed Cell-Free ISAC",
+        "paperUrl": "https://doi.org/10.1109/ieeeconf67917.2025.11443385",
+        "authors": "M. Zafari, R. Liu, and A. L. Swindlehurst",
+        "year": 2025,
+        "venue": "IEEE Asilomar",
+        "topics": ["Cell-free ISAC", "distributed optimization", "ADMM"],
+        "codeUrl": "https://github.com/LS-Wireless/CORDIS"
+      },
+      {
+        "id": 15,
+        "title": "Joint Beamforming and Trajectory Optimization for Multi-UAV-Assisted ISAC Systems",
+        "paperUrl": "https://arxiv.org/abs/2503.16915",
+        "authors": "Y. L. Tun, Z. Han, C. S. Hong, et al.",
+        "year": 2025,
+        "venue": "arXiv / IEEE",
+        "topics": ["UAV-ISAC", "multi-UAV", "trajectory optimization", "DRL"],
+        "codeUrl": "https://github.com/ReikiC/RP-JBT-Opti-MUAV-ISAC"
+      }
+    ];
+    </script>
+
+    <!-- React App & GitHub Live Sync Engine -->
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
+
+        const ISACApp = () => {
+            const [papers, setPapers] = useState(window.INITIAL_ISAC_DATA || []);
+            const [view, setView] = useState('table');
+            const [searchQuery, setSearchQuery] = useState('');
+            const [selectedTopic, setSelectedTopic] = useState('All');
+            const [selectedYear, setSelectedYear] = useState('All');
+            const [syncing, setSyncing] = useState(false);
+
+            // Parse raw markdown table from GitHub README
+            const fetchLiveReadme = async () => {
+                setSyncing(true);
+                const syncIcon = document.getElementById('sync-icon');
+                if (syncIcon) syncIcon.classList.add('fa-spin');
+
+                try {
+                    const res = await fetch('https://raw.githubusercontent.com/Harshra1-ultra/ISAC-Code-collections/main/README.md');
+                    if (!res.ok) throw new Error('Network error');
+                    const text = await res.text();
+
+                    // Parse latest update date
+                    const updateMatch = text.match(/\*\*Latest Update:\*\*\s*\[(.*?)\]/i);
+                    if (updateMatch) {
+                        const el = document.getElementById('stat-latest-update');
+                        if (el) el.textContent = updateMatch[1];
+                    }
+
+                    // Parse table rows using Regex
+                    const rowPattern = /\|\s*(\d+)\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|\s*(\d{4})\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|/g;
+                    const parsedList = [];
+                    let match;
+
+                    while ((match = rowPattern.exec(text)) !== null) {
+                        const [_, no, titleMd, authorsMd, year, venueMd, topicMd, codeMd] = match;
+
+                        const titleMatch = titleMd.match(/\[(.*?)\]\((.*?)\)/);
+                        const title = titleMatch ? titleMatch[1].trim() : titleMd.trim();
+                        const paperUrl = titleMatch ? titleMatch[2].trim() : '';
+
+                        const authors = authorsMd.replace(/\[(.*?)\]\((.*?)\)/g, '$1').trim();
+                        const venue = venueMd.replace(/\[(.*?)\]\((.*?)\)/g, '$1').trim();
+                        const topics = topicMd.split(',').map(t => t.trim()).filter(Boolean);
+
+                        const codeMatch = codeMd.match(/\[(.*?)\]\((.*?)\)/);
+                        const codeUrl = codeMatch ? codeMatch[2].trim() : '';
+
+                        parsedList.push({
+                            id: parseInt(no, 10),
+                            title,
+                            paperUrl,
+                            authors,
+                            year: parseInt(year, 10),
+                            venue,
+                            topics,
+                            codeUrl
+                        });
+                    }
+
+                    if (parsedList.length > 0) {
+                        setPapers(parsedList);
+                        const totalEl = document.getElementById('stat-total-papers');
+                        if (totalEl) totalEl.textContent = `${parsedList.length}+`;
+                    }
+                } catch (err) {
+                    console.warn('Live README fetch fallback used:', err);
+                } finally {
+                    setSyncing(false);
+                    if (syncIcon) syncIcon.classList.remove('fa-spin');
+                }
+            };
+
+            useEffect(() => {
+                fetchLiveReadme();
+            }, []);
+
+            // Handle manual refresh click
+            useEffect(() => {
+                const btn = document.getElementById('manual-sync-btn');
+                if (btn) {
+                    const handler = () => fetchLiveReadme();
+                    btn.addEventListener('click', handler);
+                    return () => btn.removeEventListener('click', handler);
+                }
+            }, []);
+
+            // Unique topics & years for dropdowns
+            const allTopics = useMemo(() => {
+                const set = new Set();
+                papers.forEach(p => p.topics.forEach(t => set.add(t)));
+                return ['All', ...Array.from(set).sort()];
+            }, [papers]);
+
+            const allYears = useMemo(() => {
+                const set = new Set();
+                papers.forEach(p => set.add(p.year));
+                return ['All', ...Array.from(set).sort((a,b) => b-a)];
+            }, [papers]);
+
+            const filteredPapers = useMemo(() => {
+                return papers.filter(p => {
+                    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                          p.authors.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                          p.venue.toLowerCase().includes(searchQuery.toLowerCase());
+                    const matchesTopic = selectedTopic === 'All' || p.topics.includes(selectedTopic);
+                    const matchesYear = selectedYear === 'All' || p.year.toString() === selectedYear.toString();
+                    return matchesSearch && matchesTopic && matchesYear;
+                });
+            }, [papers, searchQuery, selectedTopic, selectedYear]);
+
+            return (
+                <div className="w-full text-[var(--text-primary)]">
+                    {/* View Controls & Filter Bar */}
+                    <div className="flex flex-wrap justify-between items-center border-b border-[var(--border-color)] pb-3 mb-4 gap-3">
+                        <div className="flex gap-2">
+                            <button 
+                                onClick={() => setView('table')} 
+                                className={`notion-tab-btn ${view === 'table' ? 'active' : ''}`}
+                            >
+                                📋 Table View ({filteredPapers.length})
+                            </button>
+                            <button 
+                                onClick={() => setView('cards')} 
+                                className={`notion-tab-btn ${view === 'cards' ? 'active' : ''}`}
+                            >
+                                🎴 Cards View
+                            </button>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2 flex-1 max-w-xl justify-end">
+                            <input 
+                                type="text"
+                                placeholder="Search title, author, venue..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="notion-search-input text-xs py-1.5 px-3 min-w-[160px] flex-1"
+                            />
+                            <select 
+                                value={selectedTopic} 
+                                onChange={(e) => setSelectedTopic(e.target.value)}
+                                className="notion-select text-xs py-1.5 px-2"
+                            >
+                                <option value="All">All Topics</option>
+                                {allTopics.filter(t => t !== 'All').map(t => (
+                                    <option key={t} value={t}>{t}</option>
+                                ))}
+                            </select>
+                            <select 
+                                value={selectedYear} 
+                                onChange={(e) => setSelectedYear(e.target.value)}
+                                className="notion-select text-xs py-1.5 px-2"
+                            >
+                                <option value="All">All Years</option>
+                                {allYears.filter(y => y !== 'All').map(y => (
+                                    <option key={y} value={y}>{y}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Table View */}
+                    {view === 'table' ? (
+                        <div className="isac-table-container overflow-x-auto fade-in">
+                            <table className="isac-table">
+                                <thead>
+                                    <tr>
+                                        <th style={{width: '40px'}}>#</th>
+                                        <th>Paper Title & DOI</th>
+                                        <th>Authors</th>
+                                        <th>Venue & Year</th>
+                                        <th>Research Topics</th>
+                                        <th style={{textAlign: 'center'}}>Code</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredPapers.map(p => (
+                                        <tr key={p.id}>
+                                            <td className="font-mono text-xs font-bold text-[var(--text-muted)]">{p.id}</td>
+                                            <td className="font-semibold text-xs leading-snug">
+                                                {p.paperUrl ? (
+                                                    <a href={p.paperUrl} target="_blank" className="hover:underline text-[var(--text-primary)]">
+                                                        {p.title} <i className="fas fa-external-link-alt text-[10px] text-[var(--text-muted)] ml-1"></i>
+                                                    </a>
+                                                ) : (
+                                                    <span>{p.title}</span>
+                                                )}
+                                            </td>
+                                            <td className="text-xs text-[var(--text-secondary)]">{p.authors}</td>
+                                            <td className="text-xs">
+                                                <span className="font-semibold block">{p.venue}</span>
+                                                <span className="text-[10px] text-[var(--text-muted)]">{p.year}</span>
+                                            </td>
+                                            <td>
+                                                {p.topics.map((t, idx) => (
+                                                    <span key={idx} className="topic-pill">{t}</span>
+                                                ))}
+                                            </td>
+                                            <td style={{textAlign: 'center'}}>
+                                                {p.codeUrl ? (
+                                                    <a href={p.codeUrl} target="_blank" className="github-code-btn">
+                                                        <i className="fab fa-github text-xs"></i> Code
+                                                    </a>
+                                                ) : (
+                                                    <span className="text-[10px] text-[var(--text-muted)]">—</span>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    {filteredPapers.length === 0 && (
+                                        <tr>
+                                            <td colSpan="6" className="text-center py-8 text-[var(--text-muted)]">
+                                                No matching ISAC papers found.
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        /* Cards View */
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 fade-in">
+                            {filteredPapers.map(p => (
+                                <div key={p.id} className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-color)] hover:shadow-md transition-all flex flex-col justify-between h-full">
+                                    <div>
+                                        <div className="flex justify-between items-start mb-2 gap-2">
+                                            <span className="font-mono text-xs font-bold text-[var(--text-muted)]">#{p.id}</span>
+                                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[var(--hover-bg)] text-[var(--text-secondary)] border border-[var(--border-color)]">
+                                                {p.year}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-xs sm:text-sm font-bold text-[var(--text-primary)] leading-tight mb-2">
+                                            {p.paperUrl ? (
+                                                <a href={p.paperUrl} target="_blank" className="hover:underline">
+                                                    {p.title}
+                                                </a>
+                                            ) : p.title}
+                                        </h3>
+                                        <p className="text-[11px] text-[var(--text-secondary)] mb-3">{p.authors}</p>
+                                        <div className="text-[10px] font-semibold text-blue-600 dark:text-blue-400 mb-3">{p.venue}</div>
+                                        <div className="mb-3">
+                                            {p.topics.map((t, idx) => (
+                                                <span key={idx} className="topic-pill">{t}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="pt-3 border-t border-[var(--border-color)] flex justify-end">
+                                        {p.codeUrl ? (
+                                            <a href={p.codeUrl} target="_blank" className="github-code-btn">
+                                                <i className="fab fa-github text-xs"></i> View Repository
+                                            </a>
+                                        ) : (
+                                            <span className="text-xs text-[var(--text-muted)]">Code Pending</span>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('react-isac-root'));
+        root.render(<ISACApp />);
+    </script>
+</body>
+</html>
