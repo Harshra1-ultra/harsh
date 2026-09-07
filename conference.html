@@ -965,6 +965,7 @@
             const [searchQuery, setSearchQuery] = useState('');
             const [category, setCategory] = useState('All');
             const [deadlineFilter, setDeadlineFilter] = useState('all');
+            const [sortBy, setSortBy] = useState('upcoming');
             const [selectedConf, setSelectedConf] = useState(null);
 
             const filteredConferences = useMemo(() => {
@@ -987,6 +988,40 @@
                     return matchesSearch && matchesCategory;
                 });
             }, [searchQuery, category, deadlineFilter]);
+
+            // Sorted conferences for Gallery View (Upcoming Available Deadlines First by default)
+            const sortedConferences = useMemo(() => {
+                const todayStr = new Date().toISOString().slice(0, 10);
+                const list = [...filteredConferences];
+
+                list.sort((a, b) => {
+                    const dA = a.deadline || '9999-12-31';
+                    const dB = b.deadline || '9999-12-31';
+
+                    if (sortBy === 'upcoming') {
+                        const isFutureA = dA >= todayStr;
+                        const isFutureB = dB >= todayStr;
+
+                        if (isFutureA && !isFutureB) return -1;
+                        if (!isFutureA && isFutureB) return 1;
+
+                        if (isFutureA && isFutureB) {
+                            return dA.localeCompare(dB); // Closest available upcoming deadline first
+                        } else {
+                            return dB.localeCompare(dA); // Most recent past deadline first
+                        }
+                    } else if (sortBy === 'deadline-asc') {
+                        return dA.localeCompare(dB);
+                    } else if (sortBy === 'deadline-desc') {
+                        return dB.localeCompare(dA);
+                    } else if (sortBy === 'acronym') {
+                        return a.acronym.localeCompare(b.acronym);
+                    }
+                    return 0;
+                });
+
+                return list;
+            }, [filteredConferences, sortBy]);
 
             // Sync Dark Mode class for Tailwind scoping
             useEffect(() => {
@@ -1071,6 +1106,16 @@
                             <option value="all">Show All Conferences</option>
                             <option value="recent">Upcoming & Recent (Past 3 Months)</option>
                         </select>
+                        <select 
+                            value={sortBy} 
+                            onChange={(e) => setSortBy(e.target.value)}
+                            className="notion-select font-semibold text-[var(--accent-blue)]"
+                        >
+                            <option value="upcoming">Sort: Upcoming Available Deadlines First</option>
+                            <option value="deadline-asc">Sort: Deadline (Earliest to Latest)</option>
+                            <option value="deadline-desc">Sort: Deadline (Latest to Earliest)</option>
+                            <option value="acronym">Sort: Name (A-Z)</option>
+                        </select>
                     </div>
 
                     {/* View rendering */}
@@ -1083,14 +1128,14 @@
                         />
                     ) : (
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 fade-in">
-                            {filteredConferences.map(conf => (
+                            {sortedConferences.map(conf => (
                                 <ConferenceCard 
                                     key={conf.id}
                                     conf={conf}
                                     onSelect={setSelectedConf}
                                 />
                             ))}
-                            {filteredConferences.length === 0 && (
+                            {sortedConferences.length === 0 && (
                                 <div className="col-span-full text-center py-12 text-[var(--text-muted)] text-sm">
                                     No matching conferences found.
                                 </div>
