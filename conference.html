@@ -191,23 +191,23 @@
             <div class="sidebar-scroll">
                 <div class="sidebar-section-title">Pages</div>
                 <a href="index.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">🏠</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-house"></i></span>
                     <span>Home</span>
                 </a>
                 <a href="second-page.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">🚀</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-rocket"></i></span>
                     <span>Projects</span>
                 </a>
                 <a href="isac-literature-code-collection.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">📡</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-satellite-dish"></i></span>
                     <span>ISAC code collections</span>
                 </a>
                 <a href="cv.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">📄</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-file-lines"></i></span>
                     <span>Curriculum Vitae</span>
                 </a>
                 <a href="conference.html" class="sidebar-item active">
-                    <span class="sidebar-item-icon">📅</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-calendar-days"></i></span>
                     <span>Conference Tracker</span>
                 </a>
 
@@ -254,7 +254,7 @@
                 <div class="breadcrumb-container">
                     <span class="breadcrumb-root">profile</span>
                     <span class="breadcrumb-separator">/</span>
-                    <span class="breadcrumb-active">📅 Conferences</span>
+                    <span class="breadcrumb-active"><i class="fas fa-calendar-days"></i> Conferences</span>
                 </div>
             </div>
 
@@ -280,7 +280,7 @@
                 <!-- Page Header -->
                 <div class="notion-page-header">
                     <div class="notion-page-icon-wrapper">
-                        <span class="notion-page-icon" style="font-size: 4rem; display: flex; align-items: center; justify-content: center;">📅</span>
+                        <span class="notion-page-icon" style="font-size: 3rem; display: flex; align-items: center; justify-content: center;"><i class="fas fa-calendar-days text-[var(--accent-blue)]"></i></span>
                     </div>
                     
                     <div class="notion-title-section">
@@ -745,7 +745,7 @@
                     {/* Month Navigator Header */}
                     <div className="flex justify-between items-center mb-4 px-2">
                         <h2 className="text-lg font-bold text-[var(--text-primary)] flex items-center gap-2">
-                            <span className="text-xl">📅</span> {monthNames[month]} {year}
+                            <i className="fas fa-calendar-days text-[var(--accent-blue)] text-lg"></i> {monthNames[month]} {year}
                         </h2>
                         <div className="flex gap-1">
                             <button onClick={handlePrevMonth} className="px-3 py-1.5 border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-primary)] rounded-md hover:bg-[var(--hover-bg)] cursor-pointer text-xs font-semibold">
@@ -896,7 +896,7 @@
                                     <i className="fa-regular fa-clock text-[var(--text-muted)] mt-0.5 w-4 text-center"></i>
                                     <div>
                                         <span className="font-semibold block text-[10px] text-[var(--text-muted)]">PAPER SUBMISSION DEADLINE</span>
-                                        <span className={`font-bold ${isFuture ? 'text-green-600' : 'text-red-500'}`}>📌 {conf.deadline}</span>
+                                        <span className={`font-bold ${isFuture ? 'text-green-600' : 'text-red-500'}`}><i class="fas fa-thumbtack mr-1"></i> {conf.deadline}</span>
                                     </div>
                                 </div>
                             </div>
@@ -909,7 +909,7 @@
                                 }}
                                 className="px-2.5 py-1.5 border border-[var(--border-color)] text-xs font-semibold rounded-md text-[var(--text-primary)] bg-[var(--bg-primary)] hover:bg-[var(--hover-bg)] cursor-pointer flex items-center gap-1.5"
                             >
-                                📅 View Deadline in Calendar
+                                <i class="fas fa-calendar-day mr-1"></i> View Deadline in Calendar
                             </button>
                             <div className="flex gap-2">
                                 <button onClick={onClose} className="px-3 py-1.5 border border-[var(--border-color)] text-xs font-semibold rounded-md text-[var(--text-secondary)] bg-[var(--bg-primary)] hover:bg-[var(--hover-bg)] cursor-pointer">
@@ -1000,13 +1000,13 @@
                                 onClick={() => setView('calendar')} 
                                 className={`notion-tab-btn ${view === 'calendar' ? 'active' : ''}`}
                             >
-                                <span>📅</span> Calendar View
+                                <i className="fas fa-calendar-days mr-1.5"></i> Calendar View
                             </button>
                             <button 
                                 onClick={() => setView('gallery')} 
                                 className={`notion-tab-btn ${view === 'gallery' ? 'active' : ''}`}
                             >
-                                <span>📋</span> Gallery View
+                                <i className="fas fa-border-all mr-1.5"></i> Gallery View
                             </button>
                         </div>
                     </div>

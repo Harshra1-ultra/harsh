@@ -162,23 +162,23 @@
             <div class="sidebar-scroll">
                 <div class="sidebar-section-title">Pages</div>
                 <a href="index.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">🏠</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-house"></i></span>
                     <span>Home</span>
                 </a>
                 <a href="second-page.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">🚀</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-rocket"></i></span>
                     <span>Projects</span>
                 </a>
                 <a href="isac-literature-code-collection.html" class="sidebar-item active">
-                    <span class="sidebar-item-icon">📡</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-satellite-dish"></i></span>
                     <span>ISAC code collections</span>
                 </a>
                 <a href="cv.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">📄</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-file-lines"></i></span>
                     <span>Curriculum Vitae</span>
                 </a>
                 <a href="conference.html" class="sidebar-item">
-                    <span class="sidebar-item-icon">📅</span>
+                    <span class="sidebar-item-icon"><i class="fas fa-calendar-days"></i></span>
                     <span>Conference Tracker</span>
                 </a>
 
@@ -597,13 +597,13 @@
                                 onClick={() => setView('table')} 
                                 className={`notion-tab-btn ${view === 'table' ? 'active' : ''}`}
                             >
-                                📋 Table View ({filteredPapers.length})
+                                <i className="fas fa-table-list mr-1.5"></i> Table View ({filteredPapers.length})
                             </button>
                             <button 
                                 onClick={() => setView('cards')} 
                                 className={`notion-tab-btn ${view === 'cards' ? 'active' : ''}`}
                             >
-                                🎴 Cards View
+                                <i className="fas fa-border-all mr-1.5"></i> Cards View
                             </button>
                         </div>
 
