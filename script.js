@@ -5,6 +5,77 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
+    // 0. FLUID PAGE TRANSITION ENGINE
+    // ==========================================
+    let progressBar = document.querySelector('.page-progress-bar');
+    if (!progressBar) {
+        progressBar = document.createElement('div');
+        progressBar.className = 'page-progress-bar';
+        document.body.appendChild(progressBar);
+    }
+
+    // Trigger smooth entrance on DOM ready
+    requestAnimationFrame(() => {
+        document.body.classList.remove('page-fade-exiting');
+        document.body.classList.add('page-fade-active');
+    });
+
+    // Intercept internal page link clicks for smooth fluid navigation
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const href = link.getAttribute('href');
+        const target = link.getAttribute('target');
+
+        // Ignore hash links, external links, mailto/tel, target="_blank", or key modifiers
+        if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:') || target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) {
+            return;
+        }
+
+        // Match internal page targets (.html or relative root)
+        const isInternalPage = href.endsWith('.html') || href === 'index.html' || href === 'second-page.html' || href === 'cv.html' || href === 'conference.html' || href === 'isac-literature-code-collection.html' || href.startsWith('/');
+
+        if (isInternalPage) {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const targetPath = href.split('/').pop().split('#')[0] || 'index.html';
+
+            if (currentPath === targetPath && !href.includes('#')) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            e.preventDefault();
+            
+            // Progress line animation & page exit transition
+            progressBar.style.opacity = '1';
+            progressBar.style.width = '70%';
+
+            document.body.classList.remove('page-fade-active');
+            document.body.classList.add('page-fade-exiting');
+
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+                window.location.href = href;
+            }, 180);
+        }
+    });
+
+    // BFCache (back-forward cache) smooth reset
+    window.addEventListener('pageshow', (event) => {
+        document.body.classList.remove('page-fade-exiting');
+        document.body.classList.add('page-fade-active');
+        if (progressBar) {
+            progressBar.style.width = '100%';
+            setTimeout(() => {
+                progressBar.style.opacity = '0';
+                progressBar.style.width = '0%';
+            }, 250);
+        }
+    });
+
+    // ==========================================
     // 1. THEME SYNCRONIZER (Light & Dark Mode)
     // ==========================================
     const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');

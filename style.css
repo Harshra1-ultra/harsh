@@ -2518,3 +2518,154 @@ body.dark-mode .runner-socials a:hover {
     background: var(--border-color);
     border-radius: 10px;
 }
+
+/* ========================================================
+   ULTRA-SMOOTH FLUID PAGE TRANSITION SYSTEM
+   ======================================================== */
+.page-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #0b6e9f, #3b82f6, #60a5fa);
+    z-index: 99999;
+    pointer-events: none;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+}
+
+body.dark-mode .page-progress-bar {
+    background: linear-gradient(90deg, #60a5fa, #3b82f6, #38bdf8);
+}
+
+#main-content,
+.page-transition-wrapper {
+    will-change: opacity, transform;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.page-fade-entering #main-content,
+body.page-fade-entering .page-transition-wrapper {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+body.page-fade-active #main-content,
+body.page-fade-active .page-transition-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.page-fade-exiting #main-content,
+body.page-fade-exiting .page-transition-wrapper {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.995);
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 1, 1), transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* ========================================================
+   FLUID & TACTILE BUTTON MICRO-INTERACTIONS
+   ======================================================== */
+.btn,
+.runner-action,
+.sidebar-item,
+.notion-tab-btn,
+.notion-db-tab,
+.db-item-link-btn,
+.card-link-btn,
+.theme-toggle-btn,
+.sidebar-trigger,
+.sidebar-close,
+.copy-bib-btn,
+.contact-card,
+.runner-socials a,
+.notion-gallery-card {
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
+}
+
+/* Elevate Buttons & Actions on Hover */
+.btn:hover,
+.runner-action:hover,
+.card-link-btn:hover,
+.db-item-link-btn:hover {
+    transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 6px 18px rgba(11, 110, 159, 0.16);
+}
+
+body.dark-mode .btn:hover,
+body.dark-mode .runner-action:hover,
+body.dark-mode .card-link-btn:hover,
+body.dark-mode .db-item-link-btn:hover {
+    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.22);
+}
+
+/* Sidebar Item Hover Slide */
+.sidebar-item:hover {
+    transform: translateX(4px);
+    background-color: var(--hover-bg);
+}
+
+/* Icon & Controls Hover Bounce */
+.theme-toggle-btn:hover,
+.sidebar-trigger:hover,
+.sidebar-close:hover {
+    transform: scale(1.08) rotate(4deg);
+}
+
+.runner-socials a:hover {
+    transform: translateY(-3px) rotate(-6deg) scale(1.08);
+    box-shadow: 0 4px 14px rgba(23, 23, 23, 0.22);
+}
+
+/* Responsive Press Click Feedback across all buttons */
+.btn:active, 
+.runner-action:active, 
+.sidebar-item:active, 
+.notion-tab-btn:active,
+.notion-db-tab:active,
+.db-item-link-btn:active,
+.card-link-btn:active,
+.copy-bib-btn:active, 
+.runner-socials a:active,
+.theme-toggle-btn:active,
+.contact-card:active {
+    transform: translateY(1px) scale(0.96) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.08s ease-out !important;
+}
+
+/* Soft Radial Shimmer Ripple Effect on Click */
+.btn::after,
+.runner-action::after,
+.card-link-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130%;
+    height: 130%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, transparent 65%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.btn:active::after,
+.runner-action:active::after,
+.card-link-btn:active::after {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 1;
+    transition: 0s;
+}
+
