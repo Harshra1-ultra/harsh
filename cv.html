@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto: https:;" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -85,19 +90,19 @@
                 </a>
 
                 <div class="sidebar-section-title">Links</div>
-                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item">
+                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-google-scholar"></i></span>
                     <span>Google Scholar</span>
                 </a>
-                <a href="https://github.com/Harshra1-ultra" target="_blank" class="sidebar-item">
+                <a href="https://github.com/Harshra1-ultra" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-github"></i></span>
                     <span>GitHub Profile</span>
                 </a>
-                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item">
+                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-linkedin"></i></span>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://www.instagram.com/harshraone" target="_blank" class="sidebar-item">
+                <a href="https://www.instagram.com/harshraone" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-instagram"></i></span>
                     <span>Instagram</span>
                 </a>
@@ -140,7 +145,7 @@
                     <p class="runner-intro">Detailed record of education, publications, teaching assistantships, and professional awards.</p>
                     <div class="runner-hero-actions">
                         <button class="runner-action runner-action-primary" onclick="window.print()">Print / Save CV <i class="fas fa-print"></i></button>
-                        <a class="runner-action" href="Harsh_Raj_CV.pdf" target="_blank">Download PDF <i class="fas fa-file-pdf"></i></a>
+                        <a class="runner-action" href="Harsh_Raj_CV.pdf" target="_blank" rel="noopener noreferrer">Download PDF <i class="fas fa-file-pdf"></i></a>
                     </div>
                 </div>
                 <div class="runner-profile-panel">
@@ -177,8 +182,8 @@
                         <div class="cv-contact-info">
                             <p><i class="fas fa-envelope"></i> <a href="mailto:h.raj@iitg.ac.in">h.raj@iitg.ac.in</a></p>
                             <p><i class="fas fa-map-marker-alt"></i> Guwahati, Assam, India</p>
-                            <p><i class="fab fa-github"></i> <a href="https://github.com/Harshra1-ultra" target="_blank">github.com/Harshra1-ultra</a></p>
-                            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank">linkedin/in/harsh-raj</a></p>
+                            <p><i class="fab fa-github"></i> <a href="https://github.com/Harshra1-ultra" target="_blank" rel="noopener noreferrer">github.com/Harshra1-ultra</a></p>
+                            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" rel="noopener noreferrer">linkedin/in/harsh-raj</a></p>
                         </div>
                     </div>
 
@@ -327,7 +332,7 @@
                             <tr>
                                 <td class="cv-table-date">[J1] Journal</td>
                                 <td>
-                                    <strong><a href="NOMA-Assisted_ISAC_System_Downlink_and_Uplink_Performance_in_Rician_Fading_Channels.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">NOMA-Assisted ISAC System: Downlink and Uplink Performance in Rician Fading Channels</a></strong><br/>
+                                    <strong><a href="NOMA-Assisted_ISAC_System_Downlink_and_Uplink_Performance_in_Rician_Fading_Channels.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;" rel="noopener noreferrer">NOMA-Assisted ISAC System: Downlink and Uplink Performance in Rician Fading Channels</a></strong><br/>
                                     I. Agrawal*, <em>H. Raj*</em>, and B. R. Manoj<br/>
                                     <em>IEEE Transactions on Cognitive Communications and Networking</em>, vol. 12, pp. 3073-3087, 2026. (* Equal Contribution)
                                 </td>
@@ -335,7 +340,7 @@
                             <tr>
                                 <td class="cv-table-date">[C1] Conference</td>
                                 <td>
-                                    <strong><a href="Cascaded_Channel_Statistics_and_Target_Detection_Analysis_for_IRS-Assisted_ISAC_Employing_NOMA.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">Cascaded Channel Statistics and Target Detection Analysis for IRS-Assisted ISAC Employing NOMA</a></strong><br/>
+                                    <strong><a href="Cascaded_Channel_Statistics_and_Target_Detection_Analysis_for_IRS-Assisted_ISAC_Employing_NOMA.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;" rel="noopener noreferrer">Cascaded Channel Statistics and Target Detection Analysis for IRS-Assisted ISAC Employing NOMA</a></strong><br/>
                                     <em>H. Raj</em> and B. R. Manoj<br/>
                                     In <em>Proc. IEEE National Conference on Communications (NCC)</em>, IIT Delhi, India, Mar. 6–9, 2025.
                                 </td>
@@ -351,7 +356,7 @@
                             <tr>
                                 <td class="cv-table-date">[C2] Conference</td>
                                 <td>
-                                    <strong><a href="On_the_Performance_of_IRS-Assisted_SSK_and_RPM_over_Rician_Fading_Channels.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">On the Performance of IRS-Assisted SSK and RPM over Rician Fading Channels</a></strong><br/>
+                                    <strong><a href="On_the_Performance_of_IRS-Assisted_SSK_and_RPM_over_Rician_Fading_Channels.pdf" target="_blank" style="color:var(--accent-blue); text-decoration:underline;" rel="noopener noreferrer">On the Performance of IRS-Assisted SSK and RPM over Rician Fading Channels</a></strong><br/>
                                     <em>H. Raj</em>, U. Singh, and B. R. Manoj<br/>
                                     In <em>Proc. IEEE 99th Vehicular Technology Conference (VTC-Spring)</em>, Singapore, Jun. 24–27, 2024.
                                 </td>
@@ -395,10 +400,10 @@
                         <div class="footer-col">
                             <h4>Connect</h4>
                             <div class="footer-social-row">
-                                <a href="https://github.com/Harshra1-ultra" target="_blank" class="footer-social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="footer-social-btn" aria-label="Scholar"><i class="fab fa-google-scholar"></i></a>
-                                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://www.instagram.com/harshraone" target="_blank" class="footer-social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://github.com/Harshra1-ultra" target="_blank" class="footer-social-btn" aria-label="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="footer-social-btn" aria-label="Scholar" rel="noopener noreferrer"><i class="fab fa-google-scholar"></i></a>
+                                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="footer-social-btn" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/harshraone" target="_blank" class="footer-social-btn" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>

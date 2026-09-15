@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto: https:;" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -212,19 +217,19 @@
                 </a>
 
                 <div class="sidebar-section-title">Links</div>
-                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item">
+                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-google-scholar"></i></span>
                     <span>Google Scholar</span>
                 </a>
-                <a href="https://github.com/Harshra1-ultra" target="_blank" class="sidebar-item">
+                <a href="https://github.com/Harshra1-ultra" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-github"></i></span>
                     <span>GitHub Profile</span>
                 </a>
-                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item">
+                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-linkedin"></i></span>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://www.instagram.com/harshraone" target="_blank" class="sidebar-item">
+                <a href="https://www.instagram.com/harshraone" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-instagram"></i></span>
                     <span>Instagram</span>
                 </a>
@@ -317,10 +322,10 @@
                         <div class="footer-col">
                             <h4>Connect</h4>
                             <div class="footer-social-row">
-                                <a href="https://github.com/Harshra1-ultra" target="_blank" class="footer-social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="footer-social-btn" aria-label="Scholar"><i class="fab fa-google-scholar"></i></a>
-                                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://www.instagram.com/harshraone" target="_blank" class="footer-social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://github.com/Harshra1-ultra" target="_blank" class="footer-social-btn" aria-label="GitHub" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="footer-social-btn" aria-label="Scholar" rel="noopener noreferrer"><i class="fab fa-google-scholar"></i></a>
+                                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="footer-social-btn" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/harshraone" target="_blank" class="footer-social-btn" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -945,7 +950,7 @@
                                 <button onClick={onClose} className="px-3 py-1.5 border border-[var(--border-color)] text-xs font-semibold rounded-md text-[var(--text-secondary)] bg-[var(--bg-primary)] hover:bg-[var(--hover-bg)] cursor-pointer">
                                     Close
                                 </button>
-                                <a href={conf.website} target="_blank" className="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 shadow-sm">
+                                <a href={conf.website} target="_blank" className="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 shadow-sm" rel="noopener noreferrer">
                                     Website <i className="fa-solid fa-arrow-up-right-from-square ml-1.5 text-[10px]"></i>
                                 </a>
                             </div>

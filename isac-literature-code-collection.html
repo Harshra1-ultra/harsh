@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto: https:;" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -183,15 +188,15 @@
                 </a>
 
                 <div class="sidebar-section-title">External Links</div>
-                <a href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank" class="sidebar-item">
+                <a href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-github"></i></span>
                     <span>ISAC GitHub Repo</span>
                 </a>
-                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item">
+                <a href="https://scholar.google.com/citations?hl=en&user=C_LWniQAAAAJ" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-google-scholar"></i></span>
                     <span>Google Scholar</span>
                 </a>
-                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item">
+                <a href="https://www.linkedin.com/in/harsh-raj-0a3a72203/" target="_blank" class="sidebar-item" rel="noopener noreferrer">
                     <span class="sidebar-item-icon"><i class="fab fa-linkedin"></i></span>
                     <span>LinkedIn</span>
                 </a>
@@ -235,7 +240,7 @@
                     <h1 id="title-head">ISAC code collections <img src="paper_plane.gif" alt="" class="hero-plane-gif" onerror="this.style.display='none'"></h1>
                     <p class="runner-role">Reproducible Code &amp; Research Database</p>
                     <div class="runner-hero-actions">
-                        <a class="runner-action runner-action-primary" href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank">Star on GitHub <i class="fab fa-github"></i></a>
+                        <a class="runner-action runner-action-primary" href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank" rel="noopener noreferrer">Star on GitHub <i class="fab fa-github"></i></a>
                         <button class="runner-action" id="manual-sync-btn">Refresh Live Data <i class="fas fa-sync-alt" id="sync-icon"></i></button>
                     </div>
                 </div>
@@ -265,7 +270,7 @@
                         
                         <div class="prop-name"><i class="fas fa-laptop-code"></i> Repository</div>
                         <div class="prop-value">
-                            <a href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank" style="color:var(--accent-blue); text-decoration:underline;">
+                            <a href="https://github.com/Harshra1-ultra/ISAC-Code-collections" target="_blank" style="color:var(--accent-blue); text-decoration:underline;" rel="noopener noreferrer">
                                 Harshra1-ultra/ISAC-Code-collections
                             </a>
                         </div>
@@ -514,16 +519,23 @@
                     while ((match = rowPattern.exec(text)) !== null) {
                         const [_, no, titleMd, authorsMd, year, venueMd, topicMd, codeMd] = match;
 
+                        const sanitizeUrl = (url) => {
+                            if (!url) return '';
+                            const u = url.trim();
+                            if (u.startsWith('http://') || u.startsWith('https://')) return u;
+                            return '';
+                        };
+
                         const titleMatch = titleMd.match(/\[(.*?)\]\((.*?)\)/);
                         const title = titleMatch ? titleMatch[1].trim() : titleMd.trim();
-                        const paperUrl = titleMatch ? titleMatch[2].trim() : '';
+                        const paperUrl = titleMatch ? sanitizeUrl(titleMatch[2]) : '';
 
                         const authors = authorsMd.replace(/\[(.*?)\]\((.*?)\)/g, '$1').trim();
                         const venue = venueMd.replace(/\[(.*?)\]\((.*?)\)/g, '$1').trim();
                         const topics = topicMd.split(',').map(t => t.trim()).filter(Boolean);
 
                         const codeMatch = codeMd.match(/\[(.*?)\]\((.*?)\)/);
-                        const codeUrl = codeMatch ? codeMatch[2].trim() : '';
+                        const codeUrl = codeMatch ? sanitizeUrl(codeMatch[2]) : '';
 
                         parsedList.push({
                             id: parseInt(no, 10),
@@ -658,7 +670,7 @@
                                             <td className="font-mono text-xs font-bold text-[var(--text-muted)]">{p.id}</td>
                                             <td className="font-semibold text-xs leading-snug">
                                                 {p.paperUrl ? (
-                                                    <a href={p.paperUrl} target="_blank" className="hover:underline text-[var(--text-primary)]">
+                                                    <a href={p.paperUrl} target="_blank" className="hover:underline text-[var(--text-primary)]" rel="noopener noreferrer">
                                                         {p.title} <i className="fas fa-external-link-alt text-[10px] text-[var(--text-muted)] ml-1"></i>
                                                     </a>
                                                 ) : (
@@ -677,7 +689,7 @@
                                             </td>
                                             <td style={{textAlign: 'center'}}>
                                                 {p.codeUrl ? (
-                                                    <a href={p.codeUrl} target="_blank" className="github-code-btn">
+                                                    <a href={p.codeUrl} target="_blank" className="github-code-btn" rel="noopener noreferrer">
                                                         <i className="fab fa-github text-xs"></i> Code
                                                     </a>
                                                 ) : (
@@ -710,7 +722,7 @@
                                         </div>
                                         <h3 className="text-xs sm:text-sm font-bold text-[var(--text-primary)] leading-tight mb-2">
                                             {p.paperUrl ? (
-                                                <a href={p.paperUrl} target="_blank" className="hover:underline">
+                                                <a href={p.paperUrl} target="_blank" className="hover:underline" rel="noopener noreferrer">
                                                     {p.title}
                                                 </a>
                                             ) : p.title}
@@ -725,7 +737,7 @@
                                     </div>
                                     <div className="pt-3 border-t border-[var(--border-color)] flex justify-end">
                                         {p.codeUrl ? (
-                                            <a href={p.codeUrl} target="_blank" className="github-code-btn">
+                                            <a href={p.codeUrl} target="_blank" className="github-code-btn" rel="noopener noreferrer">
                                                 <i className="fab fa-github text-xs"></i> View Repository
                                             </a>
                                         ) : (

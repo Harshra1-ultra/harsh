@@ -28,8 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const href = link.getAttribute('href');
         const target = link.getAttribute('target');
 
+        // Block unsafe protocols (XSS prevention)
+        const lowerHref = href.trim().toLowerCase();
+        if (lowerHref.startsWith('javascript:') || lowerHref.startsWith('data:') || lowerHref.startsWith('vbscript:')) {
+            e.preventDefault();
+            console.warn('Blocked execution of unsafe protocol:', href);
+            return;
+        }
+
         // Ignore hash links, external links, mailto/tel, target="_blank", or key modifiers
-        if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:') || target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) {
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) {
             return;
         }
 
@@ -346,10 +354,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
-            const subject = document.getElementById('contact-subject').value;
-            const message = document.getElementById('contact-message').value;
+            const sanitize = (str) => String(str || '').replace(/[<>"'&]/g, (c) => {
+                return { '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;' }[c];
+            });
+
+            const name = sanitize(document.getElementById('contact-name').value);
+            const email = sanitize(document.getElementById('contact-email').value);
+            const subject = sanitize(document.getElementById('contact-subject').value);
+            const message = sanitize(document.getElementById('contact-message').value);
             
             const mailtoUri = `mailto:h.raj@iitg.ac.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
             window.location.href = mailtoUri;
