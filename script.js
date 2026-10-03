@@ -226,6 +226,35 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // ==========================================
+    // 3.1. ANIMATED METRO JOURNEY TIMELINE
+    // ==========================================
+    const timelineSection = document.getElementById('timelineSection');
+    const replayBtn = document.getElementById('metroReplayBtn');
+
+    if (timelineSection) {
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timelineSection.classList.add('is-animated');
+                    timelineObserver.unobserve(timelineSection);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        timelineObserver.observe(timelineSection);
+
+        if (replayBtn) {
+            replayBtn.addEventListener('click', () => {
+                timelineSection.classList.remove('is-animated');
+                void timelineSection.offsetWidth;
+                requestAnimationFrame(() => {
+                    timelineSection.classList.add('is-animated');
+                });
+            });
+        }
+    }
+
+    // ==========================================
     // 4. SCROLL PROGRESS & FLOATING ACTIONS
     // ==========================================
     const scrollProgress = document.getElementById('scrollProgress');

@@ -998,6 +998,244 @@ section {
 }
 
 /* ========================================================
+   ANIMATED SERPENTINE METRO TIMELINE
+   ======================================================== */
+.metro-timeline-section {
+    position: relative;
+    margin: 1.5rem 0 2rem;
+}
+
+.metro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.metro-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    margin: 4px 0 0;
+}
+
+.metro-replay-btn {
+    border: 1px solid var(--border-color);
+    background: var(--bg-sidebar);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all var(--transition-fast);
+}
+.metro-replay-btn:hover {
+    background: var(--accent-blue);
+    color: #ffffff;
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(11, 110, 159, 0.2);
+}
+
+.metro-desktop-wrap {
+    position: relative;
+    width: 100%;
+    margin: 10px 0 20px;
+}
+.metro-svg-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+.metro-track-bg {
+    stroke: rgba(0, 0, 0, 0.06);
+}
+body.dark-mode .metro-track-bg {
+    stroke: rgba(255, 255, 255, 0.08);
+}
+
+/* TRACK DRAWING ANIMATION */
+.metro-track-segment {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    transition: stroke-dashoffset 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.metro-timeline-section.is-animated .metro-track-segment {
+    stroke-dashoffset: 0;
+}
+
+/* STATION POP-IN */
+.metro-station-node {
+    opacity: 0;
+    transform: scale(0.35);
+    transform-origin: center;
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.metro-timeline-section.is-animated .metro-station-node {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.station-disc {
+    fill: var(--bg-primary);
+}
+
+.station-ping {
+    animation: stationPingAnim 2.8s infinite ease-out;
+    transform-origin: center;
+}
+@keyframes stationPingAnim {
+    0% { r: 13px; opacity: 0.7; }
+    50% { r: 23px; opacity: 0; }
+    100% { r: 13px; opacity: 0; }
+}
+
+/* HTML STAGGERED CARDS OVERLAY */
+.metro-cards-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.metro-card-pos {
+    position: absolute;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.metro-timeline-section.is-animated .metro-card-pos {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* Staggered Timing along path */
+.metro-timeline-section.is-animated .st-1 { transition-delay: 0.2s; }
+.metro-timeline-section.is-animated .st-2 { transition-delay: 0.6s; }
+.metro-timeline-section.is-animated .st-3 { transition-delay: 1.0s; }
+.metro-timeline-section.is-animated .st-4 { transition-delay: 1.4s; }
+.metro-timeline-section.is-animated .st-5 { transition-delay: 1.8s; }
+.metro-timeline-section.is-animated .st-6 { transition-delay: 2.1s; }
+
+/* METRO CARD DESIGN (Notion Minimalist & Modern) */
+.metro-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+    padding: 9px 12px;
+    width: 235px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all var(--transition-fast);
+    box-sizing: border-box;
+    text-align: left;
+}
+body.dark-mode .metro-card {
+    background: var(--bg-sidebar);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.metro-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+.metro-card.is-highlight {
+    border-color: rgba(239, 68, 68, 0.35);
+}
+body.dark-mode .metro-card.is-highlight {
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.metro-card-date {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+}
+.metro-card-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-bottom: 2px;
+}
+.metro-card-role {
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+.metro-card-loc {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* MOBILE VERTICAL TIMELINE (< 768px) */
+@media (max-width: 768px) {
+    .metro-desktop-wrap { display: none; }
+    .metro-mobile-wrap { display: block; }
+}
+@media (min-width: 769px) {
+    .metro-desktop-wrap { display: block; }
+    .metro-mobile-wrap { display: none; }
+}
+
+.metro-mobile-wrap {
+    position: relative;
+    padding-left: 36px;
+    margin: 1.5rem 0;
+}
+.metro-mobile-stem {
+    position: absolute;
+    top: 15px;
+    bottom: 20px;
+    left: 14px;
+    width: 4px;
+    background: linear-gradient(to bottom, #ef4444 0%, #6366f1 20%, #10b981 40%, #f59e0b 60%, #ec4899 80%, #8b5cf6 100%);
+    border-radius: 2px;
+}
+.metro-mobile-item {
+    position: relative;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: all 0.4s ease;
+}
+.metro-timeline-section.is-animated .metro-mobile-item {
+    opacity: 1;
+    transform: translateX(0);
+}
+.metro-mobile-dot {
+    position: absolute;
+    left: -36px;
+    top: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 3px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.metro-mobile-wrap .metro-card {
+    width: 100%;
+}
+
+/* ========================================================
    EDUCATION JOURNEY TIMELINE
    ======================================================== */
 .journey-list {
