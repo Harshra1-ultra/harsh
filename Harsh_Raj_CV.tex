@@ -1,0 +1,286 @@
+%-------------------------
+% Resume in LaTeX
+% Author : Harsh Raj
+% Contact: h.raj@iitg.ac.in | harshraone@gmail.com
+% Institution: Indian Institute of Technology Guwahati
+%------------------------
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=0.6cm, top=0.5cm, right=0.6cm, bottom=0.5cm}
+
+\usepackage[most]{tcolorbox}
+\tcbset{
+	frame code={},
+	center title,
+	left=0pt,
+	right=0pt,
+	top=0pt,
+	bottom=0pt,
+	colback=gray!20,
+	colframe=white,
+	width=\dimexpr\textwidth\relax,
+	enlarge left by=-2mm,
+	boxsep=4pt,
+	arc=0pt,outer arc=0pt,
+}
+
+\urlstyle{same}
+
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-3pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{:\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1},\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.5mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=3ex, rightmargin=2ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+%---- End of Packages and Functions ------
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%
+\newcommand{\name}{Harsh Raj}
+\newcommand{\course}{Doctor of Philosophy (Ph.D.)}
+\newcommand{\department}{Electronics and Electrical Engineering}
+\newcommand{\institution}{Indian Institute of Technology Guwahati}
+\newcommand{\phone}{9679290157}
+\newcommand{\emaila}{h.raj@iitg.ac.in}
+\newcommand{\emailb}{harshraone@gmail.com}
+\newcommand{\github}{Harshra1-ultra}
+\newcommand{\linkedin}{harsh-raj-0a3a72203}
+
+\begin{document}
+\fontfamily{cmr}\selectfont
+
+%----------HEADING-----------------
+\parbox{3.35cm}{%
+\includegraphics[width=3.1cm,clip]{IITG.png}
+}\parbox{\dimexpr\linewidth-3.5cm\relax}{
+\begin{tabularx}{\linewidth}{L r}
+  \textbf{\LARGE \name} & +91-\phone\\ 
+  \course & \href{mailto:\emaila}{\emaila}\\ 
+  {In \department} & \href{mailto:\emailb}{\emailb}\\
+  {\institution} & \href{https://github.com/\github}{GitHub: \github} \\ 
+  & \href{https://www.linkedin.com/in/\linkedin/}{\color{blue}LinkedIn: \linkedin}
+\end{tabularx}
+}
+
+\vspace{-3mm}
+
+%-----------EDUCATION-----------------
+\section{\textbf{Education}}
+\setlength{\tabcolsep}{5pt}
+\small{\begin{tabularx}{\dimexpr\textwidth-2mm\relax}{|c|C|c|c|}
+  \hline
+  \textbf{Degree} & \textbf{Institute / Board} & \textbf{CGPA / Percentage} & \textbf{Year}\\
+  \hline 
+  Ph.D. & Indian Institute of Technology Guwahati & 8.25 & 2022 -- Present\\
+  \hline
+  M.Tech. & Indian Institute of Technology, Ropar & 8.45 & 2020 -- 2022\\
+  \hline
+  B.E. & University Institute of Technology, Burdwan & 79.4\% & 2015 -- 2019\\
+  \hline
+  Senior Secondary & Bihar School Examination Board (B.S.E.B.) & 65.8\% & 2014 \\
+  \hline
+  Secondary & Bihar School Examination Board (B.S.E.B.) & 80.4\% & 2012 \\
+  \hline
+\end{tabularx}}
+\vspace{-3mm}
+
+%-----------EXPERIENCE / INTERNSHIP-----------------
+\section{\textbf{Experience \& Training}}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Graduate Teaching Assistant}{IIT Guwahati}
+    {Dept. of Electronics and Electrical Engineering}{July 2022 -- Present}
+    \resumeItemListStart
+      \item {Assisted in undergraduate and postgraduate courses: Principles of Communication (EE 331), Fundamentals of Wireless Communications (EE 337), Digital Communications (EE 530N), and Basic Electronics Laboratory (EE 102).}
+      \item {Conducted tutorial discussions, assignment evaluations, laboratory mentoring, and grading.}
+    \resumeItemListEnd
+  
+  \vspace{-1mm}
+  \resumeSubheading
+    {Vocational Training in Advanced Telecom}{CTTC, BSNL, Kolkata}
+    {Engineering Trainee}{July 2017 -- Aug 2017}
+    \resumeItemListStart
+      \item {Comprehensive training on Telecom Networks, Switching, Signaling and Routing, IN/ISDNA, TCP/IP, OFC, GSM, SDH, CDMA, DWDM, and GPRS/3G.}
+      \item {Hands-on exposure at C-DOT Lab, Broadband \& NIB Lab, Optical Fiber Cable (OFC) Lab, SDH, and Power Plant Lab.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+%-----------PUBLICATIONS-----------------
+\section{\textbf{Publications}}
+\begin{enumerate}[leftmargin=3ex, itemsep=0.5mm, topsep=1mm]
+  \item \textbf{I. Agrawal*}, \textbf{H. Raj*}, and B. R. Manoj, ``NOMA-Assisted ISAC System: Downlink and Uplink Performance in Rician Fading Channels,'' \textit{IEEE Transactions on Cognitive Communications and Networking}, vol. 12, pp. 3073--3087, 2026. (*Equal Contribution)
+  
+  \item \textbf{H. Raj} and B. R. Manoj, ``Cascaded Channel Statistics and Target Detection Analysis for IRS-Assisted ISAC Employing NOMA,'' in \textit{Proc. IEEE National Conference on Communications (NCC)}, IIT Delhi, India, Mar. 6--9, 2025.
+  
+  \item \textbf{H. Raj}, U. Singh, and B. R. Manoj, ``On the Performance of IRS-Assisted SSK and RPM over Rician Fading Channels,'' in \textit{Proc. IEEE 99th Vehicular Technology Conference (VTC2024-Spring)}, Singapore, Jun. 24--27, 2024.
+  
+  \item B. R. Manoj*, N. M. Baishya*, and \textbf{H. Raj*}, ``Machine Learning for Wireless Communications: Applications and Security,'' \textit{Springer Chapter in Next-Generation Wireless Systems: Fundamentals and Applications}, pp. 309--368, 2025. (*Equal Contribution)
+\end{enumerate}
+\vspace{-4.5mm}
+
+%-----------PROJECTS-----------------
+\section{\textbf{Projects}}
+\resumeSubHeadingListStart
+  \resumeProject
+    {Super Resolution Using Deep Learning}
+    {M.Tech. Dissertation under Prof. J. S. Sahambi, IIT Ropar}
+    {June 2021 -- June 2022}
+    \resumeItemListStart
+      \item {Developed deep learning architectures (ResNet and Auto-Encoders) to reconstruct high-resolution images up to $8\times$ scaling factor for wireless IoT devices, remote sensing, and surveillance.}
+      \item {Evaluated performance against traditional interpolation schemes using GPU (CUDA) acceleration in TensorFlow and Python.}
+    \resumeItemListEnd
+
+  \resumeProject
+    {IoT Based Smart Farming}
+    {B.E. Capstone Project, University Institute of Technology Burdwan}
+    {June 2018 -- June 2019}
+    \resumeItemListStart
+      \item {Built an automated crop irrigation system using capacitive soil moisture sensors and an Arduino-UNO microcontroller.}
+      \item {Interfaced ESP8266 NodeMCU Wi-Fi module to stream sensor data to the Blynk IoT cloud platform for remote water control.}
+    \resumeItemListEnd
+
+  \resumeProject
+    {Transmit Signal Over Various Modulation Schemes Using Diversity Techniques}
+    {CSP Lab under Dr. Sam Darshi, IIT Ropar}
+    {Jan 2021 -- June 2021}
+    \resumeItemListStart
+      \item {Simulated BFSK, BPSK, QPSK, and OFDM transmission across Rayleigh fading and AWGN channels with diversity combining techniques.}
+      \item {Computed Bit Error Rate (BER), Outage Probability, and Throughput curves in MATLAB.}
+    \resumeItemListEnd
+
+  \resumeProject
+    {Face Detection Using CNN (Convolutional Neural Network)}
+    {Digital Image Processing under Dr. Subrahmanyam Murala, IIT Ropar}
+    {Mar 2021 -- Apr 2021}
+    \resumeItemListStart
+      \item {Implemented a real-time face detection and recognition pipeline using VGG-16 deep convolutional neural network in OpenCV and TensorFlow.}
+    \resumeItemListEnd
+
+  \resumeProject
+    {Probabilistic Approach For Image Detection in Real-Time Video}
+    {Estimation \& Detection Theory under Dr. Satyam Kumar, IIT Ropar}
+    {Mar 2021 -- June 2021}
+    \resumeItemListStart
+      \item {Applied Bayesian Detection Theory with prior probabilities to identify specific target images in live webcam video streams.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-6.5mm}
+
+%-----------TECHNICAL SKILLS-----------------
+\section{\textbf{Technical Skills}}
+\resumeHeadingSkillStart
+  \resumeSubItem{Programming Languages}
+    {C, C++, Python, MATLAB, Verilog HDL}
+  \resumeSubItem{Frameworks \& Libraries}
+    {TensorFlow, Keras, PyTorch, OpenCV, Scikit-learn, Skimage}
+  \resumeSubItem{Tools \& Platforms}
+    {MATLAB, \LaTeX, Kaggle, Google Colaboratory, GitHub, Linux, Xilinx Vivado}
+  \resumeSubItem{Domains of Expertise}
+    {Integrated Sensing \& Communication (ISAC), Intelligent Reflecting Surfaces (IRS), NOMA, MIMO, Deep Learning, Image Super-Resolution}
+\resumeHeadingSkillEnd
+\vspace{-2mm}
+
+%-----------KEY COURSES TAKEN-----------------
+\section{\textbf{Key Courses Taken}}
+\resumeHeadingSkillStart
+ \resumeSubItem{Communication, Signal Processing \& Machine Learning}
+\small{\begin{tabularx}{\dimexpr\textwidth-10mm\relax}{|C|C|}
+  \hline
+  {Advanced Digital Communication (ADC)} & {Advanced Digital Signal Processing (ADSP)}\\
+  \hline 
+  {Detection and Estimation Theory} & {Digital Image Processing (DIP)}\\
+  \hline
+  {Mathematics Related to Communication Systems} & {Internet of Things (IoT)}\\
+  \hline
+  {Pattern Recognition and Machine Learning} & {Deep Learning with TensorFlow 2.0}\\
+  \hline
+\end{tabularx}}
+\resumeHeadingSkillEnd
+\vspace{-1.5mm}
+
+%-----------ACHIEVEMENTS / MISCELLANEOUS-----------------
+\section{\textbf{Achievements \& Extracurricular Activities}}
+\resumeSubHeadingListStart
+  \item {Awarded the prestigious \textbf{Ministry of Education (MoE) Doctoral Fellowship}, Government of India, for Ph.D. at IIT Guwahati (2022 -- Present).}
+  \item {Qualified \textbf{GATE Examination} in Electronics and Communication Engineering (ECE).}
+  \item {Presented poster on \textit{``Super-Resolution Using Deep Learning''} at the Electrical Engineering Research Scholar's Forum (EE-RSF), IIT Ropar.}
+\resumeSubHeadingListEnd
+
+\end{document}
