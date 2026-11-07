@@ -293,6 +293,7 @@
                         <div class="notion-badge-row">
                             <span class="notion-badge"><i class="fas fa-calendar-alt"></i> Research Deadlines</span>
                             <span class="notion-badge"><i class="fas fa-satellite-dish"></i> Wireless & Signal Processing</span>
+                            <span class="notion-badge"><i class="fas fa-radar"></i> IEEE AESS & ComSoc</span>
                         </div>
                     </div>
                 </div>
@@ -430,12 +431,12 @@
             {
                 id: 9,
                 title: "IEEE International Symposium on Information Theory",
-                acronym: "ISIT 2026",
+                acronym: "ISIT 2027",
                 category: "Information Theory",
-                venue: "Guangzhou, China",
-                dates: "June 28 - July 3, 2026",
-                deadline: "2026-01-16",
-                website: "https://2026.ieee-isit.org"
+                venue: "Sorrento, Italy",
+                dates: "June 27 – July 2, 2027",
+                deadline: "2027-01-10",
+                website: "https://isit2027.org/"
             },
             {
                 id: 10,
@@ -696,6 +697,107 @@
                 dates: "Sep. 2027",
                 deadline: "2027-04-15",
                 website: "http://www.ieee-pimrc.org/"
+            },
+            {
+                id: 36,
+                title: "IEEE Radar Conference 2027",
+                acronym: "RadarConf 2027",
+                category: "AESS",
+                venue: "Bengaluru, India",
+                dates: "May 1–6, 2027",
+                deadline: "2026-11-30",
+                isExtended: true,
+                website: "https://radarconf2027.org/"
+            },
+            {
+                id: 37,
+                title: "International Radar Symposium",
+                acronym: "IRS 2027",
+                category: "AESS",
+                venue: "Vienna, Austria",
+                dates: "June 2–4, 2027",
+                deadline: "2026-12-04",
+                website: "https://dgon-irs.org/"
+            },
+            {
+                id: 38,
+                title: "IEEE Space, Aerospace and Defence Conference",
+                acronym: "IEEE SPACE 2027",
+                category: "AESS",
+                venue: "Singapore",
+                dates: "July 5–11, 2027",
+                deadline: "2027-01-31",
+                website: "https://ieeespace.org/"
+            },
+            {
+                id: 39,
+                title: "IEEE International Workshop on Metrology for AeroSpace",
+                acronym: "MetroAeroSpace 2027",
+                category: "AESS",
+                venue: "Palermo, Italy",
+                dates: "June 30 – July 2, 2027",
+                deadline: "2027-01-31",
+                website: "https://www.metroaerospace.org/"
+            },
+            {
+                id: 40,
+                title: "International Conference on Information Fusion",
+                acronym: "FUSION 2027",
+                category: "AESS",
+                venue: "Buffalo - Niagara Falls, NY, USA",
+                dates: "June 28 – July 2, 2027",
+                deadline: "2027-02-14",
+                website: "https://fusion2027.org/"
+            },
+            {
+                id: 41,
+                title: "IEEE Aerospace Conference",
+                acronym: "AeroConf 2027",
+                category: "AESS",
+                venue: "Big Sky, MT, USA",
+                dates: "March 6–13, 2027",
+                deadline: "2026-10-02",
+                website: "https://www.aeroconf.org/"
+            },
+            {
+                id: 42,
+                title: "IEEE/ION Position, Location and Navigation Symposium",
+                acronym: "PLANS 2027",
+                category: "AESS",
+                venue: "Portland, OR, USA",
+                dates: "April 12–15, 2027",
+                deadline: "2026-10-16",
+                website: "https://www.ion.org/plans/"
+            },
+            {
+                id: 43,
+                title: "IEEE International Symposium on Phased Array Systems and Technology",
+                acronym: "ARRAY 2026",
+                category: "AESS",
+                venue: "Boston, MA, USA",
+                dates: "Oct. 19–23, 2026",
+                deadline: "2026-05-08",
+                website: "https://ieee-array.org/"
+            },
+            {
+                id: 44,
+                title: "IEEE AUTOTESTCON",
+                acronym: "AUTOTESTCON 2026",
+                category: "AESS",
+                venue: "National Harbor, MD, USA",
+                dates: "Aug. 31 – Sep. 3, 2026",
+                deadline: "2026-05-01",
+                website: "http://www.autotestcon.com/"
+            },
+            {
+                id: 45,
+                title: "IEEE Radio and Wireless Symposium (RWS / RWW)",
+                acronym: "RWS 2027",
+                category: "AESS",
+                venue: "Tampa, FL, USA",
+                dates: "Jan. 17–20, 2027",
+                deadline: "2026-07-22",
+                website: "https://www.radiowirelessweek.org/"
             }
         ];
 
@@ -976,9 +1078,177 @@
             );
         };
 
-        // Main App Controller
+                // Notion-Style List View Component (Dense Table / Scheduled Deadlines)
+        const ListView = ({ conferences, onSelectConference, onJumpToCalendar, hidePassed, setHidePassed }) => {
+            const todayStr = useMemo(() => {
+                const now = new Date();
+                const y = now.getFullYear();
+                const m = String(now.getMonth() + 1).padStart(2, '0');
+                const d = String(now.getDate()).padStart(2, '0');
+                return `${y}-${m}-${d}`;
+            }, []);
+
+            const getDaysRemaining = (deadlineStr) => {
+                if (!deadlineStr) return null;
+                const parts = deadlineStr.split('-');
+                if (parts.length !== 3) return null;
+                const deadline = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const diffTime = deadline.getTime() - today.getTime();
+                return Math.round(diffTime / (1000 * 60 * 60 * 24));
+            };
+
+            // Filter out passed deadlines if hidePassed is true, and sort by earliest upcoming deadline first
+            const listItems = useMemo(() => {
+                let items = conferences;
+                if (hidePassed) {
+                    items = items.filter(conf => (conf.deadline || '') >= todayStr);
+                }
+                return [...items].sort((a, b) => {
+                    const dA = a.deadline || '9999-12-31';
+                    const dB = b.deadline || '9999-12-31';
+                    return dA.localeCompare(dB); // Upcoming submission deadline first
+                });
+            }, [conferences, hidePassed, todayStr]);
+
+            return (
+                <div className="fade-in w-full space-y-3">
+                    {/* Header info & Filter stats bar */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 px-3.5 py-2.5 bg-[var(--hover-bg)] border border-[var(--border-color)] rounded-lg text-xs">
+                        <div className="flex items-center gap-2">
+                            <span className="font-bold text-[var(--text-primary)] flex items-center gap-1.5">
+                                <i className="fas fa-list-ul text-[var(--accent-blue)]"></i> Submission Deadlines Schedule
+                            </span>
+                            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-green-100 text-green-800 dark:bg-green-950/40 dark:text-green-300 border border-green-200 dark:border-green-800/40">
+                                {listItems.length} {hidePassed ? 'Active Upcoming' : 'Listed'}
+                            </span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <label className="flex items-center gap-1.5 cursor-pointer text-xs select-none text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+                                <input 
+                                    type="checkbox" 
+                                    checked={hidePassed} 
+                                    onChange={(e) => setHidePassed(e.target.checked)}
+                                    className="rounded border-[var(--border-color)] text-[var(--accent-blue)] cursor-pointer"
+                                />
+                                <span className="font-medium">Hide passed deadlines</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    {/* List Table / Rows */}
+                    <div className="bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-lg overflow-hidden divide-y divide-[var(--border-color)] shadow-xs">
+                        {listItems.map((conf, index) => {
+                            const daysLeft = getDaysRemaining(conf.deadline);
+                            const isFuture = (conf.deadline || '') >= todayStr;
+
+                            return (
+                                <div 
+                                    key={conf.id}
+                                    onClick={() => onSelectConference(conf)}
+                                    className="p-3.5 sm:p-4 hover:bg-[var(--hover-bg)] transition-colors cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 group"
+                                >
+                                    {/* Deadline Badge & Countdown */}
+                                    <div className="flex items-center gap-3 min-w-[210px] shrink-0">
+                                        <div className="text-xs font-mono font-bold text-[var(--text-muted)] w-6 text-center">
+                                            #{index + 1}
+                                        </div>
+                                        <div>
+                                            <div className="flex items-center gap-1.5">
+                                                <span className="font-mono text-xs font-bold text-[var(--text-primary)]">
+                                                    {conf.deadline}
+                                                </span>
+                                                {conf.isExtended && (
+                                                    <span className="text-[8.5px] font-extrabold uppercase px-1.5 py-0.5 bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 rounded border border-amber-300/60 leading-none">
+                                                        EXTENDED
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className={`text-[11px] font-semibold flex items-center gap-1 mt-0.5 ${
+                                                !isFuture ? 'text-red-500' :
+                                                daysLeft === 0 ? 'text-amber-600 font-bold' :
+                                                daysLeft <= 14 ? 'text-amber-600 font-bold' :
+                                                'text-green-600'
+                                            }`}>
+                                                <i className={`fas ${!isFuture ? 'fa-circle-xmark' : daysLeft <= 14 ? 'fa-hourglass-half' : 'fa-clock'} text-[10px]`}></i>
+                                                <span>
+                                                    {!isFuture ? `Passed (${conf.deadline})` :
+                                                     daysLeft === 0 ? 'Due Today!' :
+                                                     daysLeft === 1 ? 'Due Tomorrow' :
+                                                     `${daysLeft} days remaining`}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Title & Metadata */}
+                                    <div className="flex-1 min-w-[240px]">
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                            <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:underline group-hover:text-[var(--accent-blue)] transition-colors">
+                                                {conf.acronym}
+                                            </h3>
+                                            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[var(--hover-bg)] text-[var(--text-secondary)] border border-[var(--border-color)]">
+                                                {conf.category}
+                                            </span>
+                                        </div>
+                                        <p className="text-xs text-[var(--text-secondary)] mt-0.5 line-clamp-1">
+                                            {conf.title}
+                                        </p>
+                                        <div className="flex items-center gap-4 mt-1.5 text-[11px] text-[var(--text-muted)] flex-wrap">
+                                            <span className="flex items-center gap-1">
+                                                <i className="fa-solid fa-location-dot text-[10px]"></i> {conf.venue}
+                                            </span>
+                                            <span className="flex items-center gap-1">
+                                                <i className="fa-regular fa-calendar text-[10px]"></i> {conf.dates}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Action buttons */}
+                                    <div className="flex items-center gap-2 shrink-0 self-end md:self-center" onClick={e => e.stopPropagation()}>
+                                        <button
+                                            onClick={() => onJumpToCalendar(conf)}
+                                            className="px-2.5 py-1.5 text-xs font-semibold rounded-md border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--hover-bg)] transition-colors flex items-center gap-1 cursor-pointer"
+                                            title="View in Calendar"
+                                        >
+                                            <i className="fas fa-calendar-day text-[11px]"></i>
+                                            <span className="hidden sm:inline">Calendar</span>
+                                        </button>
+                                        <button
+                                            onClick={() => onSelectConference(conf)}
+                                            className="px-2.5 py-1.5 text-xs font-semibold rounded-md border border-[var(--border-color)] bg-[var(--bg-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--hover-bg)] transition-colors cursor-pointer"
+                                        >
+                                            Details
+                                        </button>
+                                        <a
+                                            href={conf.website}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="px-3 py-1.5 text-xs font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer"
+                                        >
+                                            <span>Website</span>
+                                            <i className="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            );
+                        })}
+
+                        {listItems.length === 0 && (
+                            <div className="text-center py-12 text-[var(--text-muted)] text-sm">
+                                No upcoming conference deadlines match your selected filter criteria.
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+// Main App Controller
         const App = () => {
-            const [view, setView] = useState('calendar');
+            const [view, setView] = useState('list');
+            const [hidePassed, setHidePassed] = useState(true);
             const [currentDate, setCurrentDate] = useState(() => {
                 const today = new Date();
                 return new Date(today.getFullYear(), today.getMonth(), 1);
@@ -994,7 +1264,11 @@
                 const threeMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 3, today.getDate());
 
                 return INITIAL_DATA.filter(conf => {
-                    // Optional 3-month cutoff limit if 'recent' mode selected
+                    // Filter by deadline status
+                    if (deadlineFilter === 'upcoming-only' && conf.deadline) {
+                        const todayStr = today.toISOString().slice(0, 10);
+                        if (conf.deadline < todayStr) return false;
+                    }
                     if (deadlineFilter === 'recent' && conf.deadline) {
                         const deadlineDate = new Date(conf.deadline);
                         if (!isNaN(deadlineDate.getTime()) && deadlineDate < threeMonthsAgo) {
@@ -1083,6 +1357,12 @@
                     <div className="flex justify-between items-center border-b border-[var(--border-color)] mb-4">
                         <div className="flex gap-2">
                             <button 
+                                onClick={() => setView('list')} 
+                                className={`notion-tab-btn ${view === 'list' ? 'active' : ''}`}
+                            >
+                                <i className="fas fa-list-ul mr-1.5"></i> List View
+                            </button>
+                            <button 
                                 onClick={() => setView('calendar')} 
                                 className={`notion-tab-btn ${view === 'calendar' ? 'active' : ''}`}
                             >
@@ -1114,6 +1394,7 @@
                             className="notion-select"
                         >
                             <option value="All">All Categories</option>
+                            <option value="AESS">AESS (Aerospace & Radar)</option>
                             <option value="ComSoc">ComSoc</option>
                             <option value="Signal Processing">Signal Processing</option>
                             <option value="Information Theory">Information Theory</option>
@@ -1124,7 +1405,8 @@
                             onChange={(e) => setDeadlineFilter(e.target.value)}
                             className="notion-select"
                         >
-                            <option value="all">Show All Conferences</option>
+                            <option value="all">All Deadlines (Upcoming & Past)</option>
+                            <option value="upcoming-only">Active Deadlines Only (Hide Passed)</option>
                             <option value="recent">Upcoming & Recent (Past 3 Months)</option>
                         </select>
                         <select 
@@ -1140,7 +1422,15 @@
                     </div>
 
                     {/* View rendering */}
-                    {view === 'calendar' ? (
+                    {view === 'list' ? (
+                        <ListView 
+                            conferences={filteredConferences}
+                            onSelectConference={setSelectedConf}
+                            onJumpToCalendar={handleJumpToCalendar}
+                            hidePassed={hidePassed}
+                            setHidePassed={setHidePassed}
+                        />
+                    ) : view === 'calendar' ? (
                         <CalendarView 
                             conferences={filteredConferences}
                             onSelectConference={setSelectedConf}
